@@ -1,0 +1,8 @@
+# robots.txt for Rehan Ayaz Portfolio
+User-agent: *
+Allow: /
+Disallow: /assets/gsap-public/
+Disallow: /*.bak$
+Disallow: /*.sql$
+
+Sitemap: https://rehanayaz.com/sitemap.xml

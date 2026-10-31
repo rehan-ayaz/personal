@@ -535,3 +535,18 @@ document.querySelectorAll('.logos-data').forEach(function (logosContainer) {
   const copy = logosContainer.querySelector('.logos-slide').cloneNode(true);
   logosContainer.appendChild(copy);
 });
+
+/*------------------------------------- Safe Static Form Intercept -------------------------------------*/
+$(document).ready(function () {
+  $(".main-contact").on("submit", function (e) {
+    e.preventDefault();
+    const name = $(this).find('input[name="Name"]').val() || "";
+    const email = $(this).find('input[name="Email"]').val() || "";
+    const phone = $(this).find('input[name="Phone"]').val() || "";
+    const msg = $(this).find('textarea[name="message"]').val() || "";
+    
+    // Redirect cleanly to WhatsApp with pre-filled message
+    const waText = encodeURIComponent(`Hello Rehan, my name is ${name} (${email}, ${phone}). ${msg}`);
+    window.open(`https://wa.me/923260735090?text=${waText}`, "_blank", "noopener,noreferrer");
+  });
+});
