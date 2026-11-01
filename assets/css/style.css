@@ -1884,117 +1884,214 @@ body.dark-theme {
         opacity: 0;
     }
 }
-/* -------------------- Award Section Design -------------------- */
-.award-image {
-    display: flex;
-    align-items: center;
-    justify-content: end;
+/* -------------------------------------------------------------
+   Experience & Certifications Section (from Layout-2/resume.html)
+   ------------------------------------------------------------- */
+.education-data {
     position: relative;
+}
+.exelant-edu {
+    align-items: stretch;
+    justify-content: space-between;
+    row-gap: 30px;
     width: 100%;
 }
-.award-image .img {
-    margin: 60px 0;
-    width: auto;
-}
-.award-image .img-container {
-    width: 300px;
-    height: 150px;
-    position: relative;
-    overflow: hidden;
-}
-.image-data-award {
-    position: absolute;
-    top: -20%;
-    right: -5%;
-    animation: tpupdown 1s infinite alternate;
-}
-.image-data-award img {
-    width: 100%;
-    max-width: 60px;
-    object-fit: cover;
-}
-@keyframes tpupdown {
-    0% {
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
-        transform: translateY(0);
-    }
-    100% {
-        -webkit-transform: translateY(-10px);
-        -moz-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-        -o-transform: translateY(-10px);
-        transform: translateY(-10px);
-    }
-}
-.data-award-desc {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 36px;
-    color: var(--text-color);
-}
-.award-detail {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
-    gap: 30px;
-}
-.list-award {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding-bottom: 30px;
-    border-bottom: 2px solid var(--award-border);
-    width: 100%;
-    gap: 125px;
-}
-.year-award {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 24px;
-    color: var(--text-color);
-}
-.award-detail-type {
-    display: flex;
-    width: 100%;
-    align-items: start;
-    justify-content: start;
-    gap: 45px;
-}
-.award-detail-type img {
-    width: 100%;
-    max-width: 100px;
-    object-fit: cover;
-    filter: var(--img-filter);
-}
-.award-name-detail {
-    width: 100%;
+.education-detail {
+    padding: 50px 40px;
+    border: 2px solid var(--project-border-box, rgba(255, 255, 255, 0.08));
+    border-radius: 24px;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
-    row-gap: 10px;
+    gap: 35px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: none !important;
 }
-.award-name-detail p {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 32px;
-    color: var(--main-text);
+body:not(.dark-theme) .education-detail {
+    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.01);
 }
-.award-name-detail span {
+.tilte-education {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+.tilte-education .second-heading {
+    margin-bottom: 0;
+}
+.tilte-education p {
     font-size: 18px;
+    font-weight: normal;
+    line-height: 28px;
+    color: var(--text-color);
+    margin: 0;
+}
+.education-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 32px;
+}
+.education {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 20px;
+    position: relative;
+}
+.education::before {
+    content: "";
+    border-left: 2px solid var(--project-border-box, rgba(255, 255, 255, 0.15));
+    position: absolute;
+    top: 20px;
+    left: 9px;
+    bottom: -32px;
+    z-index: 0;
+}
+body:not(.dark-theme) .education::before {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+.education:last-child::before {
+    display: none;
+}
+.eduction-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+.education-cirlce {
+    width: 20px;
+    height: 20px;
+    background-color: var(--body-color);
+    border: 2px solid var(--theme-data);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cicles_blue {
+    width: 8px;
+    height: 8px;
+    background-color: var(--theme-data);
+    border-radius: 100%;
+}
+.education-meanse-data {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 12px;
+}
+.name-univer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+.detail-desc-edu {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    gap: 6px;
+    flex-grow: 1;
+}
+.detail-desc-edu p {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: var(--main-text);
+    margin: 0;
+}
+.detail-desc-edu span {
+    font-size: 15px;
     font-weight: 500;
-    line-height: 18px;
-    text-transform: uppercase;
+    line-height: 22px;
     color: var(--theme-data);
 }
-.award-winng {
-    row-gap: 30px;
+.detail-desc-edu .edu-location {
+    font-size: 14px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
+.img-education {
+    flex-shrink: 0;
+}
+.img-education img {
+    width: 100%;
+    object-fit: cover;
+    max-width: 36px;
+    filter: var(--img-filter);
+}
+.desc-ducation {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 24px;
+    color: var(--text-color);
+    margin: 0;
+}
+.cert-thumb-link {
+    display: block;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--project-border-box, rgba(255, 255, 255, 0.15));
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: none !important;
+}
+body:not(.dark-theme) .cert-thumb-link {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+.cert-thumb-link:hover {
+    transform: scale(1.08);
+    border-color: var(--theme-data);
+}
+.cert-thumb-img {
+    width: 90px;
+    height: 64px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+@media (max-width: 991px) {
+    .education-detail {
+        padding: 30px 20px;
+        gap: 25px;
+    }
+    .name-univer {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .cert-thumb-img {
+        width: 80px;
+        height: 56px;
+    }
+    .detail-desc-edu p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .desc-ducation {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
 /* --------------------  Logo Scrool slider Section -------------------- */
 .slider-logo {
     padding: 80px 0;
