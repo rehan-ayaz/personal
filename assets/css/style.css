@@ -1910,9 +1910,10 @@ body.dark-theme {
     width: 100%;
 }
 .education-detail {
+    position: relative;
     padding: 50px 40px;
     border: 2px solid var(--project-border-box, rgba(255, 255, 255, 0.08));
-    border-radius: 24px;
+    border-radius: 0;
     display: flex;
     align-items: start;
     justify-content: start;
@@ -1922,6 +1923,11 @@ body.dark-theme {
     height: 100%;
     background: rgba(255, 255, 255, 0.02);
     box-shadow: none !important;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+}
+.education-detail:hover .image-right img {
+    filter: var(--prince-hove-img);
 }
 body:not(.dark-theme) .education-detail {
     border-color: rgba(0, 0, 0, 0.08);
