@@ -1018,6 +1018,11 @@
     }
 }
 @media (max-width:576px) {
+    .logo-black,
+    .logo-blue {
+        font-size: 32px;
+        line-height: 44px;
+    }
     .container {
         width: 100%;
     }
@@ -1311,6 +1316,11 @@
     }
 }
 @media (max-width:380px) {
+    .logo-black,
+    .logo-blue {
+        font-size: 26px;
+        line-height: 36px;
+    }
     .container {
         width: 100%;
     }

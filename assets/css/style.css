@@ -243,6 +243,18 @@ body.dark-theme {
 .preloader .animation-preloader .txt-loading .letters-loading:nth-child(8):before {
     animation-delay: 1.4s;
 }
+.preloader .animation-preloader .txt-loading .letters-loading:nth-child(9):before {
+    animation-delay: 1.6s;
+}
+.preloader .animation-preloader .txt-loading .letters-loading:nth-child(10):before {
+    animation-delay: 1.8s;
+}
+.preloader .animation-preloader .txt-loading .letters-loading:nth-child(11):before {
+    animation-delay: 2s;
+}
+.preloader .animation-preloader .txt-loading .letters-loading.letter-space {
+    margin-right: 0.25em;
+}
 .preloader .animation-preloader .txt-loading .letters-loading::before {
     animation: letters-loading 4s infinite;
     color: var(--main-text);
