@@ -24,6 +24,7 @@ Content: #FFF
 #smooth-content {
     overflow: visible;
     width: 100%;
+    display: flow-root;
 }
 
 * {
@@ -2661,6 +2662,10 @@ textarea {
     top: 0;
 }
 /* --------------------  Footer design Section -------------------- */
+footer.footer-data {
+    position: relative;
+    display: flow-root;
+}
 .footer-descr {
     font-size: 24px;
     font-weight: 400;
@@ -2669,7 +2674,7 @@ textarea {
 }
 .social-design-footer {
     padding-top: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 35px;
     row-gap: 30px;
 }
 .box-social-media {
@@ -2710,12 +2715,13 @@ textarea {
     position: relative;
     line-height: 0;
     overflow: hidden;
+    margin-top: -15px;
 }
 .bran-stark .data-round-image {
     position: absolute;
     top: 50%;
-    left: 47%;
-    transform: translate(-47%, -50%);
+    left: 54.2%;
+    transform: translate(-50%, -50%);
 }
 .bran-stark .data-round-image img {
     width: 100%;
