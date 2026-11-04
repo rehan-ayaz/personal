@@ -8,15 +8,18 @@ if (typeof gsap !== "undefined") {
   );
 }
 
-let smoother;
-if (document.querySelector("#smooth-wrapper") && document.querySelector("#smooth-content")) {
+var smoother = window.smoother || undefined;
+if (!window.smoother && document.querySelector("#smooth-wrapper") && document.querySelector("#smooth-content")) {
   smoother = ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
     smooth: 1.4, // Buttery smooth mouse wheel scrolling (seconds to catch up)
     effects: true,
-    smoothTouch: 0.1
+    smoothTouch: 0.1,
+    normalizeScroll: true
   });
+  window.smoother = smoother;
+  window.dispatchEvent(new CustomEvent("smootherReady", { detail: smoother }));
 }
 
 // ------------------------------------ [ GSAP Headings SplitText Animation (Brevon Style) ]
@@ -27,8 +30,13 @@ function initHeadingAnimations() {
 
   headings.forEach(function (el) {
     if (el.dataset.splitInitialized) return;
-    // Exclude infinite ticker elements and small numeric badges
+    // Exclude infinite ticker elements, small numeric badges, Trionn work section, and Trionn orbit section
     if (
+      el.closest("#work-section") ||
+      el.closest("#dribbble-orbit") ||
+      el.closest(".trionn-orbit-section") ||
+      el.classList.contains("mrquee-text") ||
+      el.closest(".dribble-title-wrap") ||
       el.closest(".slider-logo") ||
       el.closest(".marquee") ||
       el.closest(".marquee__content") ||
@@ -153,17 +161,25 @@ function initButtonHoverAnimations() {
 }
 
 //  ------------------------------------- [ Loader Design Data ]
-$(window).on("load", function () {
+function finishLoader() {
   initButtonHoverAnimations();
   setTimeout(function () {
     $(".preloader").addClass("loaded").fadeOut(600, function () {
       initHeadingAnimations();
       initSelfIntroScrollAnimation();
       initButtonHoverAnimations();
-      ScrollTrigger.refresh();
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
     });
   }, 1000);
-});
+}
+
+if (document.readyState === "complete") {
+  finishLoader();
+} else {
+  $(window).on("load", finishLoader);
+}
 
 $(document).ready(function () {
   initButtonHoverAnimations();
@@ -197,7 +213,7 @@ $(document).ready(function () {
 });
 
 // ------------------------------------ [ Header scroll ]
-const $header = $("[data-header]");
+var $header = $("[data-header]");
 
 function updateHeaderState(st) {
   if (st > 20) {
@@ -259,31 +275,16 @@ $(document).on("click", "a[href^='#']", function (e) {
 });
 
 // ------------------------------------ [ Light & Dark Mode ]
-const themeButton = $("#theme-button");
-const darkTheme = "dark-theme";
-const iconTheme = "ri-sun-fill";
-
-const selectedTheme = localStorage.getItem("selected-theme");
-const selectedIcon = localStorage.getItem("selected-icon");
-
-if (selectedTheme) {
-  $("body").toggleClass(darkTheme, selectedTheme === "dark");
-  themeButton.toggleClass(iconTheme, selectedIcon === "ri-moon-clear-fill");
-}
-
-$(document).on("click", "#theme-button", function () {
-
-  $("body").toggleClass(darkTheme);
-  themeButton.toggleClass(iconTheme);
-
-  const currentTheme = $("body").hasClass(darkTheme) ? "dark" : "light";
-  const currentIcon = themeButton.hasClass(iconTheme)
-    ? "ri-moon-clear-fill"
-    : "ri-sun-fill";
-
-  localStorage.setItem("selected-theme", currentTheme);
-  localStorage.setItem("selected-icon", currentIcon);
-});
+// Light & Dark theme state is managed natively in React (Header.jsx).
+// Initialize body theme on startup from localStorage:
+(function () {
+  var selectedTheme = localStorage.getItem("selected-theme");
+  if (selectedTheme === "dark") {
+    $("body").addClass("dark-theme");
+  } else if (selectedTheme === "light") {
+    $("body").removeClass("dark-theme");
+  }
+})();
 
 
 //  ------------------------- Cursor Design

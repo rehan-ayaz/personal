@@ -1,0 +1,365 @@
+/* ==========================================================================
+   TRIONN - 3D Services Showcase Section
+   Authentic 1:1 Recreation from Trionn.com with Site Typography
+   ========================================================================== */
+
+#trionn-services {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #000000;
+    color: #ffffff;
+    overflow: hidden;
+    font-family: "DM Sans", sans-serif;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+#trionn-services.services-pinned {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Corner Checkered Accents matching existing Services section */
+#trionn-services .service-top-left,
+#trionn-services .service-top-right,
+#trionn-services .service-bottom-right,
+#trionn-services .service-bottom-left {
+    position: absolute;
+    z-index: 25;
+    pointer-events: none;
+    line-height: 0;
+}
+
+#trionn-services .service-top-left {
+    top: 0;
+    left: 0;
+}
+
+#trionn-services .service-top-right {
+    top: 0;
+    right: 0;
+}
+
+#trionn-services .service-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+#trionn-services .service-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+#trionn-services .service-top-left img,
+#trionn-services .service-top-right img,
+#trionn-services .service-bottom-right img,
+#trionn-services .service-bottom-left img {
+    display: block;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    #trionn-services .service-top-left,
+    #trionn-services .service-top-right,
+    #trionn-services .service-bottom-right,
+    #trionn-services .service-bottom-left {
+        display: none !important;
+    }
+}
+
+/* Background video & atmosphere */
+#trionn-services .services-video-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#trionn-services .services-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    mix-blend-mode: screen;
+    transform: rotate(180deg) translateZ(0);
+}
+
+#trionn-services .services-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(16, 18, 27, 0.4) 0%, rgba(0, 0, 0, 0.95) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 3D Perspective Stage for floating cards */
+#trionn-services .services-stage-3d {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    perspective: 93.75rem; /* 1500px */
+    z-index: 15;
+}
+
+/* Glassmorphic 3D Service Card */
+#trionn-services .svc-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 250px;
+    pointer-events: auto;
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    z-index: 16;
+}
+
+@media (max-width: 767px) {
+    #trionn-services .svc-card {
+        width: calc(100vw - 3rem);
+        height: auto;
+        min-height: 210px;
+    }
+}
+
+#trionn-services .svc-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 15, 20, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px; /* Authentic Trionn rounded-lg */
+    padding: 2rem 2.25rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+#trionn-services .svc-card:hover .svc-card-inner {
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-4px);
+}
+
+#trionn-services .svc-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+#trionn-services .svc-card-title {
+    font-family: "Marcellus", serif;
+    font-size: 1.55rem;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    max-width: 230px;
+    letter-spacing: 0.02em;
+}
+
+#trionn-services .svc-card-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+}
+
+#trionn-services .svc-card-icon path {
+    stroke: #d8d8d8;
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+}
+
+#trionn-services .svc-card-desc {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: #a0a5b5;
+    margin: 1rem 0 0 0;
+    font-weight: 400;
+}
+
+/* Center Content & Giant Marquee Typography */
+#trionn-services .services-center-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+@media (min-width: 1024px) {
+    #trionn-services .services-center-container {
+        padding: 5rem 4rem 3.5rem;
+    }
+}
+
+#trionn-services .services-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    pointer-events: auto;
+}
+
+#trionn-services .services-eyebrow {
+    font-family: "Marcellus", serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a5b5;
+    font-weight: 400;
+    margin: 0;
+}
+
+#trionn-services .services-sound-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #c0c4ce;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    user-select: none;
+    pointer-events: auto;
+    z-index: 30;
+}
+
+#trionn-services .services-sound-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
+}
+
+#trionn-services .services-sound-btn.needs-gesture {
+    border-color: rgba(0, 210, 255, 0.6);
+    background: rgba(0, 210, 255, 0.12);
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
+    animation: soundPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes soundPulse {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(0, 210, 255, 0.25);
+        border-color: rgba(0, 210, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 210, 255, 0.7);
+        border-color: rgba(0, 210, 255, 0.95);
+    }
+}
+
+#trionn-services .sound-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    width: 14px;
+    height: 12px;
+}
+
+#trionn-services .sound-bars .bar {
+    display: block;
+    width: 2px;
+    background: #00d2ff;
+    border-radius: 1px;
+    transition: height 0.2s ease;
+}
+
+#trionn-services .sound-bars.playing .bar-1 {
+    height: 60%;
+    animation: soundWave 0.8s ease-in-out infinite alternate;
+}
+
+#trionn-services .sound-bars.playing .bar-2 {
+    height: 100%;
+    animation: soundWave 0.6s ease-in-out infinite alternate 0.2s;
+}
+
+#trionn-services .sound-bars.playing .bar-3 {
+    height: 40%;
+    animation: soundWave 0.7s ease-in-out infinite alternate 0.1s;
+}
+
+#trionn-services .sound-bars.playing .bar-4 {
+    height: 80%;
+    animation: soundWave 0.9s ease-in-out infinite alternate 0.3s;
+}
+
+#trionn-services .sound-bars.muted .bar {
+    height: 2px !important;
+    background: #707584;
+    animation: none;
+}
+
+@keyframes soundWave {
+    0% { height: 20%; }
+    100% { height: 100%; }
+}
+
+#trionn-services .services-marquee-block {
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    margin: 1.5rem 0;
+}
+
+#trionn-services .services-marquee-line {
+    font-family: "Marcellus", serif;
+    font-size: clamp(3.75rem, 8.5vw, 8.5rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #ffffff;
+    opacity: 0.88;
+    margin: 0;
+    transition: opacity 0.5s ease;
+}
+
+#trionn-services .services-bottom-spacer {
+    width: 100%;
+    height: 2.2rem;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Light theme overrides if body is in light mode */
+body:not(.dark-theme) #trionn-services {
+    background: #090a0f; /* High-contrast authentic dark stage as on Trionn */
+}

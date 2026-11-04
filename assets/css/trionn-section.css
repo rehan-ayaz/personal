@@ -1,0 +1,512 @@
+/* ==========================================================================
+   TRIONN - Selected Work & Explorations (Exact 1:1 Authentic Recreation)
+   Pure Horizontal Smooth Scroll - Zero Vertical Movement/Wobble
+   ========================================================================== */
+
+/* ----------------- Fonts ----------------- */
+@font-face {
+    font-family: 'Familjen Grotesk';
+    src: url('/assets/fonts/FamiljenGroteskVariable_Regular.woff2') format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url('/assets/fonts/NeueHaasDisplay_Roman.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Martian Mono';
+    src: url('/assets/fonts/MartianMono_Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Editorial New';
+    src: url('/assets/fonts/PPEditorialNew_Ultralight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+/* ----------------- Root Section ----------------- */
+#work-section,
+#work-section.project {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #ffffff;
+    font-family: "DM Sans", sans-serif;
+    color: #111111;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+@media (min-width: 768px) {
+    #work-section,
+    #work-section.project {
+        height: 100vh;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 767px) {
+    #work-section,
+    #work-section.project {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+}
+
+/* ----------------- Dark Theme Adaptation ----------------- */
+body.dark-theme #work-section,
+body.dark-theme #work-section.project {
+    background: #040508;
+    color: #ffffff;
+}
+
+/* ----------------- Viewport & Background Gradients ----------------- */
+#work-section .work-viewport-outer {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: visible;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
+    #work-section .work-viewport-outer {
+        position: absolute;
+        inset: 0;
+        min-height: 100vh;
+    }
+}
+
+#work-section .work-viewport-inner {
+    position: relative;
+    overflow: visible;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+    #work-section .work-viewport-inner {
+        background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
+    }
+    body.dark-theme #work-section .work-viewport-inner {
+        background: linear-gradient(0deg, #111216 0%, #060709 100%);
+    }
+}
+
+#work-section .work-viewport-center {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    overflow: visible;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    #work-section .work-viewport-center {
+        position: absolute;
+        inset: 0;
+        align-items: center;
+    }
+}
+
+#work-section .work-track {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
+    #work-section .work-track {
+        flex-direction: row;
+        height: 100vh;
+        width: max-content;
+    }
+}
+
+/* ----------------- Title Pinned Block ----------------- */
+#work-section .title-pinned-block {
+    pointer-events: auto;
+    display: flex;
+    width: 100vw;
+    height: auto;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 1.5rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    #work-section .title-pinned-block {
+        width: 50vw;
+        max-width: 50vw;
+        height: 100%;
+        padding: 0 2.5rem;
+        padding-top: 85px;
+        box-sizing: border-box;
+        background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
+    }
+    body.dark-theme #work-section .title-pinned-block {
+        background: linear-gradient(0deg, #111216 0%, #060709 100%);
+    }
+}
+
+#work-section .title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+    padding-top: 1rem;
+}
+
+#work-section .section-main-heading {
+    font-family: "Marcellus", serif;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #111111;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    #work-section .section-main-heading {
+        font-size: 3.25rem;
+    }
+}
+
+body.dark-theme #work-section .section-main-heading {
+    color: #ffffff;
+}
+
+/* ----------------- Work Card Structure (Zero Vertical Wobble) ----------------- */
+#work-section .js-work-card {
+    position: relative;
+    display: flex;
+    width: calc(100% - 3rem);
+    height: auto;
+    flex-shrink: 0;
+    min-width: 0;
+    padding: 0;
+    align-items: center;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    #work-section .js-work-card {
+        width: 50vw;
+        max-width: 50vw;
+        height: 100%;
+        padding-top: 85px;
+        box-sizing: border-box;
+        background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
+    }
+    body.dark-theme #work-section .js-work-card {
+        background: linear-gradient(0deg, #111216 0%, #060709 100%);
+    }
+}
+
+/* Dividing Lines */
+#work-section .js-card-line {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform-origin: top;
+    will-change: transform;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    #work-section .js-card-line {
+        display: block;
+    }
+}
+
+body.dark-theme #work-section .js-card-line {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+#work-section .js-card-line-horizontal {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform-origin: left;
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
+    #work-section .js-card-line-horizontal {
+        display: none;
+    }
+}
+
+body.dark-theme #work-section .js-card-line-horizontal {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Card Motion Inner Wrapper - Authentic Trionn Smooth Entry */
+#work-section .js-work-card-inner {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
+    #work-section .js-work-card-inner {
+        padding: 0 4rem;
+        will-change: transform;
+    }
+}
+
+@media (min-width: 1280px) {
+    #work-section .js-work-card-inner {
+        padding: 0 5rem;
+    }
+}
+
+#work-section .card-content-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+    #work-section .card-content-box {
+        padding: 0;
+        max-height: 100vh;
+    }
+}
+
+/* ----------------- Project Image Link (670/460 & 8px Radius) ----------------- */
+#work-section .project-image-link {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 670 / 460;
+    overflow: hidden;
+    border-radius: 8px; /* Authentic Trionn rounded-lg */
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background-color: #e5e5e5;
+    text-decoration: none;
+}
+
+body.dark-theme #work-section .project-image-link {
+    background-color: #1a1c22;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+#work-section .project-image-link img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+#work-section .project-image-link:hover img {
+    transform: scale(1.05);
+}
+
+/* ----------------- Project Typography & Meta (Exact Trionn Layout) ----------------- */
+#work-section .project-meta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+}
+
+#work-section .project-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #111111;
+    font-family: "Marcellus", serif;
+    line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+    #work-section .project-title {
+        font-size: 1.875rem;
+    }
+}
+
+body.dark-theme #work-section .project-title {
+    color: #ffffff;
+}
+
+#work-section .project-desc {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #6b7280;
+    max-width: 24rem;
+}
+
+@media (min-width: 768px) {
+    #work-section .project-desc {
+        font-size: 1rem;
+    }
+}
+
+body.dark-theme #work-section .project-desc {
+    color: #9ca3af;
+}
+
+/* ----------------- Trionn Explore All Work Button ----------------- */
+#work-section .button_wrapper {
+    position: relative;
+    width: 12.5rem;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+#work-section .button_wrapper:hover {
+    opacity: 0.95;
+}
+
+#work-section .btn.button-text {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 2.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 9999px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #111111;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme #work-section .btn.button-text {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+#work-section .btn.button-text:hover {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+body.dark-theme #work-section .btn.button-text:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* ----------------- Final CTA Card ----------------- */
+#work-section .cta-final-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    padding: 5rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    #work-section .cta-final-card {
+        padding: 4rem 0;
+        max-height: 100vh;
+    }
+}
+
+#work-section .cta-final-heading {
+    font-family: "Marcellus", serif;
+    color: #111111;
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 28rem;
+    margin-bottom: 2rem;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+    #work-section .cta-final-heading {
+        font-size: 2.25rem;
+    }
+}
+
+body.dark-theme #work-section .cta-final-heading {
+    color: #ffffff;
+}
+
+#work-section .cta-final-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#work-section .cta-final-btn:hover {
+    background-color: #1f2937;
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+body.dark-theme #work-section .cta-final-btn {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-theme #work-section .cta-final-btn:hover {
+    background-color: #e5e7eb;
+    color: #000000;
+}
