@@ -279,7 +279,7 @@ export default function ProjectModal(props) {
                 <p className="text-data-desc">We craft custom, user-focused websites that are fast, mobile-friendly, and
                     SEO-optimized—designed to deliver an exceptional user experience and drive real online success.</p>
                 <div className="line-design"></div>
-                <a href='javascript:void(0)' className="main-sec-design-hover">
+                <a href="#next-project" onClick={(e) => e.preventDefault()} className="main-sec-design-hover">
                     <p>NEXT</p>
                     <h2 className="second-heading mb-1">Lifestyle Blog Website</h2>
                     <div className="desing-project-mag flex-wrap">

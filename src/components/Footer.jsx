@@ -18,27 +18,27 @@ export default function Footer(props) {
                         </a>
                     </div>
                     <div className="col-xl-2 col-lg-4 col-md-4 col-sm-4 box-socila-design-footer zoom_in">
-                        <a href="javascript:void(0)" className="box-social-media" aria-label="Instagram">
+                        <a href="#social" onClick={(e) => e.preventDefault()} className="box-social-media" aria-label="Instagram">
                             <img src="assets/images/contact/instagram.svg" alt="Instagram icon" loading="lazy" decoding="async" />
                         </a>
                     </div>
                     <div className="col-xl-2 col-lg-4 col-md-4 col-sm-4 box-socila-design-footer zoom_in">
-                        <a href="javascript:void(0)" className="box-social-media" aria-label="Twitter">
+                        <a href="#social" onClick={(e) => e.preventDefault()} className="box-social-media" aria-label="Twitter">
                             <img src="assets/images/contact/twitter.svg" alt="Twitter icon" loading="lazy" decoding="async" />
                         </a>
                     </div>
                     <div className="col-xl-2 col-lg-4 col-md-4 col-sm-4 box-socila-design-footer zoom_in">
-                        <a href="javascript:void(0)" className="box-social-media" aria-label="Behance">
+                        <a href="#social" onClick={(e) => e.preventDefault()} className="box-social-media" aria-label="Behance">
                             <img src="assets/images/contact/behance.svg" alt="Behance icon" loading="lazy" decoding="async" />
                         </a>
                     </div>
                     <div className="col-xl-2 col-lg-4 col-md-4 col-sm-4 box-socila-design-footer zoom_in">
-                        <a href="javascript:void(0)" className="box-social-media" aria-label="Dribbble">
+                        <a href="#social" onClick={(e) => e.preventDefault()} className="box-social-media" aria-label="Dribbble">
                             <img src="assets/images/contact/dribble.svg" alt="Dribbble icon" loading="lazy" decoding="async" />
                         </a>
                     </div>
                     <div className="col-xl-2 col-lg-4 col-md-4 col-sm-4 box-socila-design-footer zoom_in">
-                        <a href="javascript:void(0)" className="box-social-media" aria-label="YouTube">
+                        <a href="#social" onClick={(e) => e.preventDefault()} className="box-social-media" aria-label="YouTube">
                             <img src="assets/images/contact/youtube.svg" alt="YouTube icon" loading="lazy" decoding="async" />
                         </a>
                     </div>
