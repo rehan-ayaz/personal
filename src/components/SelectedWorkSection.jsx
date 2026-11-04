@@ -7,40 +7,40 @@ const realProjects = [
     id: "food-delivery",
     title: "Food Delivery App 4U",
     desc: "White-label food delivery ecosystem featuring real-time order tracking, multi-vendor customer app, restaurant dashboard, and seamless checkout flows.",
-    desktopImg: "/assets/images/projects/food-delivery/food-delivery.jpg",
-    mobileImg: "/assets/images/projects/food-delivery/food-delivery_m.jpg",
+    desktopImg: "/assets/images/projects/food-delivery/Food Delivery App 4U.png",
+    mobileImg: "/assets/images/projects/food-delivery/food-delivery_m.png",
     link: "#contact"
   },
   {
     id: "erp-system",
     title: "ERP System 4U",
     desc: "Complete enterprise ERP solution uniting multi-business management, real-time inventory, CRM, accounting, and AI-powered business intelligence.",
-    desktopImg: "/assets/images/projects/erp-system/erp-system.jpg",
-    mobileImg: "/assets/images/projects/erp-system/erp-system_m.jpg",
+    desktopImg: "/assets/images/projects/erp-system/ERP System 4U.png",
+    mobileImg: "/assets/images/projects/erp-system/erp-system_m.png",
     link: "#contact"
   },
   {
     id: "ar-gadgets",
     title: "AR Gadgets",
     desc: "High-converting electronics and audio peripherals store with dynamic product showcases, secure checkout, customer portals, and fast nationwide delivery.",
-    desktopImg: "/assets/images/projects/ar-gadgets/ar-gadgets.jpg",
-    mobileImg: "/assets/images/projects/ar-gadgets/ar-gadgets_m.jpg",
+    desktopImg: "/assets/images/projects/ar-gadgets/AR Gadgets.png",
+    mobileImg: "/assets/images/projects/ar-gadgets/ar-gadgets_m.png",
     link: "#contact"
   },
   {
     id: "it-pro",
     title: "IT Pro Services",
     desc: "Enterprise custom software and IT consulting platform with 15 custom pages, Kohost cloud dashboard integration, and responsive data analytics.",
-    desktopImg: "/assets/images/projects/it-pro/it-pro.jpg",
-    mobileImg: "/assets/images/projects/it-pro/it-pro_m.jpg",
+    desktopImg: "/assets/images/projects/it-pro/IT Pro Services.png",
+    mobileImg: "/assets/images/projects/it-pro/it-pro_m.png",
     link: "#contact"
   },
   {
     id: "hassan-tech",
     title: "Hassan Tech",
     desc: "Pakistan's trusted mechanical keyboard eCommerce store featuring custom builds, advanced keyboard filtering, live chat, and smooth WooCommerce checkout.",
-    desktopImg: "/assets/images/projects/hassan-tech/hassan-tech.jpg",
-    mobileImg: "/assets/images/projects/hassan-tech/hassan-tech_m.jpg",
+    desktopImg: "/assets/images/projects/hassan-tech/Hassan Tech.png",
+    mobileImg: "/assets/images/projects/hassan-tech/hassan-tech_m.png",
     link: "#contact"
   },
   {
@@ -63,24 +63,24 @@ const realProjects = [
     id: "legacy-building",
     title: "Legacy Building Group",
     desc: "Corporate construction company website built on Elementor Pro with bespoke inquiry systems, portfolio showcases, and search filtering.",
-    desktopImg: "/assets/images/projects/legacy-building/legacy-building.jpg",
-    mobileImg: "/assets/images/projects/legacy-building/legacy-building_m.jpg",
+    desktopImg: "/assets/images/projects/legacy-building/legacy-laptop-mobile-mockup.png",
+    mobileImg: "/assets/images/projects/legacy-building/legacy-building_m.png",
     link: "#contact"
   },
   {
     id: "mycustomcode",
-    title: "CodeNest Online",
+    title: "MyCustomCode",
     desc: "Modern digital academy and custom software portal built with Tutor LMS & WooCommerce, featuring student dashboards, interactive course enrollment, and agency services.",
-    desktopImg: "/assets/images/projects/mycustomcode/mycustomcode.jpg",
-    mobileImg: "/assets/images/projects/mycustomcode/mycustomcode_m.jpg",
+    desktopImg: "/assets/images/projects/mycustomcode/my-custom-code.jpg",
+    mobileImg: "/assets/images/projects/mycustomcode/my-custom-code_m.jpg",
     link: "#contact"
   },
   {
     id: "shabelle",
     title: "Shabelle Bank",
     desc: "Institutional Islamic commercial bank portal featuring branch networks, secure investment consultation tools, speed optimization, and responsive executive design.",
-    desktopImg: "/assets/images/projects/shabelle/shabelle.jpg",
-    mobileImg: "/assets/images/projects/shabelle/shabelle_m.jpg",
+    desktopImg: "/assets/images/projects/shabelle/shabelle-bank.jpg",
+    mobileImg: "/assets/images/projects/shabelle/shabelle-bank_m.jpg",
     link: "#contact"
   }
 ];
