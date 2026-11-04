@@ -15,7 +15,7 @@
     z-index: 5;
 }
 
-#trionn-services.services-pinned {
+#trionn-services.ra-services-pinned, .services-pinned {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -23,40 +23,40 @@
 }
 
 /* Corner Checkered Accents matching existing Services section */
-#trionn-services .service-top-left,
-#trionn-services .service-top-right,
-#trionn-services .service-bottom-right,
-#trionn-services .service-bottom-left {
+#trionn-services .ra-service-top-left, .service-top-left,
+#trionn-services .ra-service-top-right, .service-top-right,
+#trionn-services .ra-service-bottom-right, .service-bottom-right,
+#trionn-services .ra-service-bottom-left, .service-bottom-left {
     position: absolute;
     z-index: 25;
     pointer-events: none;
     line-height: 0;
 }
 
-#trionn-services .service-top-left {
+#trionn-services .ra-service-top-left, .service-top-left {
     top: 0;
     left: 0;
 }
 
-#trionn-services .service-top-right {
+#trionn-services .ra-service-top-right, .service-top-right {
     top: 0;
     right: 0;
 }
 
-#trionn-services .service-bottom-right {
+#trionn-services .ra-service-bottom-right, .service-bottom-right {
     bottom: 0;
     right: 0;
 }
 
-#trionn-services .service-bottom-left {
+#trionn-services .ra-service-bottom-left, .service-bottom-left {
     bottom: 0;
     left: 0;
 }
 
-#trionn-services .service-top-left img,
-#trionn-services .service-top-right img,
-#trionn-services .service-bottom-right img,
-#trionn-services .service-bottom-left img {
+#trionn-services .ra-service-top-left, .service-top-left img,
+#trionn-services .ra-service-top-right, .service-top-right img,
+#trionn-services .ra-service-bottom-right, .service-bottom-right img,
+#trionn-services .ra-service-bottom-left, .service-bottom-left img {
     display: block;
     width: auto;
     height: auto;
@@ -65,16 +65,16 @@
 }
 
 @media (max-width: 768px) {
-    #trionn-services .service-top-left,
-    #trionn-services .service-top-right,
-    #trionn-services .service-bottom-right,
-    #trionn-services .service-bottom-left {
+    #trionn-services .ra-service-top-left, .service-top-left,
+    #trionn-services .ra-service-top-right, .service-top-right,
+    #trionn-services .ra-service-bottom-right, .service-bottom-right,
+    #trionn-services .ra-service-bottom-left, .service-bottom-left {
         display: none !important;
     }
 }
 
 /* Background video & atmosphere */
-#trionn-services .services-video-wrap {
+#trionn-services .ra-services-video-wrap, .services-video-wrap {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -84,7 +84,7 @@
     z-index: 1;
 }
 
-#trionn-services .services-bg-video {
+#trionn-services .ra-services-bg-video, .services-bg-video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -95,7 +95,7 @@
     transform: rotate(180deg) translateZ(0);
 }
 
-#trionn-services .services-bg-gradient {
+#trionn-services .ra-services-bg-gradient, .services-bg-gradient {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at center, rgba(16, 18, 27, 0.4) 0%, rgba(0, 0, 0, 0.95) 100%);
@@ -104,7 +104,7 @@
 }
 
 /* 3D Perspective Stage for floating cards */
-#trionn-services .services-stage-3d {
+#trionn-services .ra-services-stage-3d, .services-stage-3d {
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -114,7 +114,7 @@
 }
 
 /* Glassmorphic 3D Service Card */
-#trionn-services .svc-card {
+#trionn-services .ra-svc-card, .svc-card {
     position: absolute;
     top: 0;
     left: 0;
@@ -128,14 +128,14 @@
 }
 
 @media (max-width: 767px) {
-    #trionn-services .svc-card {
+    #trionn-services .ra-svc-card, .svc-card {
         width: calc(100vw - 3rem);
         height: auto;
         min-height: 210px;
     }
 }
 
-#trionn-services .svc-card-inner {
+#trionn-services .ra-svc-card, .ra-svc-card-inner, .svc-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -153,19 +153,19 @@
     transition: border-color 0.4s ease, transform 0.4s ease;
 }
 
-#trionn-services .svc-card:hover .svc-card-inner {
+#trionn-services .ra-svc-card, .svc-card:hover .ra-svc-card, .ra-svc-card-inner, .svc-card-inner {
     border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-4px);
 }
 
-#trionn-services .svc-card-top {
+#trionn-services .ra-svc-card, .ra-svc-card-top, .svc-card-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1.5rem;
 }
 
-#trionn-services .svc-card-title {
+#trionn-services .ra-svc-card, .ra-svc-card-title, .svc-card-title {
     font-family: "Marcellus", serif;
     font-size: 1.55rem;
     line-height: 1.25;
@@ -176,19 +176,19 @@
     letter-spacing: 0.02em;
 }
 
-#trionn-services .svc-card-icon {
+#trionn-services .ra-svc-card, .ra-svc-card-icon, .svc-card-icon {
     width: 3.5rem;
     height: 3.5rem;
     flex-shrink: 0;
 }
 
-#trionn-services .svc-card-icon path {
+#trionn-services .ra-svc-card, .ra-svc-card-icon, .svc-card-icon path {
     stroke: #d8d8d8;
     stroke-width: 1.25;
     vector-effect: non-scaling-stroke;
 }
 
-#trionn-services .svc-card-desc {
+#trionn-services .ra-svc-card, .ra-svc-card-desc, .svc-card-desc {
     font-family: "DM Sans", sans-serif;
     font-size: 0.875rem;
     line-height: 1.55;
@@ -198,7 +198,7 @@
 }
 
 /* Center Content & Giant Marquee Typography */
-#trionn-services .services-center-container {
+#trionn-services .ra-services-center-container, .services-center-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -212,12 +212,12 @@
 }
 
 @media (min-width: 1024px) {
-    #trionn-services .services-center-container {
+    #trionn-services .ra-services-center-container, .services-center-container {
         padding: 5rem 4rem 3.5rem;
     }
 }
 
-#trionn-services .services-top-row {
+#trionn-services .ra-services-top-row, .services-top-row {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -227,7 +227,7 @@
     pointer-events: auto;
 }
 
-#trionn-services .services-eyebrow {
+#trionn-services .ra-services-eyebrow, .services-eyebrow {
     font-family: "Marcellus", serif;
     font-size: 0.95rem;
     letter-spacing: 0.18em;
@@ -237,7 +237,7 @@
     margin: 0;
 }
 
-#trionn-services .services-sound-btn {
+#trionn-services .ra-services-sound-btn, .services-sound-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
@@ -259,14 +259,14 @@
     z-index: 30;
 }
 
-#trionn-services .services-sound-btn:hover {
+#trionn-services .ra-services-sound-btn, .services-sound-btn:hover {
     background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.45);
     transform: translateY(-1px);
 }
 
-#trionn-services .services-sound-btn.needs-gesture {
+#trionn-services .ra-services-sound-btn, .services-sound-btn.needs-gesture {
     border-color: rgba(0, 210, 255, 0.6);
     background: rgba(0, 210, 255, 0.12);
     color: #ffffff;
@@ -285,7 +285,7 @@
     }
 }
 
-#trionn-services .sound-bars {
+#trionn-services .ra-sound-bars, .sound-bars {
     display: flex;
     align-items: flex-end;
     gap: 2px;
@@ -293,7 +293,7 @@
     height: 12px;
 }
 
-#trionn-services .sound-bars .bar {
+#trionn-services .ra-sound-bars, .sound-bars .ra-bar, .bar {
     display: block;
     width: 2px;
     background: #00d2ff;
@@ -301,27 +301,27 @@
     transition: height 0.2s ease;
 }
 
-#trionn-services .sound-bars.playing .bar-1 {
+#trionn-services .ra-sound-bars, .sound-bars.playing .ra-bar, .ra-bar-1, .bar-1 {
     height: 60%;
     animation: soundWave 0.8s ease-in-out infinite alternate;
 }
 
-#trionn-services .sound-bars.playing .bar-2 {
+#trionn-services .ra-sound-bars, .sound-bars.playing .ra-bar, .ra-bar-2, .bar-2 {
     height: 100%;
     animation: soundWave 0.6s ease-in-out infinite alternate 0.2s;
 }
 
-#trionn-services .sound-bars.playing .bar-3 {
+#trionn-services .ra-sound-bars, .sound-bars.playing .ra-bar, .ra-bar-3, .bar-3 {
     height: 40%;
     animation: soundWave 0.7s ease-in-out infinite alternate 0.1s;
 }
 
-#trionn-services .sound-bars.playing .bar-4 {
+#trionn-services .ra-sound-bars, .sound-bars.playing .ra-bar, .ra-bar-4, .bar-4 {
     height: 80%;
     animation: soundWave 0.9s ease-in-out infinite alternate 0.3s;
 }
 
-#trionn-services .sound-bars.muted .bar {
+#trionn-services .ra-sound-bars, .sound-bars.muted .ra-bar, .bar {
     height: 2px !important;
     background: #707584;
     animation: none;
@@ -332,14 +332,14 @@
     100% { height: 100%; }
 }
 
-#trionn-services .services-marquee-block {
+#trionn-services .ra-services-marquee-block, .services-marquee-block {
     text-align: center;
     pointer-events: none;
     user-select: none;
     margin: 1.5rem 0;
 }
 
-#trionn-services .services-marquee-line {
+#trionn-services .ra-services-marquee-line, .services-marquee-line {
     font-family: "Marcellus", serif;
     font-size: clamp(3.75rem, 8.5vw, 8.5rem);
     line-height: 0.95;
@@ -352,7 +352,7 @@
     transition: opacity 0.5s ease;
 }
 
-#trionn-services .services-bottom-spacer {
+#trionn-services .ra-services-bottom-spacer, .services-bottom-spacer {
     width: 100%;
     height: 2.2rem;
     pointer-events: none;

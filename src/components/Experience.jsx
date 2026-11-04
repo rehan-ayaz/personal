@@ -1,3 +1,8 @@
+/**
+ * @file Experience.jsx
+ * @description Experience and Certifications section with scroll-driven GSAP scrub timeline,
+ * dynamic geometry tracking, and standardized dual-class naming convention (ra-*).
+ */
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,14 +28,14 @@ export default function Experience(props) {
 
       columns.forEach((col) => {
         if (!col) return;
-        const list = col.querySelector('.education-list');
-        const items = col.querySelectorAll('.education');
-        const circles = col.querySelectorAll('.education-cirlce');
-        const track = col.querySelector('.timeline-line-track');
-        const activeLine = col.querySelector('.timeline-line-active');
-        const glow = col.querySelector('.timeline-line-glow');
-        const title = col.querySelector('.tilte-education');
-        const cornerImg = col.querySelector('.image-right');
+        const list = col.querySelector('.ra-education-list, .education-list');
+        const items = col.querySelectorAll('.ra-education, .education');
+        const circles = col.querySelectorAll('.ra-education-cirlce, .education-cirlce');
+        const track = col.querySelector('.ra-timeline-line-track, .timeline-line-track');
+        const activeLine = col.querySelector('.ra-timeline-line-active, .timeline-line-active');
+        const glow = col.querySelector('.ra-timeline-line-glow, .timeline-line-glow');
+        const title = col.querySelector('.ra-tilte-education, .tilte-education');
+        const cornerImg = col.querySelector('.ra-image-right, .image-right');
 
         if (!list || items.length < 3 || circles.length < 3) return;
 
@@ -56,10 +61,10 @@ export default function Experience(props) {
         if (cornerImg) g.set(cornerImg, { opacity: 0.2, scale: 0.85, force3D: true });
 
         items.forEach((item, i) => {
-          const content = item.querySelector('.education-meanse-data');
+          const content = item.querySelector('.ra-education-meanse-data, .education-meanse-data');
           const circle = circles[i];
-          const innerDot = circle?.querySelector('.cicles_blue');
-          const ripple = circle?.querySelector('.node-ripple-pulse');
+          const innerDot = circle?.querySelector('.ra-cicles_blue, .cicles_blue');
+          const ripple = circle?.querySelector('.ra-node-ripple-pulse, .node-ripple-pulse');
 
           if (content) g.set(content, { opacity: 0.2, y: -20, force3D: true });
           if (circle) {
@@ -257,94 +262,94 @@ export default function Experience(props) {
   return (
     <>
       {/* ==================== [ Experience & Certifications Section Start ] ==================== */}
-      <section className="education-data data-padding" id="experience" ref={sectionRef}>
+      <section className="ra-education-data education-data ra-data-padding data-padding" id="experience" ref={sectionRef}>
         <div className="container">
-          <div className="row exelant-edu">
+          <div className="row ra-exelant-edu exelant-edu">
             {/* Left Column: Work Experience */}
             <div className="col-xl-6 col-lg-12 col-md-12" ref={leftColRef}>
-              <div className="education-detail">
-                <div className="image-right">
+              <div className="ra-education-detail education-detail">
+                <div className="ra-image-right image-right">
                   <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
                 </div>
-                <div className="tilte-education">
-                  <h2 className="second-heading text-start">Experience</h2>
+                <div className="ra-tilte-education tilte-education">
+                  <h2 className="ra-second-heading second-heading text-start">Experience</h2>
                   <p>2+ years of professional hands-on experience in web development, WordPress specialization, and digital solutions.</p>
                 </div>
-                <div className="education-list has-custom-timeline">
+                <div className="ra-education-list education-list ra-has-custom-timeline has-custom-timeline">
                   {/* Continuous Animated Timeline Line Track */}
-                  <div className="timeline-line-track">
-                    <div className="timeline-line-active"></div>
-                    <div className="timeline-line-glow"></div>
+                  <div className="ra-timeline-line-track timeline-line-track">
+                    <div className="ra-timeline-line-active timeline-line-active"></div>
+                    <div className="ra-timeline-line-glow timeline-line-glow"></div>
                   </div>
 
                   {/* Experience Item 01 (Present) */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>Web Developer &amp; WordPress Specialist</p>
                           <span>Addiztech IT Solution &bull; Present</span>
-                          <span className="edu-location"><i className="ri-map-pin-2-line"></i> 84j Ghazali Rd, Block 2 PECHS, Karachi</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-map-pin-2-line"></i> 84j Ghazali Rd, Block 2 PECHS, Karachi</span>
                         </div>
-                        <div className="img-education">
-                          <img src="assets/images/resume/addiztech-logo.png" alt="Addiztech IT Solution" className="logo-addiztech" width="36" height="36" loading="lazy" />
+                        <div className="ra-img-education img-education">
+                          <img src="assets/images/resume/addiztech-logo.png" alt="Addiztech IT Solution" className="ra-logo-addiztech logo-addiztech" width="36" height="36" loading="lazy" />
                         </div>
                       </div>
-                      <p className="desc-ducation">Leading end-to-end WordPress web development, custom theme tailoring, plugin integrations, performance optimization, and reliable client-first digital deliverables.</p>
+                      <p className="ra-desc-ducation desc-ducation">Leading end-to-end WordPress web development, custom theme tailoring, plugin integrations, performance optimization, and reliable client-first digital deliverables.</p>
                     </div>
                   </div>
 
                   {/* Experience Item 02 */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>Front-end WordPress Developer</p>
                           <span>7 Marketing (SMC-Pvt) Ltd &bull; Jan 2024 – July 2024</span>
-                          <span className="edu-location"><i className="ri-map-pin-2-line"></i> Plaza 57, Service Road, Bahria Phase 7, Islamabad</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-map-pin-2-line"></i> Plaza 57, Service Road, Bahria Phase 7, Islamabad</span>
                         </div>
-                        <div className="img-education">
-                          <img src="assets/images/resume/7marketing-logo-cyan.png" alt="7 Marketing" className="logo-7marketing logo-dark" width="36" height="36" loading="lazy" />
-                          <img src="assets/images/resume/7marketing-logo.png" alt="7 Marketing" className="logo-7marketing logo-light" width="36" height="36" loading="lazy" />
+                        <div className="ra-img-education img-education">
+                          <img src="assets/images/resume/7marketing-logo-cyan.png" alt="7 Marketing" className="ra-logo-7marketing logo-7marketing ra-logo-dark logo-dark" width="36" height="36" loading="lazy" />
+                          <img src="assets/images/resume/7marketing-logo.png" alt="7 Marketing" className="ra-logo-7marketing logo-7marketing ra-logo-light logo-light" width="36" height="36" loading="lazy" />
                         </div>
                       </div>
-                      <p className="desc-ducation">Engineered responsive, cross-browser front-end WordPress interfaces, customized core templates, improved page load speed, and converted UI designs into functional websites.</p>
+                      <p className="ra-desc-ducation desc-ducation">Engineered responsive, cross-browser front-end WordPress interfaces, customized core templates, improved page load speed, and converted UI designs into functional websites.</p>
                     </div>
                   </div>
 
                   {/* Experience Item 03 */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>Web Designer</p>
                           <span>WSM Solutions Pvt Ltd &bull; Aug 2023 – July 2024</span>
-                          <span className="edu-location"><i className="ri-map-pin-2-line"></i> Gulshan Batool, 13/G Road, Chishtian Mandi, Pakistan</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-map-pin-2-line"></i> Gulshan Batool, 13/G Road, Chishtian Mandi, Pakistan</span>
                         </div>
-                        <div className="img-education">
-                          <img src="assets/images/resume/wsm-logo.png" alt="WSM Solutions" className="logo-wsm logo-dark" width="36" height="36" loading="lazy" />
-                          <img src="assets/images/resume/wsm-logo-light.png" alt="WSM Solutions" className="logo-wsm logo-light" width="36" height="36" loading="lazy" />
+                        <div className="ra-img-education img-education">
+                          <img src="assets/images/resume/wsm-logo.png" alt="WSM Solutions" className="ra-logo-wsm logo-wsm ra-logo-dark logo-dark" width="36" height="36" loading="lazy" />
+                          <img src="assets/images/resume/wsm-logo-light.png" alt="WSM Solutions" className="ra-logo-wsm logo-wsm ra-logo-light logo-light" width="36" height="36" loading="lazy" />
                         </div>
                       </div>
-                      <p className="desc-ducation">Designed intuitive user interfaces, visual design systems, banners, and responsive layouts prioritizing user experience and consistent brand identity.</p>
+                      <p className="ra-desc-ducation desc-ducation">Designed intuitive user interfaces, visual design systems, banners, and responsive layouts prioritizing user experience and consistent brand identity.</p>
                     </div>
                   </div>
                 </div>
@@ -353,87 +358,87 @@ export default function Experience(props) {
 
             {/* Right Column: Certifications */}
             <div className="col-xl-6 col-lg-12 col-md-12" ref={rightColRef}>
-              <div className="education-detail">
-                <div className="image-right">
+              <div className="ra-education-detail education-detail">
+                <div className="ra-image-right image-right">
                   <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
                 </div>
-                <div className="tilte-education">
-                  <h2 className="second-heading text-start">Certifications</h2>
+                <div className="ra-tilte-education tilte-education">
+                  <h2 className="ra-second-heading second-heading text-start">Certifications</h2>
                   <p>Certified expertise in professional WordPress web development, SEO content writing, and practical e-commerce training.</p>
                 </div>
-                <div className="education-list has-custom-timeline">
+                <div className="ra-education-list education-list ra-has-custom-timeline has-custom-timeline">
                   {/* Continuous Animated Timeline Line Track */}
-                  <div className="timeline-line-track">
-                    <div className="timeline-line-active"></div>
-                    <div className="timeline-line-glow"></div>
+                  <div className="ra-timeline-line-track timeline-line-track">
+                    <div className="ra-timeline-line-active timeline-line-active"></div>
+                    <div className="ra-timeline-line-glow timeline-line-glow"></div>
                   </div>
 
                   {/* Certificate 01 */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>WordPress Web Development</p>
                           <span>Learning With Earning (Pvt) Ltd. &bull; 2022</span>
-                          <span className="edu-location"><i className="ri-award-line"></i> ID: LWE-95895 &bull; 1.5-Month Skills Program</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-award-line"></i> ID: LWE-95895 &bull; 1.5-Month Skills Program</span>
                         </div>
-                        <a href="assets/images/award/cert_20260809_125238_6fe50e3932c2.webp" target="_blank" rel="noopener noreferrer" className="cert-thumb-link" title="Click to view Certificate">
-                          <img src="assets/images/award/cert_20260809_125238_6fe50e3932c2.webp" alt="WordPress Certificate" className="cert-thumb-img" loading="lazy" decoding="async" />
+                        <a href="assets/images/award/cert_20260809_125238_6fe50e3932c2.webp" target="_blank" rel="noopener noreferrer" className="ra-cert-thumb-link cert-thumb-link" title="Click to view Certificate">
+                          <img src="assets/images/award/cert_20260809_125238_6fe50e3932c2.webp" alt="WordPress Certificate" className="ra-cert-thumb-img cert-thumb-img" loading="lazy" decoding="async" />
                         </a>
                       </div>
-                      <p className="desc-ducation">Comprehensive training covering WordPress core development, theme architecture, plugin ecosystems, dynamic content setups, and production site deployment.</p>
+                      <p className="ra-desc-ducation desc-ducation">Comprehensive training covering WordPress core development, theme architecture, plugin ecosystems, dynamic content setups, and production site deployment.</p>
                     </div>
                   </div>
 
                   {/* Certificate 02 */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>SEO &amp; Content Writing</p>
                           <span>Learning With Earning (Pvt) Ltd. &bull; 2022</span>
-                          <span className="edu-location"><i className="ri-award-line"></i> ID: LWE-95896 &bull; 1.5-Month Skills Program</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-award-line"></i> ID: LWE-95896 &bull; 1.5-Month Skills Program</span>
                         </div>
-                        <a href="assets/images/award/cert_20260809_125254_bb0a7842fd29.webp" target="_blank" rel="noopener noreferrer" className="cert-thumb-link" title="Click to view Certificate">
-                          <img src="assets/images/award/cert_20260809_125254_bb0a7842fd29.webp" alt="SEO Certificate" className="cert-thumb-img" loading="lazy" decoding="async" />
+                        <a href="assets/images/award/cert_20260809_125254_bb0a7842fd29.webp" target="_blank" rel="noopener noreferrer" className="ra-cert-thumb-link cert-thumb-link" title="Click to view Certificate">
+                          <img src="assets/images/award/cert_20260809_125254_bb0a7842fd29.webp" alt="SEO Certificate" className="ra-cert-thumb-img cert-thumb-img" loading="lazy" decoding="async" />
                         </a>
                       </div>
-                      <p className="desc-ducation">Specialized training in technical SEO, search intent modeling, keyword structuring, content optimization, metadata strategy, and search engine ranking best practices.</p>
+                      <p className="ra-desc-ducation desc-ducation">Specialized training in technical SEO, search intent modeling, keyword structuring, content optimization, metadata strategy, and search engine ranking best practices.</p>
                     </div>
                   </div>
 
                   {/* Certificate 03 */}
-                  <div className="education">
-                    <div className="eduction-left">
-                      <div className="education-cirlce">
-                        <div className="node-ripple-pulse"></div>
-                        <div className="cicles_blue"></div>
+                  <div className="ra-education education">
+                    <div className="ra-eduction-left eduction-left">
+                      <div className="ra-education-cirlce education-cirlce">
+                        <div className="ra-node-ripple-pulse node-ripple-pulse"></div>
+                        <div className="ra-cicles_blue cicles_blue"></div>
                       </div>
                     </div>
-                    <div className="education-meanse-data">
-                      <div className="name-univer">
-                        <div className="detail-desc-edu">
+                    <div className="ra-education-meanse-data education-meanse-data">
+                      <div className="ra-name-univer name-univer">
+                        <div className="ra-detail-desc-edu detail-desc-edu">
                           <p>E-Commerce Practical Training</p>
                           <span>Punjab Board of Technical Education (PSDF) &bull; 2023</span>
-                          <span className="edu-location"><i className="ri-award-line"></i> 800 Hours Practical Training &bull; 95% Marks</span>
+                          <span className="ra-edu-location edu-location"><i className="ri-award-line"></i> 800 Hours Practical Training &bull; 95% Marks</span>
                         </div>
-                        <a href="assets/images/award/cert_20260809_125035_efd63cd14e40.jpg" target="_blank" rel="noopener noreferrer" className="cert-thumb-link" title="Click to view Certificate">
-                          <img src="assets/images/award/cert_20260809_125035_efd63cd14e40.jpg" alt="E-Commerce Certificate" className="cert-thumb-img" loading="lazy" decoding="async" />
+                        <a href="assets/images/award/cert_20260809_125035_efd63cd14e40.jpg" target="_blank" rel="noopener noreferrer" className="ra-cert-thumb-link cert-thumb-link" title="Click to view Certificate">
+                          <img src="assets/images/award/cert_20260809_125035_efd63cd14e40.jpg" alt="E-Commerce Certificate" className="ra-cert-thumb-img cert-thumb-img" loading="lazy" decoding="async" />
                         </a>
                       </div>
-                      <p className="desc-ducation">Government-accredited technical qualification covering comprehensive e-commerce store setups, digital product catalogs, WooCommerce management, and online sales workflows.</p>
+                      <p className="ra-desc-ducation desc-ducation">Government-accredited technical qualification covering comprehensive e-commerce store setups, digital product catalogs, WooCommerce management, and online sales workflows.</p>
                     </div>
                   </div>
                 </div>

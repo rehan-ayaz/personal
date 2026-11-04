@@ -1,3 +1,8 @@
+/**
+ * @file script.js
+ * @description Core interactive UI scripts, GSAP animations, custom cursor, smooth scrolling,
+ * and dual-selector event handling (.ra-*, .*).
+ */
 //  ------------------------------------- [ GSAP & ScrollSmoother Setup ]
 if (typeof gsap !== "undefined") {
   gsap.registerPlugin(
@@ -35,12 +40,19 @@ function initHeadingAnimations() {
       el.closest("#work-section") ||
       el.closest("#dribbble-orbit") ||
       el.closest(".trionn-orbit-section") ||
+      el.closest(".ra-trionn-orbit-section") ||
       el.classList.contains("mrquee-text") ||
+      el.classList.contains("ra-mrquee-text") ||
       el.closest(".dribble-title-wrap") ||
+      el.closest(".ra-dribble-title-wrap") ||
       el.closest(".slider-logo") ||
+      el.closest(".ra-slider-logo") ||
       el.closest(".marquee") ||
+      el.closest(".ra-marquee") ||
       el.closest(".marquee__content") ||
+      el.closest(".ra-marquee__content") ||
       el.closest(".logos-slide") ||
+      el.closest(".ra-logos-slide") ||
       el.classList.contains("d-none") ||
       el.classList.contains("ex-number") ||
       el.classList.contains("year-award")
@@ -61,7 +73,7 @@ function initHeadingAnimations() {
     });
 
     // Only hero headings play the initial load entrance animation
-    if (el.closest(".hero")) {
+    if (el.closest(".ra-hero, .hero")) {
       gsap.to(split.chars, {
         x: 0,
         y: 0,
@@ -73,7 +85,7 @@ function initHeadingAnimations() {
       });
     } else {
       // Use card or row container as trigger for services and projects so all items scrub predictably
-      const triggerEl = el.closest(".box-service-under") || el.closest(".data-detail") || el;
+      const triggerEl = el.closest(".ra-box-service-under, .box-service-under") || el.closest(".ra-data-detail, .data-detail") || el;
 
       gsap.to(split.chars, {
         scrollTrigger: {
@@ -96,7 +108,7 @@ function initHeadingAnimations() {
 
 // ------------------------------------ [ Self Intro Scroll Text Reveal ]
 function initSelfIntroScrollAnimation() {
-  const introEl = document.querySelector(".self-intro");
+  const introEl = document.querySelector(".ra-self-intro, .self-intro");
   if (!introEl || typeof gsap === "undefined" || typeof SplitText === "undefined") return;
   if (introEl.dataset.introSplitInitialized) return;
   introEl.dataset.introSplitInitialized = "true";
@@ -136,7 +148,7 @@ function initSelfIntroScrollAnimation() {
 function initButtonHoverAnimations() {
   if (typeof gsap === "undefined") return;
 
-  const buttonSelectors = ".btn-design, .btn-main, .btn-princ, .mexix-btn, .btn-mark, .btn-animated, .button";
+  const buttonSelectors = ".ra-btn-design, .btn-design, .ra-btn-main, .btn-main, .ra-btn-princ, .btn-princ, .ra-mexix-btn, .mexix-btn, .ra-btn-mark, .btn-mark, .btn-animated, .button";
   const buttons = gsap.utils.toArray(buttonSelectors);
 
   buttons.forEach((item) => {
@@ -164,7 +176,7 @@ function initButtonHoverAnimations() {
 function finishLoader() {
   initButtonHoverAnimations();
   setTimeout(function () {
-    $(".preloader").addClass("loaded").fadeOut(600, function () {
+    $(".ra-preloader, .preloader").addClass("loaded").fadeOut(600, function () {
       initHeadingAnimations();
       initSelfIntroScrollAnimation();
       initButtonHoverAnimations();
@@ -239,12 +251,12 @@ if (smoother) {
 
 // ------------------------------------ [ menu open close ]
 // Menu Open
-$(document).on("click", ".menu-bar", function () {
+$(document).on("click", ".ra-menu-bar, .menu-bar", function () {
   $("#menu").addClass("active");
 });
 
 // Menu Close
-$(document).on("click", ".close-bar", function () {
+$(document).on("click", ".ra-close-bar, .close-bar", function () {
   $("#menu").removeClass("active");
 });
 
@@ -267,8 +279,8 @@ $(document).on("click", "a[href^='#']", function (e) {
       );
     }
 
-    $(".navbar-data a").removeClass("active");
-    $(`.navbar-data a[href='${target}']`).addClass("active");
+    $(".ra-navbar-data a, .navbar-data a").removeClass("active");
+    $(`.ra-navbar-data a[href='${target}'], .navbar-data a[href='${target}']`).addClass("active");
 
     $("#menu").removeClass("active");
   }
@@ -335,8 +347,8 @@ $(document).on("click", "a[href^='#']", function (e) {
 })();
 
 //  ------------------------- Testimonial Design
-if ($('.testimonial-detail').length) {
-  $('.testimonial-detail').slick({
+if ($('.ra-testimonial-detail, .testimonial-detail').length) {
+  $('.ra-testimonial-detail, .testimonial-detail').slick({
     centerMode: true,
     centerPadding: '0px',
     slidesToShow: 1,
@@ -432,18 +444,18 @@ if ($(".blog-leage").length) {
   "use strict";
 
   /* Open Popup */
-  $(document).on("click", ".services-title", function () {
-    openPopup(".popup-box-dash");
+  $(document).on("click", ".ra-services-title, .services-title", function () {
+    openPopup(".ra-popup-box-dash, .popup-box-dash");
   });
 
   // Project popup disabled as requested
 
-  $(document).on("click", ".slide-box", function () {
-    openPopup(".popup-box-dash-blog");
+  $(document).on("click", ".ra-slide-box, .slide-box", function () {
+    openPopup(".ra-popup-box-dash-blog, .popup-box-dash-blog");
   });
 
   function openPopup(target) {
-    $(".popup-overlay").fadeIn(200);
+    $(".ra-popup-overlay, .popup-overlay").fadeIn(200);
     $(target).removeClass("hide").addClass("show");
     if (smoother) smoother.paused(true);
 
@@ -462,14 +474,14 @@ if ($(".blog-leage").length) {
   }
 
   /* Close Popup */
-  $(document).on("click", ".close-popup, .popup-overlay, .circle-wrap", function () {
+  $(document).on("click", ".ra-close-popup, .close-popup, .ra-popup-overlay, .popup-overlay, .ra-circle-wrap, .circle-wrap", function () {
 
-    $(".popup-box-dash, .popup-box-dash-project, .popup-box-dash-blog")
+    $(".ra-popup-box-dash, .popup-box-dash, .ra-popup-box-dash-project, .popup-box-dash-project, .ra-popup-box-dash-blog, .popup-box-dash-blog")
       .removeClass("show")
       .addClass("hide");
 
     setTimeout(function () {
-      $(".popup-overlay").fadeOut(200);
+      $(".ra-popup-overlay, .popup-overlay").fadeOut(200);
       if (smoother) smoother.paused(false);
     }, 300);
   });
@@ -480,11 +492,11 @@ if ($(".blog-leage").length) {
 (function ($) {
   "use strict";
 
-  const items = document.querySelectorAll(".main-sec-design-hover");
+  const items = document.querySelectorAll(".ra-main-sec-design-hover, .main-sec-design-hover");
 
   items.forEach(function (item) {
 
-    const reveal = item.querySelector(".hover-reveal");
+    const reveal = item.querySelector(".ra-hover-reveal, .hover-reveal");
     if (!reveal) return;
 
     let mouseX = 0;
@@ -532,22 +544,31 @@ $(document).ready(function () {
 });
 
 /*------------------------------------- Infinite Marquee -------------------------------------*/
-document.querySelectorAll('.logos-data').forEach(function (logosContainer) {
-  const copy = logosContainer.querySelector('.logos-slide').cloneNode(true);
-  logosContainer.appendChild(copy);
+document.querySelectorAll('.ra-logos-data, .logos-data').forEach(function (logosContainer) {
+  const slideEl = logosContainer.querySelector('.ra-logos-slide, .logos-slide');
+  if (slideEl) {
+    const copy = slideEl.cloneNode(true);
+    logosContainer.appendChild(copy);
+  }
 });
 
 /*------------------------------------- Safe Static Form Intercept -------------------------------------*/
 $(document).ready(function () {
-  $(".main-contact").on("submit", function (e) {
+  $(".ra-main-contact, .main-contact").on("submit", function (e) {
     e.preventDefault();
-    const name = $(this).find('input[name="Name"]').val() || "";
-    const email = $(this).find('input[name="Email"]').val() || "";
-    const phone = $(this).find('input[name="Phone"]').val() || "";
+    const name = $(this).find('input[name="username"], input[name="Name"]').val() || "";
+    const email = $(this).find('input[name="email"], input[name="Email"]').val() || "";
+    const project = $(this).find('input[name="interested_project"]').val() || "";
+    const budget = $(this).find('input[name="budget"]').val() || "";
     const msg = $(this).find('textarea[name="message"]').val() || "";
     
-    // Redirect cleanly to WhatsApp with pre-filled message
-    const waText = encodeURIComponent(`Hello Rehan, my name is ${name} (${email}, ${phone}). ${msg}`);
+    let text = `Hello Rehan, my name is ${name} (${email}).`;
+    if (project) text += ` Interested in: ${project}.`;
+    if (budget) text += ` Budget: ${budget}.`;
+    if (msg) text += ` Message: ${msg}`;
+    const waText = encodeURIComponent(text);
     window.open(`https://wa.me/923260735090?text=${waText}`, "_blank", "noopener,noreferrer");
+    return false;
   });
+  
 });

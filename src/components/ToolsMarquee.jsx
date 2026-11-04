@@ -1,12 +1,13 @@
 import React from 'react';
 
-export default function ToolsMarquee(props) {
+/**
+ * ToolsMarquee component rendering the infinite auto-scrolling technology marquee.
+ */
+export default function ToolsMarquee() {
   return (
-    <>
-                {/* ==================== [ Slider Logo Section Start ] ==================== */}
-        <section className="logos">
-            <h2 className="d-none">Technologies &amp; Tools</h2>
-            <div className="logos-slide">
+    <section className="ra-logos logos">
+      <h2 className="d-none">Technologies &amp; Tools</h2>
+      <div className="ra-logos-slide logos-slide">
                 <img src="assets/images/tools-logos/wordpress-icon-logo-png_seeklogo-299143_2.webp" alt="WordPress" title="WordPress" height="50" loading="lazy" />
                 <img src="assets/images/tools-logos/elementor-logo-png_seeklogo-653478_2.webp" alt="Elementor" title="Elementor" height="50" loading="lazy" />
                 <img src="assets/images/tools-logos/shopify-logo-png_seeklogo-273895_2.webp" alt="Shopify" title="Shopify" height="50" loading="lazy" />
@@ -93,10 +94,8 @@ export default function ToolsMarquee(props) {
                 <img src="assets/images/tools-logos/icon (1).webp" alt="Contact Form 7" title="Contact Form 7" height="50" loading="lazy" />
                 <img src="assets/images/tools-logos/images_2.webp" alt="LiteSpeed Cache" title="LiteSpeed Cache" height="50" loading="lazy" />
                 <img src="assets/images/tools-logos/images (2)_2.webp" alt="WP Engine" title="WP Engine" height="50" loading="lazy" />
-            </div>
-            <div className="data-gradient" aria-hidden="true"></div>
-        </section>
-
-    </>
+      </div>
+      <div className="ra-data-gradient data-gradient" aria-hidden="true" />
+    </section>
   );
 }

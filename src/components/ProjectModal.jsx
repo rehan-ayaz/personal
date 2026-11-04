@@ -1,130 +1,135 @@
+/**
+ * @file ProjectModal.jsx
+ * @description Accessible services detail modal dialog with interactive triggers
+ * and standardized dual-class naming convention (ra-*).
+ */
 import React from 'react';
 
 export default function ProjectModal(props) {
   return (
     <>
     {/* ==================== [ Services popup Section Start ] ==================== */}
-    <div className="popup-overlay"></div>
-    <div className="popup-box-dash">
-        <div className="top-right-data-services">
+    <div className="ra-popup-overlay popup-overlay"></div>
+    <div className="ra-popup-box-dash popup-box-dash">
+        <div className="ra-top-right-data-services top-right-data-services">
             <img src="assets/images/blog/top-image.png" alt="top-image" loading="lazy" decoding="async" />
         </div>
-        <div className="bottom-right-data-services">
+        <div className="ra-bottom-right-data-services bottom-right-data-services">
             <img src="assets/images/blog/right-top.png" alt="right-top" loading="lazy" decoding="async" />
         </div>
-        <div className="popup-content">
-            <div className="container-popup">
-                <div className="index-design">
-                    <a href="index.html" className="home-deta">Home</a>
+        <div className="ra-popup-content popup-content">
+            <div className="ra-container-popup container-popup">
+                <div className="ra-index-design index-design">
+                    <a href="index.html" className="ra-home-deta home-deta">Home</a>
                     <img src="assets/images/services/arrow.png" alt="arrow" loading="lazy" decoding="async" />
-                    <p className="name-service">WordPress &amp; Web Development</p>
+                    <p className="ra-name-service name-service">WordPress &amp; Web Development</p>
                 </div>
-                <div className="text-title zoom_in">
-                    <h2 className="second-heading">Developing high-impact websites and digital solutions that elevate your
+                <div className="ra-text-title text-title zoom_in">
+                    <h2 className="ra-second-heading second-heading">Developing high-impact websites and digital solutions that elevate your
                         brand and captivate your audience.</h2>
                 </div>
-                <p className="text-desc zoom_in">We craft visually stunning, user-focused websites tailored to your
+                <p className="ra-text-desc text-desc zoom_in">We craft visually stunning, user-focused websites tailored to your
                     brand—fully optimized for all devices, with ongoing support and seamless updates.</p>
-                <p className="text-desc mb-0 zoom_in">In today's digital landscape, your website is often the first
+                <p className="ra-text-desc text-desc mb-0 zoom_in">In today's digital landscape, your website is often the first
                     impression of your brand. That's why we focus on creating custom, responsive, and user-friendly
                     websites that not only look great but also provide an outstanding user experience.</p>
-                <div className="image-design-under zoom_in">
+                <div className="ra-image-design-under image-design-under zoom_in">
                     <img src="assets/images/services/image-under.png" alt="image-under" loading="lazy" decoding="async" />
                 </div>
-                <h3 className="deta-heading-sec">Our Web Design Process:</h3>
-                <p className="text-data-desc fade_down">We start by understanding your goals through discovery and research,
+                <h3 className="ra-deta-heading-sec deta-heading-sec">Our Web Design Process:</h3>
+                <p className="ra-text-data-desc text-data-desc fade_down">We start by understanding your goals through discovery and research,
                     then craft wireframes and prototypes, design tailored solutions, ensure full responsiveness,
                     optimize for SEO, and deliver seamless testing, launch, and ongoing support to keep your project
                     thriving.</p>
-                <div className="box-design-services-under">
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">Discovery & Research:</h2>
-                        <span className="data-desc-font">We start by diving deep into your business, audience, and
+                <div className="ra-box-design-services-under box-design-services-under">
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">Discovery & Research:</h2>
+                        <span className="ra-data-desc-font data-desc-font">We start by diving deep into your business, audience, and
                             goals—crafting a website that truly reflects your brand and delivers an exceptional user
                             experience.</span>
                     </div>
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">Custom Design:</h2>
-                        <span className="data-desc-font">Your website will be fully responsive, delivering a flawless
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">Custom Design:</h2>
+                        <span className="ra-data-desc-font data-desc-font">Your website will be fully responsive, delivering a flawless
                             experience on every device—desktop, tablet, or smartphone.</span>
                     </div>
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">Wire frame & Prototype:</h2>
-                        <span className="data-desc-font">We craft intuitive wireframes and interactive prototypes to bring
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">Wire frame & Prototype:</h2>
+                        <span className="ra-data-desc-font data-desc-font">We craft intuitive wireframes and interactive prototypes to bring
                             your website's layout to life, ensuring a seamless user experience from start to
                             finish.</span>
                     </div>
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">SEO Optimization:</h2>
-                        <span className="data-desc-font">We craft your website with proven SEO strategies to boost
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">SEO Optimization:</h2>
+                        <span className="ra-data-desc-font data-desc-font">We craft your website with proven SEO strategies to boost
                             visibility, drive traffic, and rank higher on search engines.</span>
                     </div>
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">Testing & Launch:</h2>
-                        <span className="data-desc-font">Before launch, we meticulously test your website on all
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">Testing & Launch:</h2>
+                        <span className="ra-data-desc-font data-desc-font">Before launch, we meticulously test your website on all
                             browsers and devices to guarantee flawless performance everywhere.</span>
                     </div>
-                    <div className="design-box-project zoom_in">
-                        <h2 className="data-font">Support & Maintenance:</h2>
-                        <span className="data-desc-font">Launch is just the beginning of your digital journey. We provide
+                    <div className="ra-design-box-project design-box-project zoom_in">
+                        <h2 className="ra-data-font data-font">Support & Maintenance:</h2>
+                        <span className="ra-data-desc-font data-desc-font">Launch is just the beginning of your digital journey. We provide
                             continuous care to keep your site secure, current, and lightning-fast.</span>
                     </div>
                 </div>
-                <div className="box-image-design row">
+                <div className="ra-box-image-design box-image-design row">
                     <div className="col-xl-6 col-lg-6 col-md-6">
-                        <div className="detail-image zoom_in">
+                        <div className="ra-detail-image detail-image zoom_in">
                             <img src="assets/images/services/image-under-1.png" alt="image-under-1" loading="lazy" decoding="async" />
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-6">
-                        <div className="detail-image zoom_in">
+                        <div className="ra-detail-image detail-image zoom_in">
                             <img src="assets/images/services/image-under-2.png" alt="image-under-2" loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </div>
-                <p className="text-data-desc fade_down">An unknown printer once took a galley of type and crafted a new
+                <p className="ra-text-data-desc text-data-desc fade_down">An unknown printer once took a galley of type and crafted a new
                     specimen book—one that has stood the test of time for over five centuries. With a little help from
                     friends along the way, it continues to thrive. Just like that, we offer the one-stop convenience you
                     need, bringing clarity and creativity to every page we touch.</p>
-                <div className="sec-text-desc">
-                    <h3 className="deta-heading-sec">Why Choose Us for Your Web Design Needs?</h3>
+                <div className="ra-sec-text-desc sec-text-desc">
+                    <h3 className="ra-deta-heading-sec deta-heading-sec">Why Choose Us for Your Web Design Needs?</h3>
                 </div>
-                <p className="text-data-desc fade_down">We craft custom, user-focused websites that are fast,
+                <p className="ra-text-data-desc text-data-desc fade_down">We craft custom, user-focused websites that are fast,
                     mobile-friendly, and SEO-optimized—designed to deliver an exceptional user experience and drive real
                     online success.</p>
-                <div className="data-mail-all">
-                    <div className="peralax-data-seted fade_down">
-                        <div className="image-tick">
+                <div className="ra-data-mail-all data-mail-all">
+                    <div className="ra-peralax-data-seted peralax-data-seted fade_down">
+                        <div className="ra-image-tick image-tick">
                             <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                         </div>
-                        <div className="text-tick">
-                            <p className="data-font">Tailored Designs:</p>
-                            <span className="data-desc-font">Each website is uniquely crafted to reflect your brand and
+                        <div className="ra-text-tick text-tick">
+                            <p className="ra-data-font data-font">Tailored Designs:</p>
+                            <span className="ra-data-desc-font data-desc-font">Each website is uniquely crafted to reflect your brand and
                                 captivate your audience.</span>
                         </div>
                     </div>
-                    <div className="peralax-data-seted fade_down">
-                        <div className="image-tick">
+                    <div className="ra-peralax-data-seted peralax-data-seted fade_down">
+                        <div className="ra-image-tick image-tick">
                             <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                         </div>
-                        <div className="text-tick">
-                            <p className="data-font">Delivering smooth:</p>
-                            <span className="data-desc-font">We craft intuitive, seamless experiences your users will
+                        <div className="ra-text-tick text-tick">
+                            <p className="ra-data-font data-font">Delivering smooth:</p>
+                            <span className="ra-data-desc-font data-desc-font">We craft intuitive, seamless experiences your users will
                                 love at first click.</span>
                         </div>
                     </div>
-                    <div className="peralax-data-seted fade_down">
-                        <div className="image-tick">
+                    <div className="ra-peralax-data-seted peralax-data-seted fade_down">
+                        <div className="ra-image-tick image-tick">
                             <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                         </div>
-                        <div className="text-tick">
-                            <p className="data-font">Mobile-First Design:</p>
-                            <span className="data-desc-font">In a mobile-first world, we deliver sleek, responsive
+                        <div className="ra-text-tick text-tick">
+                            <p className="ra-data-font data-font">Mobile-First Design:</p>
+                            <span className="ra-data-desc-font data-desc-font">In a mobile-first world, we deliver sleek, responsive
                                 designs that drive results on every device.</span>
                         </div>
                     </div>
                 </div>
-                <p className="text-data-desc fade_down">Turn your website into your hardest-working asset. Whether starting
+                <p className="ra-text-data-desc text-data-desc fade_down">Turn your website into your hardest-working asset. Whether starting
                     fresh or revamping, we're here to bring your vision to life—beautifully and strategically.
                 </p>
                 <div className="main-btn-stcoked">
@@ -144,12 +149,12 @@ export default function ProjectModal(props) {
         <div className="project-bottom-image">
             <img src="assets/images/blog/top-image.png" alt="top-image" loading="lazy" decoding="async" />
         </div>
-        <div className="popup-content">
-            <div className="container-popup">
-                <div className="index-design">
-                    <a href="index.html" className="home-deta">Home</a>
+        <div className="ra-popup-content popup-content">
+            <div className="ra-container-popup container-popup">
+                <div className="ra-index-design index-design">
+                    <a href="index.html" className="ra-home-deta home-deta">Home</a>
                     <img src="assets/images/services/arrow.png" alt="arrow" loading="lazy" decoding="async" />
-                    <p className="name-service">Food Delivery App 4U</p>
+                    <p className="ra-name-service name-service">Food Delivery App 4U</p>
                 </div>
                 <div className="image-design-under">
                     <img src="assets/images/project/image-under.png" alt="Food Delivery Platform" loading="lazy" decoding="async" />
@@ -199,7 +204,7 @@ export default function ProjectModal(props) {
                         </div>
                     </div>
                 </div>
-                <h3 className="deta-heading-sec">Research & User Insights</h3>
+                <h3 className="ra-deta-heading-sec deta-heading-sec">Research & User Insights</h3>
                 <p className="text-data-desc">At iFood, we believe food is more than just a meal—it's an experience. Whether
                     you're craving comfort food or gourmet dishes, we serve up quality and flavor. With a commitment to
                     fresh ingredients and exceptional service, we aim to provide you with an unforgettable dining
@@ -221,7 +226,7 @@ export default function ProjectModal(props) {
                         </div>
                     </div>
                 </div>
-                <h3 className="deta-heading-sec">Work Overview</h3>
+                <h3 className="ra-deta-heading-sec deta-heading-sec">Work Overview</h3>
                 <p className="text-data-desc">We believe food is more than just a meal—it's an experience. Whether you're
                     craving comfort food or gourmet dishes, we serve up quality and flavor. With a commitment to fresh
                     ingredients and exceptional service, we aim to provide. Our journey has been marked by countless
@@ -233,7 +238,7 @@ export default function ProjectModal(props) {
                 <div className="avrage-data row">
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage border-design">
-                            <div className="image-tick">
+                            <div className="ra-image-tick image-tick">
                                 <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
@@ -244,7 +249,7 @@ export default function ProjectModal(props) {
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage border-design">
-                            <div className="image-tick">
+                            <div className="ra-image-tick image-tick">
                                 <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
@@ -255,7 +260,7 @@ export default function ProjectModal(props) {
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage design-over-border">
-                            <div className="image-tick">
+                            <div className="ra-image-tick image-tick">
                                 <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
@@ -266,7 +271,7 @@ export default function ProjectModal(props) {
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage">
-                            <div className="image-tick">
+                            <div className="ra-image-tick image-tick">
                                 <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">

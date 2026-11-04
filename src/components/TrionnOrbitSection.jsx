@@ -1,3 +1,8 @@
+/**
+ * @file TrionnOrbitSection.jsx
+ * @description Pinned 3D Three.js WebGL Orbit flight showcase with custom curved path,
+ * authentic curtain wipe slats, and standardized dual-class naming convention (ra-*).
+ */
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -796,27 +801,27 @@ export default function TrionnOrbitSection() {
       <div
         ref={spacerRef}
         id="dribbble-orbit"
-        className="pin-spacer trionn-orbit-spacer relative w-full"
+        className="pin-spacer ra-trionn-orbit-spacer trionn-orbit-spacer relative w-full"
         style={{ paddingBottom: `${pinDistance}px` }}
       >
-        <section className="trionn-orbit-section" ref={sectionRef}>
+        <section className="ra-trionn-orbit-section trionn-orbit-section" ref={sectionRef}>
           {/* 1. Behind: Center Marquee Title Block (Layer 1 - z-index: 2) */}
-          <div ref={titleBoxRef} className="dribble-title-wrap">
-            <div className="dribble-title-inner">
-              <h2 className="mrquee-text top-word">Design in</h2>
+          <div ref={titleBoxRef} className="ra-dribble-title-wrap dribble-title-wrap">
+            <div className="ra-dribble-title-inner dribble-title-inner">
+              <h2 className="ra-mrquee-text mrquee-text ra-top-word top-word">Design in</h2>
               <span className="title">
                 Exploring ideas through <br /> daily design practice.
               </span>
-              <h2 className="mrquee-text bottom-word">motion</h2>
+              <h2 className="ra-mrquee-text mrquee-text ra-bottom-word bottom-word">motion</h2>
             </div>
           </div>
 
           {/* 2. Middle: Three.js 3D WebGL Canvas (Layer 2 - z-index: 5: Images orbit ON TOP of text!) */}
-          <canvas ref={canvasRef} className="trionn-orbit-canvas" />
+          <canvas ref={canvasRef} className="ra-trionn-orbit-canvas trionn-orbit-canvas" />
 
           {/* 3. Foreground: Bottom Bar (Layer 3 - z-index: 10) */}
-          <div className="orbit-bottom-bar">
-            <div className="orbit-bottom-text">
+          <div className="ra-orbit-bottom-bar orbit-bottom-bar">
+            <div className="ra-orbit-bottom-text orbit-bottom-text">
               <p className="small">
                 Concepts, explorations, and interface <br />
                 experiments shared openly as part of <br />
@@ -824,19 +829,19 @@ export default function TrionnOrbitSection() {
               </p>
             </div>
 
-            <div className="orbit-btn-wrap">
+            <div className="ra-orbit-btn-wrap orbit-btn-wrap">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                className="orbit-btn"
+                className="ra-orbit-btn orbit-btn"
                 href="https://dribbble.com/trionnstudio"
               >
-                <span className="orbit-btn-underline">
-                  <span className="u-right" />
-                  <span className="u-left" />
+                <span className="ra-orbit-btn-underline orbit-btn-underline">
+                  <span className="ra-u-right u-right" />
+                  <span className="ra-u-left u-left" />
                 </span>
-                <span className="orbit-btn-text">View on Dribbble</span>
-                <span className="orbit-btn-arrow">
+                <span className="ra-orbit-btn-text orbit-btn-text">View on Dribbble</span>
+                <span className="ra-orbit-btn-arrow orbit-btn-arrow">
                   <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M5.47372 8.652V6.552L8.32972 3.752V4.9L5.47372 2.1V-3.09944e-06L9.32372 3.836V4.816L5.47372 8.652ZM-0.000281237 5.11V3.542H8.60972V5.11H-0.000281237Z"
@@ -849,14 +854,14 @@ export default function TrionnOrbitSection() {
           </div>
 
           {/* 4. Top: 5 Venetian Blind Slats for Smooth Wipe into Dark Footer (z-index: 30) */}
-          <div className="orbit-curtain-wrap">
+          <div className="ra-orbit-curtain-wrap orbit-curtain-wrap">
             {Array.from({ length: 5 }).map((_, idx) => (
               <div
                 key={idx}
                 ref={(el) => {
                   if (el) slatsRef.current[idx] = el;
                 }}
-                className="orbit-curtain-slat"
+                className="ra-orbit-curtain-slat orbit-curtain-slat"
               />
             ))}
           </div>

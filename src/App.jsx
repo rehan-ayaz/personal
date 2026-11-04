@@ -1,3 +1,9 @@
+/**
+ * @file App.jsx
+ * @description Main application container integrating GSAP ScrollSmoother,
+ * global theme management, and modular standardized sections.
+ */
+
 import React, { useEffect, useState } from 'react';
 import Preloader from './components/Preloader';
 import Header from './components/Header';
