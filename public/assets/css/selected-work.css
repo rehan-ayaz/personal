@@ -64,7 +64,16 @@
 }
 
 /* ----------------- Dark Theme Adaptation ----------------- */
+/* Light Mode Defaults */
+#work-section {
+    background: var(--body-color, #ffffff);
+    color: var(--main-text, #111111);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
 body.dark-theme #work-section,
+html.dark-theme #work-section,
+[data-theme="dark"] #work-section,
 body.dark-theme #work-section.project {
     background: #040508;
     color: #ffffff;
@@ -163,8 +172,10 @@ body.dark-theme #work-section.project {
         box-sizing: border-box;
         background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
     }
-    body.dark-theme #work-section .title-pinned-block {
-        background: linear-gradient(0deg, #111216 0%, #060709 100%);
+    body.dark-theme #work-section .title-pinned-block,
+html.dark-theme #work-section .title-pinned-block,
+[data-theme="dark"] #work-section .title-pinned-block {
+        background: linear-gradient(0deg, #111216 0%, #000000 100%) !important;
     }
 }
 
@@ -220,8 +231,10 @@ body.dark-theme #work-section .section-main-heading {
         box-sizing: border-box;
         background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
     }
-    body.dark-theme #work-section .js-work-card {
-        background: linear-gradient(0deg, #111216 0%, #060709 100%);
+    body.dark-theme #work-section .js-work-card,
+html.dark-theme #work-section .js-work-card,
+[data-theme="dark"] #work-section .js-work-card {
+        background: linear-gradient(0deg, #111216 0%, #000000 100%) !important;
     }
 }
 

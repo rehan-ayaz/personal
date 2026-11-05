@@ -350,7 +350,7 @@ export default function TrionnServicesSection() {
       <section
         ref={sectionRef}
         id="trionn-services"
-        className="services-pinned relative w-full min-h-screen bg-[#000000] overflow-hidden"
+        className="services-pinned relative w-full min-h-screen overflow-hidden"
       >
         {/* Corner Accents matching Services section */}
         <div className="service-top-left">

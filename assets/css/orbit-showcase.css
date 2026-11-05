@@ -5,12 +5,12 @@
                      "DM Sans" (Subtitles / Descriptions / Details)
    ========================================================================== */
 
-.ra-trionn-orbit-spacer, .trionn-orbit-spacer {
+.trionn-orbit-spacer {
     position: relative;
     width: 100%;
 }
 
-.ra-trionn-orbit-section, .trionn-orbit-section {
+.trionn-orbit-section {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -24,7 +24,7 @@
     transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-.ra-trionn-orbit-canvas, .trionn-orbit-canvas {
+.trionn-orbit-canvas {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -35,7 +35,7 @@
 }
 
 /* Center Marquee Title Block (Layer 1 - z-index: 2, behind 3D canvas) */
-.ra-dribble-title-wrap, .dribble-title-wrap {
+.dribble-title-wrap {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -50,7 +50,7 @@
     visibility: visible;
 }
 
-.ra-dribble-title-inner, .dribble-title-inner {
+.dribble-title-inner {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -58,7 +58,7 @@
     position: relative;
 }
 
-.ra-mrquee-text, .mrquee-text {
+.mrquee-text {
     font-family: 'Marcellus', serif !important;
     font-size: clamp(3.8rem, 12vw, 13rem);
     font-weight: 400;
@@ -74,19 +74,19 @@
     transition: color 0.35s ease;
 }
 
-.ra-top-word, .top-word {
+.top-word {
     align-self: flex-start;
     padding-left: 2vw;
     transform: translate3d(0, 0, 0);
 }
 
-.ra-bottom-word, .bottom-word {
+.bottom-word {
     align-self: flex-end;
     padding-right: 2vw;
     transform: translate3d(0, 0, 0);
 }
 
-.ra-dribble-title-inner, .dribble-title-inner .title {
+.dribble-title-inner .title {
     font-family: 'DM Sans', sans-serif !important;
     font-size: clamp(0.95rem, 1.35vw, 1.45rem);
     font-weight: 400;
@@ -100,7 +100,7 @@
 }
 
 /* Bottom Bar (Layer 3 - z-index: 10, in foreground) */
-.ra-orbit-bottom-bar, .orbit-bottom-bar {
+.orbit-bottom-bar {
     position: absolute;
     bottom: 40px;
     left: 0;
@@ -117,7 +117,7 @@
     box-sizing: border-box;
 }
 
-.ra-orbit-bottom-text, .orbit-bottom-text p.small {
+.orbit-bottom-text p.small {
     font-family: 'DM Sans', sans-serif !important;
     font-size: clamp(0.92rem, 1.05vw, 1.15rem);
     line-height: 1.55;
@@ -128,12 +128,12 @@
 }
 
 /* Button with Trionn animated underline & arrow */
-.ra-orbit-btn-wrap, .ra-orbit-btn, .orbit-btn-wrap {
+.orbit-btn-wrap {
     position: relative;
     text-transform: uppercase;
 }
 
-.ra-orbit-btn, .orbit-btn {
+.orbit-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -150,7 +150,7 @@
     transition: color 0.35s ease;
 }
 
-.ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline {
+.orbit-btn-underline {
     position: absolute;
     left: 0;
     right: 0;
@@ -161,7 +161,7 @@
     transition: background-color 0.35s ease;
 }
 
-.ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-right, .u-right {
+.orbit-btn-underline .u-right {
     position: absolute;
     inset: 0;
     background-color: #040508;
@@ -170,24 +170,24 @@
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ra-orbit-btn, .orbit-btn:hover .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-right, .u-right {
+.orbit-btn:hover .orbit-btn-underline .u-right {
     transform-origin: left center;
     transform: scaleX(1);
 }
 
-.ra-orbit-btn, .ra-orbit-btn-arrow, .orbit-btn-arrow {
+.orbit-btn-arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ra-orbit-btn, .orbit-btn:hover .ra-orbit-btn, .ra-orbit-btn-arrow, .orbit-btn-arrow {
+.orbit-btn:hover .orbit-btn-arrow {
     transform: translateX(4px);
 }
 
 /* 5 Venetian Blind Shutter Slats */
-.ra-orbit-curtain-wrap, .orbit-curtain-wrap {
+.orbit-curtain-wrap {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -198,7 +198,7 @@
     z-index: 30;
 }
 
-.ra-orbit-curtain-slat, .orbit-curtain-slat {
+.orbit-curtain-slat {
     flex: 1 1 0%;
     width: 100%;
     background-color: var(--body-color, #FFFFFF);
@@ -223,55 +223,55 @@ footer.footer-data {
 /* ==========================================================================
    Dark Theme Complete Specification & Specificity
    ========================================================================== */
-body.dark-theme .ra-trionn-orbit-section, .trionn-orbit-section,
-html.dark-theme .ra-trionn-orbit-section, .trionn-orbit-section,
-[data-theme="dark"] .ra-trionn-orbit-section, .trionn-orbit-section {
+body.dark-theme .trionn-orbit-section,
+html.dark-theme .trionn-orbit-section,
+[data-theme="dark"] .trionn-orbit-section {
     background-color: #000000 !important;
     color: #FFFFFF !important;
 }
 
-body.dark-theme .ra-mrquee-text, .mrquee-text,
-html.dark-theme .ra-mrquee-text, .mrquee-text,
-[data-theme="dark"] .ra-mrquee-text, .mrquee-text {
+body.dark-theme .mrquee-text,
+html.dark-theme .mrquee-text,
+[data-theme="dark"] .mrquee-text {
     color: #FFFFFF !important;
 }
 
-body.dark-theme .ra-dribble-title-inner, .dribble-title-inner .title,
-html.dark-theme .ra-dribble-title-inner, .dribble-title-inner .title,
-[data-theme="dark"] .ra-dribble-title-inner, .dribble-title-inner .title {
+body.dark-theme .dribble-title-inner .title,
+html.dark-theme .dribble-title-inner .title,
+[data-theme="dark"] .dribble-title-inner .title {
     color: #A0A0A0 !important;
 }
 
-body.dark-theme .ra-orbit-bottom-text, .orbit-bottom-text p.small,
-html.dark-theme .ra-orbit-bottom-text, .orbit-bottom-text p.small,
-[data-theme="dark"] .ra-orbit-bottom-text, .orbit-bottom-text p.small {
+body.dark-theme .orbit-bottom-text p.small,
+html.dark-theme .orbit-bottom-text p.small,
+[data-theme="dark"] .orbit-bottom-text p.small {
     color: #A0A0A0 !important;
 }
 
-body.dark-theme .ra-orbit-btn, .orbit-btn,
-html.dark-theme .ra-orbit-btn, .orbit-btn,
-[data-theme="dark"] .ra-orbit-btn, .orbit-btn {
+body.dark-theme .orbit-btn,
+html.dark-theme .orbit-btn,
+[data-theme="dark"] .orbit-btn {
     color: #FFFFFF !important;
 }
 
-body.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline,
-html.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline,
-[data-theme="dark"] .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline {
+body.dark-theme .orbit-btn-underline,
+html.dark-theme .orbit-btn-underline,
+[data-theme="dark"] .orbit-btn-underline {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-body.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-right, .u-right,
-body.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-left, .u-left,
-html.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-right, .u-right,
-html.dark-theme .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-left, .u-left,
-[data-theme="dark"] .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-right, .u-right,
-[data-theme="dark"] .ra-orbit-btn, .ra-orbit-btn-underline, .orbit-btn-underline .ra-u-left, .u-left {
+body.dark-theme .orbit-btn-underline .u-right,
+body.dark-theme .orbit-btn-underline .u-left,
+html.dark-theme .orbit-btn-underline .u-right,
+html.dark-theme .orbit-btn-underline .u-left,
+[data-theme="dark"] .orbit-btn-underline .u-right,
+[data-theme="dark"] .orbit-btn-underline .u-left {
     background-color: #FFFFFF !important;
 }
 
-body.dark-theme .ra-orbit-curtain-slat, .orbit-curtain-slat,
-html.dark-theme .ra-orbit-curtain-slat, .orbit-curtain-slat,
-[data-theme="dark"] .ra-orbit-curtain-slat, .orbit-curtain-slat {
+body.dark-theme .orbit-curtain-slat,
+html.dark-theme .orbit-curtain-slat,
+[data-theme="dark"] .orbit-curtain-slat {
     background-color: #000000 !important;
 }
 
@@ -283,7 +283,7 @@ html.dark-theme footer.footer-data,
 }
 
 @media (max-width: 767px) {
-    .ra-orbit-bottom-bar, .orbit-bottom-bar {
+    .orbit-bottom-bar {
         bottom: 25px;
         padding: 0 4vw;
         flex-direction: column;
@@ -291,7 +291,7 @@ html.dark-theme footer.footer-data,
         text-align: center;
         gap: 16px;
     }
-    .ra-orbit-bottom-text, .orbit-bottom-text p.small {
+    .orbit-bottom-text p.small {
         text-align: center;
     }
 }

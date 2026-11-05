@@ -269,7 +269,7 @@ export default function SelectedWorkSection() {
       <div
         ref={sectionRef}
         id="work-section"
-        className="relative w-full min-h-screen bg-white max-md:overflow-visible md:min-h-dvh md:h-dvh md:overflow-hidden"
+        className="relative w-full min-h-screen max-md:overflow-visible md:min-h-dvh md:h-dvh md:overflow-hidden"
       >
         <div id="project" style={{ position: "absolute", top: 0, left: 0 }} />
         <div className="work-viewport-outer">
