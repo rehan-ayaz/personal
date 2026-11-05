@@ -38,6 +38,12 @@ function initHeadingAnimations() {
     // Exclude infinite ticker elements, small numeric badges, Trionn work section, and Trionn orbit section
     if (
       el.closest("#work-section") ||
+      el.closest("#trionn-services") ||
+      el.closest(".services-pinned") ||
+      el.closest(".ra-services-pinned") ||
+      el.closest(".services-stage-3d") ||
+      el.classList.contains("svc-card-title") ||
+      el.classList.contains("services-marquee-line") ||
       el.closest("#dribbble-orbit") ||
       el.closest(".trionn-orbit-section") ||
       el.closest(".ra-trionn-orbit-section") ||
@@ -148,7 +154,7 @@ function initSelfIntroScrollAnimation() {
 function initButtonHoverAnimations() {
   if (typeof gsap === "undefined") return;
 
-  const buttonSelectors = ".ra-btn-design, .btn-design, .ra-btn-main, .btn-main, .ra-btn-princ, .btn-princ, .ra-mexix-btn, .mexix-btn, .ra-btn-mark, .btn-mark, .btn-animated, .button";
+  const buttonSelectors = ".button-text, .ra-button-text, .ra-btn-design, .btn-design, .ra-btn-main, .btn-main, .ra-btn-princ, .btn-princ, .ra-mexix-btn, .mexix-btn, .ra-btn-mark, .btn-mark, .btn-animated, .button";
   const buttons = gsap.utils.toArray(buttonSelectors);
 
   buttons.forEach((item) => {

@@ -71,7 +71,7 @@ body.dark-theme #work-section.project {
 }
 
 /* ----------------- Viewport & Background Gradients ----------------- */
-#work-section .ra-work-viewport-outer, #work-section .work-viewport-outer {
+#work-section .work-viewport-outer {
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -81,14 +81,14 @@ body.dark-theme #work-section.project {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-work-viewport-outer, #work-section .work-viewport-outer {
+    #work-section .work-viewport-outer {
         position: absolute;
         inset: 0;
         min-height: 100vh;
     }
 }
 
-#work-section .ra-work-viewport-inner, #work-section .work-viewport-inner {
+#work-section .work-viewport-inner {
     position: relative;
     overflow: visible;
     height: 100%;
@@ -97,15 +97,15 @@ body.dark-theme #work-section.project {
 }
 
 @media (max-width: 767px) {
-    #work-section .ra-work-viewport-inner, #work-section .work-viewport-inner {
+    #work-section .work-viewport-inner {
         background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
     }
-    body.dark-theme #work-section .ra-work-viewport-inner, #work-section .work-viewport-inner {
+    body.dark-theme #work-section .work-viewport-inner {
         background: linear-gradient(0deg, #111216 0%, #060709 100%);
     }
 }
 
-#work-section .ra-work-viewport-center, #work-section .work-viewport-center {
+#work-section .work-viewport-center {
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -114,14 +114,14 @@ body.dark-theme #work-section.project {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-work-viewport-center, #work-section .work-viewport-center {
+    #work-section .work-viewport-center {
         position: absolute;
         inset: 0;
         align-items: center;
     }
 }
 
-#work-section .ra-work-track, #work-section .work-track {
+#work-section .work-track {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -132,7 +132,7 @@ body.dark-theme #work-section.project {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-work-track, #work-section .work-track {
+    #work-section .work-track {
         flex-direction: row;
         height: 100vh;
         width: max-content;
@@ -140,7 +140,7 @@ body.dark-theme #work-section.project {
 }
 
 /* ----------------- Title Pinned Block ----------------- */
-#work-section .ra-title-pinned-block, #work-section .title-pinned-block {
+#work-section .title-pinned-block {
     pointer-events: auto;
     display: flex;
     width: 100vw;
@@ -154,7 +154,7 @@ body.dark-theme #work-section.project {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-title-pinned-block, #work-section .title-pinned-block {
+    #work-section .title-pinned-block {
         width: 50vw;
         max-width: 50vw;
         height: 100%;
@@ -163,12 +163,12 @@ body.dark-theme #work-section.project {
         box-sizing: border-box;
         background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
     }
-    body.dark-theme #work-section .ra-title-pinned-block, #work-section .title-pinned-block {
+    body.dark-theme #work-section .title-pinned-block {
         background: linear-gradient(0deg, #111216 0%, #060709 100%);
     }
 }
 
-#work-section .ra-title-block, #work-section .title-block {
+#work-section .title-block {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,7 +177,7 @@ body.dark-theme #work-section.project {
     padding-top: 1rem;
 }
 
-#work-section .ra-section-main-heading, #work-section .section-main-heading {
+#work-section .section-main-heading {
     font-family: "Marcellus", serif;
     font-size: 2.5rem;
     line-height: 1.15;
@@ -188,17 +188,17 @@ body.dark-theme #work-section.project {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-section-main-heading, #work-section .section-main-heading {
+    #work-section .section-main-heading {
         font-size: 3.25rem;
     }
 }
 
-body.dark-theme #work-section .ra-section-main-heading, #work-section .section-main-heading {
+body.dark-theme #work-section .section-main-heading {
     color: #ffffff;
 }
 
 /* ----------------- Work Card Structure (Zero Vertical Wobble) ----------------- */
-#work-section .ra-work-card, #work-section .js-work-card {
+#work-section .js-work-card {
     position: relative;
     display: flex;
     width: calc(100% - 3rem);
@@ -212,7 +212,7 @@ body.dark-theme #work-section .ra-section-main-heading, #work-section .section-m
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-work-card, #work-section .js-work-card {
+    #work-section .js-work-card {
         width: 50vw;
         max-width: 50vw;
         height: 100%;
@@ -220,13 +220,13 @@ body.dark-theme #work-section .ra-section-main-heading, #work-section .section-m
         box-sizing: border-box;
         background: linear-gradient(0deg, #D2D2D2 0%, #FFFFFF 100%);
     }
-    body.dark-theme #work-section .ra-work-card, #work-section .js-work-card {
+    body.dark-theme #work-section .js-work-card {
         background: linear-gradient(0deg, #111216 0%, #060709 100%);
     }
 }
 
 /* Dividing Lines */
-#work-section .ra-card-line, #work-section .js-card-line {
+#work-section .js-card-line {
     display: none;
     position: absolute;
     left: 0;
@@ -241,16 +241,16 @@ body.dark-theme #work-section .ra-section-main-heading, #work-section .section-m
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-card-line, #work-section .js-card-line {
+    #work-section .js-card-line {
         display: block;
     }
 }
 
-body.dark-theme #work-section .ra-card-line, #work-section .js-card-line {
+body.dark-theme #work-section .js-card-line {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-#work-section .ra-card-line, #work-section .ra-card-line-horizontal, #work-section .js-card-line-horizontal {
+#work-section .js-card-line-horizontal {
     display: block;
     position: absolute;
     left: 0;
@@ -263,17 +263,17 @@ body.dark-theme #work-section .ra-card-line, #work-section .js-card-line {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-card-line, #work-section .ra-card-line-horizontal, #work-section .js-card-line-horizontal {
+    #work-section .js-card-line-horizontal {
         display: none;
     }
 }
 
-body.dark-theme #work-section .ra-card-line, #work-section .ra-card-line-horizontal, #work-section .js-card-line-horizontal {
+body.dark-theme #work-section .js-card-line-horizontal {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Card Motion Inner Wrapper - Authentic Trionn Smooth Entry */
-#work-section .ra-work-card, #work-section .ra-work-card-inner, #work-section .js-work-card-inner {
+#work-section .js-work-card-inner {
     width: 100%;
     padding: 0;
     box-sizing: border-box;
@@ -281,19 +281,19 @@ body.dark-theme #work-section .ra-card-line, #work-section .ra-card-line-horizon
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-work-card, #work-section .ra-work-card-inner, #work-section .js-work-card-inner {
+    #work-section .js-work-card-inner {
         padding: 0 4rem;
         will-change: transform;
     }
 }
 
 @media (min-width: 1280px) {
-    #work-section .ra-work-card, #work-section .ra-work-card-inner, #work-section .js-work-card-inner {
+    #work-section .js-work-card-inner {
         padding: 0 5rem;
     }
 }
 
-#work-section .ra-card-content-box, #work-section .card-content-box {
+#work-section .card-content-box {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -304,14 +304,14 @@ body.dark-theme #work-section .ra-card-line, #work-section .ra-card-line-horizon
 }
 
 @media (min-width: 1024px) {
-    #work-section .ra-card-content-box, #work-section .card-content-box {
+    #work-section .card-content-box {
         padding: 0;
         max-height: 100vh;
     }
 }
 
 /* ----------------- Project Image Link (670/460 & 8px Radius) ----------------- */
-#work-section .ra-project-image-link, #work-section .project-image-link {
+#work-section .project-image-link {
     position: relative;
     width: 100%;
     aspect-ratio: 670 / 460;
@@ -323,12 +323,12 @@ body.dark-theme #work-section .ra-card-line, #work-section .ra-card-line-horizon
     text-decoration: none;
 }
 
-body.dark-theme #work-section .ra-project-image-link, #work-section .project-image-link {
+body.dark-theme #work-section .project-image-link {
     background-color: #1a1c22;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-#work-section .ra-project-image-link, #work-section .project-image-link img {
+#work-section .project-image-link img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -338,19 +338,19 @@ body.dark-theme #work-section .ra-project-image-link, #work-section .project-ima
     transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-#work-section .ra-project-image-link, #work-section .project-image-link:hover img {
+#work-section .project-image-link:hover img {
     transform: scale(1.05);
 }
 
 /* ----------------- Project Typography & Meta (Exact Trionn Layout) ----------------- */
-#work-section .ra-project-meta-box, #work-section .project-meta-box {
+#work-section .project-meta-box {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding-top: 1.5rem;
 }
 
-#work-section .ra-project-title, #work-section .project-title {
+#work-section .project-title {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 400;
@@ -361,16 +361,16 @@ body.dark-theme #work-section .ra-project-image-link, #work-section .project-ima
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-project-title, #work-section .project-title {
+    #work-section .project-title {
         font-size: 1.875rem;
     }
 }
 
-body.dark-theme #work-section .ra-project-title, #work-section .project-title {
+body.dark-theme #work-section .project-title {
     color: #ffffff;
 }
 
-#work-section .ra-project-desc, #work-section .project-desc {
+#work-section .project-desc {
     margin: 0;
     font-family: "DM Sans", sans-serif;
     font-size: 0.875rem;
@@ -380,67 +380,74 @@ body.dark-theme #work-section .ra-project-title, #work-section .project-title {
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-project-desc, #work-section .project-desc {
+    #work-section .project-desc {
         font-size: 1rem;
     }
 }
 
-body.dark-theme #work-section .ra-project-desc, #work-section .project-desc {
+body.dark-theme #work-section .project-desc {
     color: #9ca3af;
 }
 
 /* ----------------- Trionn Explore All Work Button ----------------- */
-#work-section .ra-button-wrapper, #work-section .button_wrapper {
+#work-section .button_wrapper {
     position: relative;
-    width: 12.5rem;
-    text-transform: uppercase;
+    width: auto;
+    text-transform: capitalize;
     transition: opacity 0.3s ease;
 }
 
-#work-section .ra-button-wrapper, #work-section .button_wrapper:hover {
+#work-section .button_wrapper:hover {
     opacity: 0.95;
 }
 
-#work-section .ra-button-text, #work-section .btn.button-text {
+#work-section .btn.button-text {
     position: relative;
-    display: flex;
-    width: 100%;
-    min-height: 2.5rem;
-    cursor: pointer;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    cursor: pointer;
+    overflow: hidden !important;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 9999px;
+    padding: 14px 40px;
+    background-color: var(--theme-data);
+    color: #ffffff;
+    border-radius: 30px;
+    border: none;
     font-family: "DM Sans", sans-serif;
-    font-size: 0.75rem;
+    font-size: 18px;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    color: #111111;
-    transition: all 0.3s ease;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    transition: all 0.4s ease;
+    box-shadow: none !important;
 }
 
-body.dark-theme #work-section .ra-button-text, #work-section .btn.button-text {
-    border-color: rgba(255, 255, 255, 0.25);
+#work-section .btn.button-text > span {
+    display: inline-block;
+    will-change: transform;
+    pointer-events: none;
+    line-height: inherit;
+}
+
+#work-section .btn.button-text:hover {
+    background-color: var(--main-text);
+    color: #ffffff;
+    transition: all 0.4s ease;
+}
+
+body.dark-theme #work-section .btn.button-text {
+    background-color: var(--theme-data);
     color: #ffffff;
 }
 
-#work-section .ra-button-text, #work-section .btn.button-text:hover {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #000000;
-}
-
-body.dark-theme #work-section .ra-button-text, #work-section .btn.button-text:hover {
+body.dark-theme #work-section .btn.button-text:hover {
     background-color: #ffffff;
     color: #000000;
-    border-color: #ffffff;
 }
 
 /* ----------------- Final CTA Card ----------------- */
-#work-section .ra-cta-final-card, #work-section .cta-final-card {
+#work-section .cta-final-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -453,13 +460,13 @@ body.dark-theme #work-section .ra-button-text, #work-section .btn.button-text:ho
 }
 
 @media (min-width: 1024px) {
-    #work-section .ra-cta-final-card, #work-section .cta-final-card {
+    #work-section .cta-final-card {
         padding: 4rem 0;
         max-height: 100vh;
     }
 }
 
-#work-section .ra-cta-final-heading, #work-section .cta-final-heading {
+#work-section .cta-final-heading {
     font-family: "Marcellus", serif;
     color: #111111;
     font-size: 1.5rem;
@@ -471,16 +478,16 @@ body.dark-theme #work-section .ra-button-text, #work-section .btn.button-text:ho
 }
 
 @media (min-width: 768px) {
-    #work-section .ra-cta-final-heading, #work-section .cta-final-heading {
+    #work-section .cta-final-heading {
         font-size: 2.25rem;
     }
 }
 
-body.dark-theme #work-section .ra-cta-final-heading, #work-section .cta-final-heading {
+body.dark-theme #work-section .cta-final-heading {
     color: #ffffff;
 }
 
-#work-section .ra-cta-final-btn, #work-section .cta-final-btn {
+#work-section .cta-final-btn {
     display: inline-block;
     padding: 1rem 2rem;
     background-color: #000000;
@@ -496,18 +503,18 @@ body.dark-theme #work-section .ra-cta-final-heading, #work-section .cta-final-he
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#work-section .ra-cta-final-btn, #work-section .cta-final-btn:hover {
+#work-section .cta-final-btn:hover {
     background-color: #1f2937;
     transform: translateY(-2px);
     color: #ffffff;
 }
 
-body.dark-theme #work-section .ra-cta-final-btn, #work-section .cta-final-btn {
+body.dark-theme #work-section .cta-final-btn {
     background-color: #ffffff;
     color: #000000;
 }
 
-body.dark-theme #work-section .ra-cta-final-btn, #work-section .cta-final-btn:hover {
+body.dark-theme #work-section .cta-final-btn:hover {
     background-color: #e5e7eb;
     color: #000000;
 }

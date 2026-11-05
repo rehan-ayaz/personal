@@ -263,7 +263,7 @@ export default function SelectedWorkSection() {
   return (
     <div
       ref={spacerRef}
-      className="pin-spacer ra-work-pin-spacer work-pin-spacer relative w-full"
+      className="pin-spacer work-pin-spacer relative w-full"
       style={{ paddingBottom: `${pinDistance}px` }}
     >
       <div
@@ -272,36 +272,37 @@ export default function SelectedWorkSection() {
         className="relative w-full min-h-screen bg-white max-md:overflow-visible md:min-h-dvh md:h-dvh md:overflow-hidden"
       >
         <div id="project" style={{ position: "absolute", top: 0, left: 0 }} />
-        <div className="ra-work-viewport-outer work-viewport-outer">
-          <div className="ra-work-viewport-inner work-viewport-inner">
-            <div className="ra-work-viewport-center work-viewport-center">
-              <div ref={trackRef} className="ra-work-track work-track">
+        <div className="work-viewport-outer">
+          <div className="work-viewport-inner">
+            <div className="work-viewport-center">
+              <div ref={trackRef} className="work-track">
                 {/* Title Pinned Block */}
-                <div className="ra-title-pinned-block title-pinned-block">
-                  <div className="ra-title-block title-block">
-                    <h2 className="ra-section-main-heading section-main-heading">
+                <div className="title-pinned-block">
+                  <div className="title-block">
+                    <h2 className="section-main-heading">
                       Selected work <br />&amp; explorations
                     </h2>
-                    <div className="ra-button-wrapper button_wrapper">
+                    <div className="button_wrapper">
                       <a
-                        className="ra-button-text btn button-text"
+                        className="btn button-text btn-main"
                         href="#contact"
+                        style={{ textDecoration: "none" }}
                       >
-                        <span>EXPLORE ALL WORK</span>
+                        <span>Explore All Work</span>
                       </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Real Project Cards - Authentic Animated Entrance */}
+                {/* Real Project Cards - Authentic Trionn Animated Entrance */}
                 {realProjects.map((proj) => (
-                  <div key={proj.id} className="ra-work-card js-work-card">
-                    <div className="ra-card-line js-card-line" />
-                    <div className="ra-card-line-horizontal js-card-line-horizontal" />
-                    <div className="ra-work-card-inner js-work-card-inner">
-                      <div className="ra-card-content-box card-content-box">
+                  <div key={proj.id} className="js-work-card">
+                    <div className="js-card-line" />
+                    <div className="js-card-line-horizontal" />
+                    <div className="js-work-card-inner">
+                      <div className="card-content-box">
                         <a
-                          className="ra-project-image-link project-image-link"
+                          className="project-image-link"
                           href={proj.link}
                           title={proj.title}
                         >
@@ -318,9 +319,9 @@ export default function SelectedWorkSection() {
                             src={proj.mobileImg}
                           />
                         </a>
-                        <div className="ra-project-meta-box project-meta-box">
-                          <h3 className="ra-project-title project-title">{proj.title}</h3>
-                          <p className="ra-project-desc project-desc">{proj.desc}</p>
+                        <div className="project-meta-box">
+                          <h3 className="project-title">{proj.title}</h3>
+                          <p className="project-desc">{proj.desc}</p>
                         </div>
                       </div>
                     </div>
@@ -328,17 +329,17 @@ export default function SelectedWorkSection() {
                 ))}
 
                 {/* Final CTA Card with Rotating Plus Icon */}
-                <div className="ra-work-card js-work-card">
-                  <div className="ra-card-line js-card-line" />
-                  <div className="ra-card-line-horizontal js-card-line-horizontal" />
-                  <div className="ra-work-card-inner js-work-card-inner">
-                    <div className="ra-cta-final-card cta-final-card">
-                      <h3 className="ra-cta-final-heading cta-final-heading">
+                <div className="js-work-card">
+                  <div className="js-card-line" />
+                  <div className="js-card-line-horizontal" />
+                  <div className="js-work-card-inner">
+                    <div className="cta-final-card">
+                      <h3 className="cta-final-heading">
                         Discover our complete collection of digital experiences, brands, and platforms.
                       </h3>
                       <a
                         href="#contact"
-                        className="ra-cta-final-btn cta-final-btn"
+                        className="cta-final-btn"
                       >
                         VIEW ALL PROJECTS &rarr;
                       </a>

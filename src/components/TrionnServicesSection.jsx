@@ -1,8 +1,3 @@
-/**
- * @file TrionnServicesSection.jsx
- * @description 3D pinned perspective cards services section with interactive audio,
- * video atmosphere background, and standardized dual-class naming convention (ra-*).
- */
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -355,19 +350,19 @@ export default function TrionnServicesSection() {
       <section
         ref={sectionRef}
         id="trionn-services"
-        className="ra-services-pinned services-pinned relative w-full min-h-screen bg-[#000000] overflow-hidden"
+        className="services-pinned relative w-full min-h-screen bg-[#000000] overflow-hidden"
       >
         {/* Corner Accents matching Services section */}
-        <div className="ra-service-top-left service-top-left">
+        <div className="service-top-left">
           <img src="/assets/images/services/top-left.png" alt="top-left" loading="lazy" decoding="async" />
         </div>
-        <div className="ra-service-top-right service-top-right">
+        <div className="service-top-right">
           <img src="/assets/images/services/top-left.png" alt="top-right" loading="lazy" decoding="async" />
         </div>
-        <div className="ra-service-bottom-right service-bottom-right">
+        <div className="service-bottom-right">
           <img src="/assets/images/services/top-left.png" alt="bottom-right" loading="lazy" decoding="async" />
         </div>
-        <div className="ra-service-bottom-left service-bottom-left">
+        <div className="service-bottom-left">
           <img src="/assets/images/services/bottom-left.png" alt="bottom-left" loading="lazy" decoding="async" />
         </div>
 
@@ -389,7 +384,7 @@ export default function TrionnServicesSection() {
         </audio>
 
         {/* Background Atmosphere Video & Lighting */}
-        <div className="ra-services-video-wrap services-video-wrap">
+        <div className="services-video-wrap">
           <video
             ref={videoRef}
             src="/video/homepage-services-video.mp4"
@@ -397,31 +392,31 @@ export default function TrionnServicesSection() {
             loop
             playsInline
             preload="auto"
-            className="ra-services-bg-video services-bg-video"
+            className="services-bg-video"
           />
-          <div className="ra-services-bg-gradient services-bg-gradient" />
+          <div className="services-bg-gradient" />
         </div>
 
         {/* 3D Floating Perspective Cards Container */}
-        <div className="ra-services-stage-3d services-stage-3d">
+        <div className="services-stage-3d">
           {servicesData.map((s) => (
             <div
               key={s.id}
               ref={(el) => (cardRefs.current[s.id] = el)}
-              className="ra-svc-card svc-card"
+              className="svc-card"
             >
-              <div className="ra-svc-card-inner svc-card-inner">
-                <div className="ra-svc-card-top svc-card-top">
-                  <h3 className="ra-svc-card-title svc-card-title">{s.title}</h3>
+              <div className="svc-card-inner">
+                <div className="svc-card-top">
+                  <h3 className="svc-card-title">{s.title}</h3>
                   <svg
                     viewBox="0 0 60 60"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="ra-svc-card-icon svc-card-icon"
+                    className="svc-card-icon"
                   >
                     {s.svgPaths.map((p, idx) => (
                       <path
                         key={idx}
-                        className="ra-svg-path svg-path"
+                        className="svg-path"
                         fill="none"
                         stroke="#d8d8d8"
                         strokeMiterlimit="10"
@@ -430,45 +425,45 @@ export default function TrionnServicesSection() {
                     ))}
                   </svg>
                 </div>
-                <p className="ra-svc-card-desc svc-card-desc">{s.description}</p>
+                <p className="svc-card-desc">{s.description}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Center Static Container with Giant Stacked Marquee Typography */}
-        <div className="ra-services-center-container services-center-container">
+        <div className="services-center-container">
           {/* Interactive Sound Toggle */}
-          <div className="ra-services-top-row services-top-row">
+          <div className="services-top-row">
             <button
               type="button"
               onClick={handleSoundToggle}
-              className={`ra-services-sound-btn services-sound-btn ${isPlaying ? "playing" : "muted"} ${needsGesture ? "needs-gesture" : ""}`}
+              className={`services-sound-btn ${isPlaying ? "playing" : "muted"} ${needsGesture ? "needs-gesture" : ""}`}
               title={isPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
               aria-label={isPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
             >
-              <div className={`ra-sound-bars sound-bars ${isPlaying ? "playing" : "muted"}`}>
-                <span className="ra-bar bar ra-bar-1 bar-1" />
-                <span className="ra-bar bar ra-bar-2 bar-2" />
-                <span className="ra-bar bar ra-bar-3 bar-3" />
-                <span className="ra-bar bar ra-bar-4 bar-4" />
+              <div className={`sound-bars ${isPlaying ? "playing" : "muted"}`}>
+                <span className="bar bar-1" />
+                <span className="bar bar-2" />
+                <span className="bar bar-3" />
+                <span className="bar bar-4" />
               </div>
-              <span className="ra-sound-label sound-label">
+              <span className="sound-label">
                 {isPlaying ? "SOUND: ON" : needsGesture ? "🔊 TAP FOR SOUND" : "SOUND: OFF"}
               </span>
             </button>
           </div>
 
           {/* Central Bold Stacked Typography */}
-          <div className="ra-services-marquee-block services-marquee-block">
-            <h2 className="ra-services-marquee-line services-marquee-line">A.I.</h2>
-            <h2 className="ra-services-marquee-line services-marquee-line">Websites</h2>
-            <h2 className="ra-services-marquee-line services-marquee-line">Mobile Apps</h2>
-            <h2 className="ra-services-marquee-line services-marquee-line">SaaS Apps</h2>
+          <div className="services-marquee-block">
+            <h2 className="services-marquee-line">A.I.</h2>
+            <h2 className="services-marquee-line">Websites</h2>
+            <h2 className="services-marquee-line">Mobile Apps</h2>
+            <h2 className="services-marquee-line">SaaS Apps</h2>
           </div>
 
           {/* Symmetrical Bottom Spacer (replaces removed tagline & button to keep marquee vertically centered) */}
-          <div className="ra-services-bottom-spacer services-bottom-spacer" />
+          <div className="services-bottom-spacer" />
         </div>
       </section>
     </div>
