@@ -12,135 +12,99 @@ import gsap from 'gsap';
 export const galleryItems = [
   {
     id: '01',
-    src: '/gallery/placeholder-01.svg',
-    alt: 'Mountain Expeditions',
-    title: 'Mountain Expeditions',
-    category: 'Exploration',
-    width: { desktop: 'clamp(15rem, 25vw, 26.25rem)', mobile: '50vw' },
-    aspectRatio: '1.38 / 1',
+    src: '/gallery/gallery-01.jpg',
+    alt: 'Rehan Ayaz with colleagues at WordCamp Conference',
+    title: 'WordCamp Community',
+    category: 'Conference',
+    width: { desktop: 'clamp(14rem, 21vw, 21rem)', mobile: '46vw' },
+    aspectRatio: '1.5 / 1',
     bgTone: '#E2E8F0',
-    darkBgTone: '#0F172A',
-    position: { desktop: [0.15, 0.17], mobile: [0.3, 0.14] }
+    darkBgTone: '#1E293B',
+    position: { desktop: [0.17, 0.25], mobile: [0.26, 0.14] }
   },
   {
     id: '02',
-    src: '/gallery/placeholder-02.svg',
-    alt: 'Pour-Over & Beans',
-    title: 'Pour-Over & Beans',
-    category: 'Daily Ritual',
-    width: { desktop: 'clamp(10.313rem, 17vw, 17.813rem)', mobile: '30vw' },
-    aspectRatio: '0.76 / 1',
-    bgTone: '#EFECE6',
-    darkBgTone: '#1A1612',
-    position: { desktop: [0.38, 0.16], mobile: [0.72, 0.16] }
+    src: '/gallery/gallery-02.jpg',
+    alt: 'Rehan Ayaz at a formal celebration gathering',
+    title: 'Celebration & Milestones',
+    category: 'Gathering',
+    width: { desktop: 'clamp(8.5rem, 12vw, 12rem)', mobile: '32vw' },
+    aspectRatio: '0.56 / 1',
+    bgTone: '#F5EBE6',
+    darkBgTone: '#3B231A',
+    position: { desktop: [0.50, 0.24], mobile: [0.76, 0.15] }
   },
   {
     id: '03',
-    src: '/gallery/placeholder-03.svg',
-    alt: 'Urban Architecture',
-    title: 'Urban Architecture',
-    category: 'Street Lens',
-    width: { desktop: 'clamp(16.25rem, 28vw, 28.438rem)', mobile: '54vw' },
-    aspectRatio: '1.55 / 1',
-    bgTone: '#E5E7EB',
-    darkBgTone: '#111827',
-    position: { desktop: [0.7, 0.17], mobile: [0.47, 0.3] }
+    src: '/gallery/gallery-03.jpg',
+    alt: 'WordPress Community Meetup celebration with badge',
+    title: 'Code Is Poetry',
+    category: 'WordPress Meetup',
+    width: { desktop: 'clamp(13.5rem, 20vw, 20rem)', mobile: '45vw' },
+    aspectRatio: '1.33 / 1',
+    bgTone: '#E0F2FE',
+    darkBgTone: '#0C4A6E',
+    position: { desktop: [0.82, 0.25], mobile: [0.22, 0.29] }
   },
   {
     id: '04',
-    src: '/gallery/placeholder-04.svg',
-    alt: 'Workspace Nirvana',
-    title: 'Workspace Nirvana',
-    category: 'Minimal Desk',
-    width: { desktop: 'clamp(10.313rem, 17vw, 17.813rem)', mobile: '32vw' },
-    aspectRatio: '0.72 / 1',
-    bgTone: '#E0E7FF',
-    darkBgTone: '#0F172A',
-    position: { desktop: [0.86, 0.32], mobile: [0.25, 0.43] }
+    src: '/gallery/gallery-04.jpg',
+    alt: 'Rehan Ayaz at WordCamp keynote stage backdrop',
+    title: 'A Future For Everyone',
+    category: 'WordCamp Stage',
+    width: { desktop: 'clamp(14rem, 21vw, 21rem)', mobile: '46vw' },
+    aspectRatio: '1.5 / 1',
+    bgTone: '#EDE9FE',
+    darkBgTone: '#2E1065',
+    position: { desktop: [0.11, 0.50], mobile: [0.78, 0.31] }
   },
   {
     id: '05',
-    src: '/gallery/placeholder-05.svg',
-    alt: 'Trail Running',
-    title: 'Trail Running',
-    category: 'Movement',
-    width: { desktop: 'clamp(15.625rem, 26vw, 26.875rem)', mobile: '48vw' },
-    aspectRatio: '1.28 / 1',
-    bgTone: '#ECFDF5',
-    darkBgTone: '#064E3B',
-    position: { desktop: [0.18, 0.43], mobile: [0.73, 0.43] }
+    src: '/gallery/gallery-05.jpg',
+    alt: 'Rehan Ayaz with fellow developer at WordPress event',
+    title: 'Developer Connections',
+    category: 'Community',
+    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
+    aspectRatio: '0.67 / 1',
+    bgTone: '#E0E7FF',
+    darkBgTone: '#1E1B4B',
+    position: { desktop: [0.89, 0.50], mobile: [0.22, 0.71] }
   },
   {
     id: '06',
-    src: '/gallery/placeholder-06.svg',
-    alt: 'Vinyl & Lo-Fi',
-    title: 'Vinyl & Lo-Fi',
-    category: 'Soundscapes',
-    width: { desktop: 'clamp(10.625rem, 18vw, 18.75rem)', mobile: '30vw' },
-    aspectRatio: '0.78 / 1',
-    bgTone: '#F3E8FF',
-    darkBgTone: '#2E1065',
-    position: { desktop: [0.46, 0.44], mobile: [0.42, 0.57] }
+    src: '/gallery/gallery-06.jpg',
+    alt: 'Casual office celebration and cake with colleagues',
+    title: 'Team Bonding',
+    category: 'Office Culture',
+    width: { desktop: 'clamp(14.5rem, 22vw, 22rem)', mobile: '48vw' },
+    aspectRatio: '1.78 / 1',
+    bgTone: '#FEF3C7',
+    darkBgTone: '#451A03',
+    position: { desktop: [0.20, 0.77], mobile: [0.78, 0.70] }
   },
   {
     id: '07',
-    src: '/gallery/placeholder-07.svg',
-    alt: 'Tech Meetups',
-    title: 'Tech Meetups',
-    category: 'Network',
-    width: { desktop: 'clamp(16.875rem, 29vw, 29.375rem)', mobile: '56vw' },
-    aspectRatio: '1.62 / 1',
-    bgTone: '#EFF6FF',
-    darkBgTone: '#172554',
-    position: { desktop: [0.73, 0.47], mobile: [0.72, 0.67] }
+    src: '/gallery/gallery-07.jpg',
+    alt: 'Addiz Tech milestone celebration with team cake',
+    title: 'Addiz Tech Milestones',
+    category: 'Celebration',
+    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
+    aspectRatio: '0.75 / 1',
+    bgTone: '#ECFDF5',
+    darkBgTone: '#064E3B',
+    position: { desktop: [0.50, 0.78], mobile: [0.26, 0.85] }
   },
   {
     id: '08',
-    src: '/gallery/placeholder-08.svg',
-    alt: 'Weekend Reads',
-    title: 'Weekend Reads',
-    category: 'Curiosity',
-    width: { desktop: 'clamp(9.688rem, 16vw, 16.875rem)', mobile: '28vw' },
-    aspectRatio: '0.7 / 1',
-    bgTone: '#FEF3C7',
-    darkBgTone: '#451A03',
-    position: { desktop: [0.28, 0.69], mobile: [0.27, 0.71] }
-  },
-  {
-    id: '09',
-    src: '/gallery/placeholder-09.svg',
-    alt: 'Custom Keyboards',
-    title: 'Custom Keyboards',
-    category: 'Craft',
-    width: { desktop: 'clamp(15.313rem, 25vw, 25.938rem)', mobile: '48vw' },
-    aspectRatio: '1.34 / 1',
-    bgTone: '#E0F2FE',
-    darkBgTone: '#082F49',
-    position: { desktop: [0.57, 0.71], mobile: [0.5, 0.84] }
-  },
-  {
-    id: '10',
-    src: '/gallery/placeholder-10.svg',
-    alt: 'Stargazing Camps',
-    title: 'Stargazing Camps',
-    category: 'Solitude',
-    width: { desktop: 'clamp(10.313rem, 17vw, 17.813rem)', mobile: '30vw' },
-    aspectRatio: '0.74 / 1',
-    bgTone: '#EDE9FE',
-    darkBgTone: '#1E1B4B',
-    position: { desktop: [0.82, 0.69], mobile: [0.76, 0.84] }
-  },
-  {
-    id: '11',
-    src: '/gallery/placeholder-11.svg',
-    alt: 'Coastline Roadtrips',
-    title: 'Coastline Roadtrips',
-    category: 'Journey',
-    width: { desktop: 'clamp(16.875rem, 29vw, 29.375rem)', mobile: '56vw' },
-    aspectRatio: '1.62 / 1',
-    bgTone: '#F1F5F9',
-    darkBgTone: '#0F172A',
-    position: { desktop: [0.5, 0.78], mobile: [0.15, 0.27] }
+    src: '/gallery/gallery-08.jpg',
+    alt: 'Birthday and team milestone celebration moment',
+    title: 'Milestone Memories',
+    category: 'Memories',
+    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
+    aspectRatio: '0.75 / 1',
+    bgTone: '#F0FDF4',
+    darkBgTone: '#14532D',
+    position: { desktop: [0.80, 0.77], mobile: [0.74, 0.86] }
   }
 ];
 
@@ -419,7 +383,7 @@ export default function GallerySection() {
             </div>
           </div>
 
-          {/* 11 Interactive Gallery Cards */}
+          {/* 8 Interactive Gallery Cards with Real Photos */}
           {galleryItems.map((item, idx) => (
             <figure
               key={item.id}
