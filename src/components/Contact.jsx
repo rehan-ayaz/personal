@@ -131,16 +131,16 @@ export default function Contact(props) {
           <div className="container">
             <div className="row ra-contact-design contact-design ">
               <div className="ra-top-design-contact top-design-contact">
-                <img src="assets/images/about/right-peack.png" alt="right-peack" loading="lazy" decoding="async" />
+                <img src="assets/images/about/right-peack.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="ra-right-design-contact right-design-contact">
-                <img src="assets/images/about/bottom-right.png" alt="bottom-right" loading="lazy" decoding="async" />
+                <img src="assets/images/about/bottom-right.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="ra-center-image center-image">
-                <img src="assets/images/contact/top-center.png" alt="top-center" loading="lazy" decoding="async" />
+                <img src="assets/images/contact/top-center.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="ra-wave-image wave-image">
-                <img src="assets/images/contact/wave.png" alt="wave" loading="lazy" decoding="async" />
+                <img src="assets/images/contact/wave.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="col-lg-6 col-md-12 col-sm-12">
                 <div className="ra-contact-data contact-data">

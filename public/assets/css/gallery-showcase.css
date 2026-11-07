@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Gallery Section Styling ("Life Outside the Screen")
+   Standardized architectural styling (.ra-*) with complete
+   dual-theme support, interactive cards, and seamless curtain wipe transition.
+   ========================================================================== */
+
+.ra-gallery-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    contain: paint;
+    background-color: #00000003;
+    color: var(--main-text, #000000);
+    z-index: 10;
+    will-change: transform;
+    transition: background-color 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+body.dark-theme .ra-gallery-section {
+    background-color: #0D0F14;
+    color: var(--main-text, #FFFFFF);
+}
+
+.ra-gallery-viewport {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: inherit;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    contain: layout paint;
+}
+
+/* Center Headline and Subtitle */
+.ra-gallery-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+    width: min(50rem, 86vw);
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.ra-gallery-title {
+    font-family: "Marcellus", serif;
+    font-size: clamp(2.4rem, 5.8vw, 4.75rem);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem 0;
+    color: var(--main-text, #000000);
+    transition: color 0.35s ease;
+}
+
+body.dark-theme .ra-gallery-title {
+    color: var(--main-text, #FFFFFF) !important;
+}
+
+.ra-gallery-desc {
+    max-width: 32rem;
+    margin: 0 auto;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--text-color, #595959);
+    font-weight: 400;
+    transition: color 0.35s ease;
+}
+
+body.dark-theme .ra-gallery-desc {
+    color: var(--text-color, #969696) !important;
+}
+
+/* Interactive Gallery Cards */
+.ra-gallery-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--gallery-w);
+    margin: 0;
+    overflow: visible;
+    border-radius: 12px;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    will-change: transform, opacity;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    .ra-gallery-item {
+        width: var(--gallery-w-mobile);
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.16);
+    }
+}
+
+.ra-gallery-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+body.dark-theme .ra-gallery-card-inner {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.ra-gallery-item:hover .ra-gallery-card-inner {
+    border-color: rgba(0, 194, 255, 0.65);
+    box-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.4), 0 0 35px -5px rgba(0, 194, 255, 0.3);
+}
+
+.ra-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.01);
+    pointer-events: none;
+    border-radius: 12px;
+    background-color: #121317;
+}
+
+/* 5 Venetian Blind Curtain Slats matching Footer Background */
+.ra-gallery-slats-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    z-index: 98;
+}
+
+.ra-gallery-slat {
+    flex: 1 1 0%;
+    width: 100%;
+    padding-bottom: 1px;
+    background-color: var(--body-color, #FFFFFF);
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    will-change: transform;
+    transition: background-color 0.35s ease;
+}
+
+.ra-gallery-slat:not(:first-child) {
+    margin-top: -1px;
+}
+
+body.dark-theme .ra-gallery-slat,
+html.dark-theme .ra-gallery-slat,
+[data-theme="dark"] .ra-gallery-slat {
+    background-color: var(--body-color, #000000) !important;
+}

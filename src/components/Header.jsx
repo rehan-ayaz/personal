@@ -26,6 +26,9 @@ export default function Header() {
       localStorage.setItem('selected-theme', 'light');
       localStorage.setItem('selected-icon', 'ri-moon-clear-fill');
     }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    }
   }, [theme]);
 
   // Instant response theme toggle handler
@@ -48,6 +51,9 @@ export default function Header() {
     }
 
     setTheme(nextTheme);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: nextTheme } }));
+    }
   };
 
   return (
@@ -91,7 +97,7 @@ export default function Header() {
               <span className="ra-logo-blue logo-blue">Ayaz</span>
             </a>
           </div>
-          <div className="ra-navbar-data navbar-data">
+          <div className="ra-navbar-data navbar-data" role="navigation" aria-label="Primary navigation">
             <ul>
               <li>
                 <a href="index.html" className="ra-data-name data-name">HOME</a>
@@ -120,7 +126,7 @@ export default function Header() {
             </ul>
           </div>
           <div className="ra-bottm-data bottm-data">
-            <img src="assets/images/header/bottom-left.png" alt="bottom-left" />
+            <img src="assets/images/header/bottom-left.png" alt="" />
           </div>
           <button className="ra-close-bar close-bar ra-mistel mistel" aria-label="Close menu">
             <i className="ri-close-line" />
@@ -130,19 +136,19 @@ export default function Header() {
         <div className="ra-center-data center-data">
           <div className="ra-data-contact-soft data-contact-soft">
             <div className="ra-data-vector-top data-vector-top">
-              <img src="assets/images/header/top-left.png" alt="top-left" />
+              <img src="assets/images/header/top-left.png" alt="" />
             </div>
             <div className="ra-data-vector-bottom data-vector-bottom">
-              <img src="assets/images/header/bottom-td.png" alt="bottom-td" />
+              <img src="assets/images/header/bottom-td.png" alt="" />
             </div>
             <div className="ra-mens-data mens-data">
-              <img src="assets/images/header/mens.png" alt="mens" />
+              <img src="assets/images/header/mens.png" alt="Rehan Ayaz" />
             </div>
             <div className="ra-data-vector-right data-vector-right">
-              <img src="assets/images/header/top-right.png" alt="top-right" />
+              <img src="assets/images/header/top-right.png" alt="" />
             </div>
             <div className="ra-data-vector-right-data data-vector-right-data">
-              <img src="assets/images/header/bottom-dt.png" alt="bottom-dt" />
+              <img src="assets/images/header/bottom-dt.png" alt="" />
             </div>
           </div>
         </div>
@@ -174,7 +180,7 @@ export default function Header() {
             </div>
           </div>
           <div className="ra-dot-right dot-right">
-            <img src="assets/images/header/bottom-right.png" alt="bottom-right" />
+            <img src="assets/images/header/bottom-right.png" alt="" />
           </div>
         </div>
       </div>

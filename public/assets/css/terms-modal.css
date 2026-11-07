@@ -1,0 +1,655 @@
+/* ==========================================================================
+   Static & Simple Terms & Privacy Modal Styling
+   Designed exclusively for rehanayaz.com
+   Clean, bespoke, static legal document dialog with ZERO hover animations
+   ========================================================================== */
+
+/* Fixed Portal Overlay */
+.ra-terms-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: rgba(4, 7, 14, 0.78);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.ra-terms-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Light Theme Overlay Adjustments */
+body:not(.dark-theme) .ra-terms-overlay {
+    background: rgba(230, 235, 245, 0.75);
+}
+
+/* Modal Dialog Card */
+.ra-terms-modal {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(150deg, #101524 0%, #0a0d18 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 40px 90px -20px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(0, 194, 255, 0.15),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+    transform: translateY(16px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ra-terms-overlay.is-open .ra-terms-modal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Light Theme Modal Card */
+body:not(.dark-theme) .ra-terms-modal {
+    background: linear-gradient(150deg, #ffffff 0%, #f7f9fc 100%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 35px 85px -15px rgba(15, 23, 42, 0.25),
+                0 0 0 1px rgba(0, 194, 255, 0.12),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    color: #1e293b;
+}
+
+/* Sticky Header Bar */
+.ra-terms-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: rgba(16, 21, 36, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+body:not(.dark-theme) .ra-terms-header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ra-terms-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ra-terms-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.28);
+    border-radius: 9999px;
+    color: #00C2FF;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ra-terms-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #00C2FF;
+    box-shadow: 0 0 8px #00C2FF;
+}
+
+.ra-terms-read-time {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+body:not(.dark-theme) .ra-terms-read-time {
+    color: #64748b;
+}
+
+/* Close Action Group */
+.ra-terms-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ra-terms-esc-hint {
+    font-size: 11px;
+    color: #64748b;
+    padding: 3px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+body:not(.dark-theme) .ra-terms-esc-hint {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.04);
+    color: #94a3b8;
+}
+
+/* Static Simple Close Button (No grow, no rotate, no color change) */
+.ra-terms-close-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0;
+    transform: none !important;
+}
+
+.ra-terms-close-btn:hover {
+    /* Kept strictly static simple as requested: NO scale, NO grow, NO rotate, NO color change */
+    transform: none !important;
+}
+
+body:not(.dark-theme) .ra-terms-close-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #334155;
+    transform: none !important;
+}
+
+body:not(.dark-theme) .ra-terms-close-btn:hover {
+    /* Kept strictly static simple */
+    transform: none !important;
+}
+
+/* Modal Body Content (Custom Scrollable Area) */
+.ra-terms-body {
+    padding: 36px 36px 48px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex-grow: 1;
+}
+
+/* Custom Scrollbar */
+.ra-terms-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ra-terms-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ra-terms-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 194, 255, 0.25);
+    border-radius: 9999px;
+}
+
+/* Hero Section */
+.ra-terms-hero {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body:not(.dark-theme) .ra-terms-hero {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ra-terms-title {
+    font-family: "Marcellus", serif;
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+}
+
+body:not(.dark-theme) .ra-terms-title {
+    color: #0f172a;
+}
+
+.ra-terms-updated {
+    font-size: 13px;
+    color: #00C2FF;
+    font-weight: 500;
+    margin: 0 0 18px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: rgba(0, 194, 255, 0.08);
+    border-radius: 6px;
+}
+
+.ra-terms-intro-p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #cbd5e1;
+    margin: 0 0 16px 0;
+}
+
+body:not(.dark-theme) .ra-terms-intro-p {
+    color: #334155;
+}
+
+/* Acceptance Callout Banner */
+.ra-terms-callout {
+    position: relative;
+    padding: 16px 20px;
+    background: rgba(0, 194, 255, 0.06);
+    border: 1px solid rgba(0, 194, 255, 0.22);
+    border-left: 4px solid #00C2FF;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #e0f2fe;
+}
+
+body:not(.dark-theme) .ra-terms-callout {
+    background: rgba(0, 194, 255, 0.06);
+    border: 1px solid rgba(0, 194, 255, 0.2);
+    border-left: 4px solid #00C2FF;
+    color: #0c4a6e;
+}
+
+/* Section Container */
+.ra-terms-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.ra-terms-section-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Section Header */
+.ra-terms-sec-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.ra-terms-num {
+    font-family: "Marcellus", serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #00C2FF;
+    opacity: 0.9;
+    letter-spacing: 0.05em;
+}
+
+.ra-terms-sec-title {
+    font-family: "Marcellus", serif;
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+body:not(.dark-theme) .ra-terms-sec-title {
+    color: #0f172a;
+}
+
+/* Definition Grid (Section 1) - Completely Static */
+.ra-terms-def-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.ra-terms-def-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 18px 20px;
+    /* Static simple: NO hover floating, NO hover color change */
+}
+
+body:not(.dark-theme) .ra-terms-def-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.ra-terms-def-term {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.ra-terms-def-term h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00C2FF;
+    margin: 0;
+}
+
+.ra-terms-def-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #94a3b8;
+}
+
+body:not(.dark-theme) .ra-terms-def-tag {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.ra-terms-def-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #94a3b8;
+    margin: 0;
+}
+
+body:not(.dark-theme) .ra-terms-def-desc {
+    color: #475569;
+}
+
+/* Stacked Feature Cards (Section 2, 4, 5, etc.) - Completely Static */
+.ra-terms-feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ra-terms-feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 16px 20px;
+    /* Static simple: NO hover floating, NO hover color change */
+}
+
+body:not(.dark-theme) .ra-terms-feature-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.ra-terms-feature-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+body:not(.dark-theme) .ra-terms-feature-head {
+    color: #0f172a;
+}
+
+.ra-terms-feature-icon {
+    color: #00C2FF;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ra-terms-feature-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 0;
+}
+
+body:not(.dark-theme) .ra-terms-feature-body {
+    color: #475569;
+}
+
+/* Payment Dual Column Layout - Static */
+.ra-terms-payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+.ra-terms-payment-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+body:not(.dark-theme) .ra-terms-payment-box {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.ra-terms-payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+
+.ra-terms-payment-badge.local {
+    background: rgba(34, 197, 94, 0.12);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.ra-terms-payment-badge.intl {
+    background: rgba(0, 194, 255, 0.12);
+    color: #00C2FF;
+    border: 1px solid rgba(0, 194, 255, 0.25);
+}
+
+/* Refund Callout Card - Static */
+.ra-terms-refund-card {
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    border-left: 4px solid #ef4444;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 4px;
+}
+
+body:not(.dark-theme) .ra-terms-refund-card {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    border-left: 4px solid #ef4444;
+}
+
+.ra-terms-refund-card h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f87171;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ra-terms-refund-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+body:not(.dark-theme) .ra-terms-refund-card p {
+    color: #475569;
+}
+
+/* Static Contact Cards (No buttons, no floating, no hover color change) */
+.ra-terms-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.ra-terms-contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    color: inherit;
+    /* Static simple: NO hover floating, NO hover color change */
+}
+
+body:not(.dark-theme) .ra-terms-contact-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.ra-terms-contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(0, 194, 255, 0.12);
+    color: #00C2FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.ra-terms-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ra-terms-contact-label {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+
+.ra-terms-contact-val {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.ra-terms-contact-val:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+body:not(.dark-theme) .ra-terms-contact-val {
+    color: #0f172a;
+}
+
+body:not(.dark-theme) .ra-terms-contact-val:hover {
+    color: #0f172a;
+    text-decoration: none;
+}
+
+/* Guarantee strictly static styling throughout the modal */
+.ra-terms-modal *:hover {
+    transform: none !important;
+}
+
+/* Footer Link Trigger Button Styling (on footer) */
+.ra-terms-link-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.25s ease;
+    text-decoration: none;
+}
+
+.ra-terms-link-btn:hover {
+    color: var(--theme-data);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .ra-terms-overlay {
+        padding: 12px 8px;
+    }
+
+    .ra-terms-modal {
+        max-height: 92vh;
+        border-radius: 18px;
+    }
+
+    .ra-terms-header {
+        padding: 16px 18px;
+    }
+
+    .ra-terms-body {
+        padding: 24px 18px 36px;
+    }
+
+    .ra-terms-title {
+        font-size: 1.75rem;
+    }
+
+    .ra-terms-def-grid,
+    .ra-terms-payment-grid,
+    .ra-terms-contact-grid {
+        grid-template-columns: 1fr;
+    }
+}

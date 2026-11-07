@@ -16,7 +16,7 @@ export default function Pricing(props) {
                         <div className="ra-heading-data-princing heading-data-princing">
                             <h2 className="ra-second-heading second-heading">My Pricing Plans</h2>
                             <p className="ra-heading-descr heading-descr fade_down">Transparent and competitive pricing packages tailored for businesses, startups, and personal projects.</p>
-                            <img src="assets/images/about/round-shape.png" alt="round-shape" loading="lazy" decoding="async" />
+                            <img src="assets/images/about/round-shape.png" alt="" loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@ export default function Pricing(props) {
                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                         <div className="ra-pricing-box pricing-box zoom_in">
                             <div className="ra-image-right image-right">
-                                <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
+                                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div>
                                 <p className="ra-type-box type-box">Starter</p>
@@ -62,7 +62,7 @@ export default function Pricing(props) {
                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                         <div className="ra-pricing-box pricing-box zoom_in">
                             <div className="ra-image-right image-right">
-                                <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
+                                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div>
                                 <p className="ra-type-box type-box">Standard</p>
@@ -104,7 +104,7 @@ export default function Pricing(props) {
                     <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                         <div className="ra-pricing-box pricing-box zoom_in">
                             <div className="ra-image-right image-right">
-                                <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
+                                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div>
                                 <p className="ra-type-box type-box">Premium</p>

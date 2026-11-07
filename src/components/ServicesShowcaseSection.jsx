@@ -91,7 +91,7 @@ const servicesData = [
   }
 ];
 
-export default function TrionnServicesSection() {
+export default function ServicesShowcaseSection() {
   const spacerRef = useRef(null);
   const sectionRef = useRef(null);
   const cardRefs = useRef({});
@@ -104,11 +104,84 @@ export default function TrionnServicesSection() {
   const [needsGesture, setNeedsGesture] = useState(false);
   const soundEnabledRef = useRef(true);
 
+  // Strictly sync sound and visibility with Dark Mode
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.body.classList.contains('dark-theme');
+    }
+    return false;
+  });
+
+  // Keep dark theme state in sync & silence audio whenever in light mode
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const handleThemeChange = () => {
+      const currentlyDark = document.body.classList.contains('dark-theme');
+      setIsDark(currentlyDark);
+
+      const audio = audioRef.current;
+      if (!currentlyDark) {
+        // Voice is strictly ONLY in dark mode
+        if (audio && !audio.paused) {
+          audio.pause();
+        }
+        setIsPlaying(false);
+        setNeedsGesture(false);
+      } else {
+        // If switched to dark mode and currently inside services section, resume
+        const spacerEl = spacerRef.current;
+        if (spacerEl && audio && soundEnabledRef.current) {
+          const rect = spacerEl.getBoundingClientRect();
+          const dist = pinDistRef.current || 2000;
+          const progress = Math.max(0, Math.min(1, -rect.top / dist));
+          if (progress >= 0.01 && progress <= 0.99 && audio.paused) {
+            audio.volume = 0.85;
+            audio
+              .play()
+              .then(() => {
+                setIsPlaying(true);
+                setNeedsGesture(false);
+              })
+              .catch(() => {});
+          }
+        }
+      }
+    };
+
+    handleThemeChange();
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.type === 'attributes' && m.attributeName === 'class') {
+          handleThemeChange();
+        }
+      }
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('themechange', handleThemeChange);
+    window.addEventListener('storage', handleThemeChange);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('themechange', handleThemeChange);
+      window.removeEventListener('storage', handleThemeChange);
+    };
+  }, []);
+
   // Directly play or pause audio when user toggles sound button
   const handleSoundToggle = (e) => {
     if (e) e.stopPropagation();
     const audio = audioRef.current;
     if (!audio) return;
+
+    const currentlyDark = typeof document !== 'undefined' && document.body.classList.contains('dark-theme');
+    if (!currentlyDark) {
+      if (!audio.paused) audio.pause();
+      setIsPlaying(false);
+      return;
+    }
 
     if (isPlaying) {
       audio.pause();
@@ -130,11 +203,14 @@ export default function TrionnServicesSection() {
     }
   };
 
-  // Browser Autoplay Policy: Unlock audio on first user gesture anywhere
+  // Browser Autoplay Policy: Unlock audio on first user gesture anywhere (Dark mode only)
   useEffect(() => {
     const handleGesture = () => {
       const audio = audioRef.current;
       if (!audio) return;
+
+      const currentlyDark = typeof document !== 'undefined' && document.body.classList.contains('dark-theme');
+      if (!currentlyDark) return;
 
       const spacerEl = spacerRef.current;
       if (!spacerEl) return;
@@ -227,11 +303,12 @@ export default function TrionnServicesSection() {
         }
       }
 
-      // 3. Authentic Ambient Thunder Audio Control
+      // 3. Authentic Ambient Thunder Audio Control (Strictly Dark Mode Only)
       const audio = audioRef.current;
       if (audio) {
+        const currentlyDark = typeof document !== 'undefined' && document.body.classList.contains('dark-theme');
         const inAudioZone = progress >= 0.01 && progress <= 0.99;
-        if (inAudioZone && soundEnabledRef.current) {
+        if (currentlyDark && inAudioZone && soundEnabledRef.current) {
           if (audio.paused) {
             audio
               .play()
@@ -343,27 +420,27 @@ export default function TrionnServicesSection() {
   return (
     <div
       ref={spacerRef}
-      id="services"
-      className="pin-spacer trionn-services-spacer relative w-full"
+      id="services-spacer"
+      className="pin-spacer ra-services-spacer relative w-full"
       style={{ paddingBottom: `${pinDistance}px` }}
     >
       <section
         ref={sectionRef}
-        id="trionn-services"
-        className="services-pinned relative w-full min-h-screen overflow-hidden"
+        id="services"
+        className="services-pinned ra-services-section relative w-full min-h-screen overflow-hidden"
       >
         {/* Corner Accents matching Services section */}
         <div className="service-top-left">
-          <img src="/assets/images/services/top-left.png" alt="top-left" loading="lazy" decoding="async" />
+          <img src="/assets/images/services/top-left.png" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="service-top-right">
-          <img src="/assets/images/services/top-left.png" alt="top-right" loading="lazy" decoding="async" />
+          <img src="/assets/images/services/top-left.png" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="service-bottom-right">
-          <img src="/assets/images/services/top-left.png" alt="bottom-right" loading="lazy" decoding="async" />
+          <img src="/assets/images/services/top-left.png" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="service-bottom-left">
-          <img src="/assets/images/services/bottom-left.png" alt="bottom-left" loading="lazy" decoding="async" />
+          <img src="/assets/images/services/bottom-left.png" alt="" loading="lazy" decoding="async" />
         </div>
 
         {/* Authentic Background Thunder Audio with Multiple Local Fallbacks */}
@@ -378,7 +455,6 @@ export default function TrionnServicesSection() {
             }
           }}
         >
-          <source src="/audio/thunder.mp3" type="audio/mpeg" />
           <source src="/assets/audio/thunder.mp3" type="audio/mpeg" />
           <source src="assets/audio/thunder.mp3" type="audio/mpeg" />
         </audio>
@@ -433,25 +509,51 @@ export default function TrionnServicesSection() {
 
         {/* Center Static Container with Giant Stacked Marquee Typography */}
         <div className="services-center-container">
-          {/* Interactive Sound Toggle */}
+          {/* Top Row: Small Sound Toggle SVG Icon (Right-aligned, strictly Dark Mode only) */}
           <div className="services-top-row">
-            <button
-              type="button"
-              onClick={handleSoundToggle}
-              className={`services-sound-btn ${isPlaying ? "playing" : "muted"} ${needsGesture ? "needs-gesture" : ""}`}
-              title={isPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
-              aria-label={isPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
-            >
-              <div className={`sound-bars ${isPlaying ? "playing" : "muted"}`}>
-                <span className="bar bar-1" />
-                <span className="bar bar-2" />
-                <span className="bar bar-3" />
-                <span className="bar bar-4" />
-              </div>
-              <span className="sound-label">
-                {isPlaying ? "SOUND: ON" : needsGesture ? "🔊 TAP FOR SOUND" : "SOUND: OFF"}
-              </span>
-            </button>
+            {isDark && (
+              <button
+                type="button"
+                onClick={handleSoundToggle}
+                className={`services-sound-btn ${isPlaying ? "playing" : "muted"} ${needsGesture ? "needs-gesture" : ""}`}
+                title={isPlaying ? "Mute Ambient Sound" : needsGesture ? "Click to Enable Sound" : "Play Ambient Sound"}
+                aria-label={isPlaying ? "Mute Ambient Sound" : "Play Ambient Sound"}
+              >
+                {isPlaying ? (
+                  <svg
+                    className="sound-svg-icon sound-icon-playing"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <path className="sound-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    <path className="sound-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                  </svg>
+                ) : (
+                  <svg
+                    className="sound-svg-icon sound-icon-muted"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                  </svg>
+                )}
+              </button>
+            )}
           </div>
 
           {/* Central Bold Stacked Typography */}

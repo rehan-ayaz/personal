@@ -10,18 +10,41 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ToolsMarquee from './components/ToolsMarquee';
 import About from './components/About';
-import TrionnServicesSection from './components/TrionnServicesSection';
+import ServicesShowcaseSection from './components/ServicesShowcaseSection';
 import SelectedWorkSection from './components/SelectedWorkSection';
 import Experience from './components/Experience';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
-import Contact from './components/Contact';
-import TrionnOrbitSection from './components/TrionnOrbitSection';
+// import Contact from './components/Contact';
+import GallerySection from './components/GallerySection';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
+import TermsModal from './components/TermsModal';
+import PrivacyModal from './components/PrivacyModal';
 
 export default function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenTerms = () => setIsTermsOpen(true);
+    const handleCloseTerms = () => setIsTermsOpen(false);
+    const handleOpenPrivacy = () => setIsPrivacyOpen(true);
+    const handleClosePrivacy = () => setIsPrivacyOpen(false);
+
+    window.addEventListener('open-terms-modal', handleOpenTerms);
+    window.addEventListener('close-terms-modal', handleCloseTerms);
+    window.addEventListener('open-privacy-modal', handleOpenPrivacy);
+    window.addEventListener('close-privacy-modal', handleClosePrivacy);
+
+    return () => {
+      window.removeEventListener('open-terms-modal', handleOpenTerms);
+      window.removeEventListener('close-terms-modal', handleCloseTerms);
+      window.removeEventListener('open-privacy-modal', handleOpenPrivacy);
+      window.removeEventListener('close-privacy-modal', handleClosePrivacy);
+    };
+  }, []);
 
   useEffect(() => {
     // Avoid double-injecting script.js in React StrictMode
@@ -56,7 +79,7 @@ export default function App() {
 
       {/* GSAP ScrollSmoother Content Wrapper */}
       <div id="smooth-wrapper">
-        <div id="smooth-content">
+        <div id="smooth-content" role="main" aria-label="Portfolio">
           {/* Hero Section */}
           <Hero />
 
@@ -66,10 +89,10 @@ export default function App() {
           {/* About Section */}
           <About />
 
-          {/* Trionn 3D Services Showcase */}
-          <TrionnServicesSection />
+          {/* 3D Services Showcase */}
+          <ServicesShowcaseSection />
 
-          {/* Trionn Selected Work & Explorations (Pinned Horizontal Showcase) */}
+          {/* Selected Work & Explorations (Pinned Horizontal Showcase) */}
           <SelectedWorkSection />
 
           {/* Experience & Certifications (0-radius cards + top-right accents) */}
@@ -81,19 +104,25 @@ export default function App() {
           {/* Pricing Section */}
           <Pricing />
 
-          {/* Contact Section */}
-          <Contact />
-
-          {/* Trionn Pinned 3D Orbit & Design In Motion Showcase */}
-          <TrionnOrbitSection />
+          {/* Interactive Gallery ("Life Outside the Screen") */}
+          <GallerySection />
 
           {/* Footer Branding & Legal */}
-          <Footer />
+          <Footer
+            onOpenTerms={() => setIsTermsOpen(true)}
+            onOpenPrivacy={() => setIsPrivacyOpen(true)}
+          />
         </div>
       </div>
 
       {/* Interactive Popups & Project Detail Modals */}
       <ProjectModal />
+
+      {/* Terms and Conditions Animated Modal */}
+      <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
+
+      {/* Privacy Policy Animated Modal */}
+      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </>
   );
 }

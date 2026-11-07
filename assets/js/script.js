@@ -35,18 +35,16 @@ function initHeadingAnimations() {
 
   headings.forEach(function (el) {
     if (el.dataset.splitInitialized) return;
-    // Exclude infinite ticker elements, small numeric badges, Trionn work section, and Trionn orbit section
+    // Exclude infinite ticker elements, small numeric badges, work showcase section, and services section
     if (
       el.closest("#work-section") ||
-      el.closest("#trionn-services") ||
+      el.closest("#services") ||
       el.closest(".services-pinned") ||
       el.closest(".ra-services-pinned") ||
       el.closest(".services-stage-3d") ||
       el.classList.contains("svc-card-title") ||
       el.classList.contains("services-marquee-line") ||
-      el.closest("#dribbble-orbit") ||
-      el.closest(".trionn-orbit-section") ||
-      el.closest(".ra-trionn-orbit-section") ||
+      el.closest(".ra-services-section") ||
       el.classList.contains("mrquee-text") ||
       el.classList.contains("ra-mrquee-text") ||
       el.closest(".dribble-title-wrap") ||

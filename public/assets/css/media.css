@@ -916,8 +916,9 @@
     }
     .ra-box-social-media img, .box-social-media img {
         width: 100%;
-        object-fit: cover;
-        max-width: 36px;
+        object-fit: contain;
+        max-width: 48px;
+        height: 48px;
     }
     .ra-footer-descr, .footer-descr {
         font-size: 20px;
@@ -1313,6 +1314,13 @@
     }
     .ra-box-socila-design-footer, .box-socila-design-footer {
         width: 50%;
+    }
+    .ra-box-social-media, .box-social-media {
+        padding: 32px 10px;
+    }
+    .ra-box-social-media img, .box-social-media img {
+        max-width: 36px;
+        height: 36px;
     }
     .ra-data-copy, .data-copy {
         display: flex;

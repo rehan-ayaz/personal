@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRIONN - Selected Work & Explorations (Exact 1:1 Authentic Recreation)
+   portfolio - Selected Work & Explorations (Exact 1:1 Authentic Recreation)
    Pure Horizontal Smooth Scroll - Zero Vertical Movement/Wobble
    ========================================================================== */
 
@@ -285,7 +285,7 @@ body.dark-theme #work-section .js-card-line-horizontal {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Card Motion Inner Wrapper - Authentic Trionn Smooth Entry */
+/* Card Motion Inner Wrapper - Authentic portfolio Smooth Entry */
 #work-section .js-work-card-inner {
     width: 100%;
     padding: 0;
@@ -329,7 +329,7 @@ body.dark-theme #work-section .js-card-line-horizontal {
     width: 100%;
     aspect-ratio: 670 / 460;
     overflow: hidden;
-    border-radius: 8px; /* Authentic Trionn rounded-lg */
+    border-radius: 8px; /* Authentic portfolio rounded-lg */
     display: block;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     background-color: #e5e5e5;
@@ -355,7 +355,7 @@ body.dark-theme #work-section .project-image-link {
     transform: scale(1.05);
 }
 
-/* ----------------- Project Typography & Meta (Exact Trionn Layout) ----------------- */
+/* ----------------- Project Typography & Meta (Exact portfolio Layout) ----------------- */
 #work-section .project-meta-box {
     display: flex;
     flex-direction: column;
@@ -402,7 +402,7 @@ body.dark-theme #work-section .project-desc {
     color: #9ca3af;
 }
 
-/* ----------------- Trionn Explore All Work Button ----------------- */
+/* ----------------- portfolio Explore All Work Button ----------------- */
 #work-section .button_wrapper {
     position: relative;
     width: auto;
@@ -501,33 +501,47 @@ body.dark-theme #work-section .cta-final-heading {
 }
 
 #work-section .cta-final-btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #000000;
-    color: #ffffff;
-    font-family: "DM Sans", sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden !important;
     text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 14px 40px;
+    background-color: var(--theme-data);
+    color: #ffffff;
+    border-radius: 30px;
+    border: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    transition: all 0.4s ease;
+    box-shadow: none !important;
+}
+
+#work-section .cta-final-btn > span {
+    display: inline-block;
+    will-change: transform;
+    pointer-events: none;
+    line-height: inherit;
 }
 
 #work-section .cta-final-btn:hover {
-    background-color: #1f2937;
-    transform: translateY(-2px);
+    background-color: var(--main-text);
     color: #ffffff;
+    transform: none;
+    transition: all 0.4s ease;
 }
 
 body.dark-theme #work-section .cta-final-btn {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--theme-data);
+    color: #ffffff;
 }
 
 body.dark-theme #work-section .cta-final-btn:hover {
-    background-color: #e5e7eb;
+    background-color: #ffffff;
     color: #000000;
 }

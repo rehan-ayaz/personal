@@ -8,25 +8,25 @@ export default function Hero() {
   return (
     <section className="ra-hero hero" id="hero">
       <div className="ra-bottom-dummy-data bottom-dummy-data">
-        <img src="assets/images/hero/bottom-data-hero.png" alt="bottom-data-hero" />
+        <img src="assets/images/hero/bottom-data-hero.png" alt="" />
       </div>
       <div className="container">
         <h1 className="ra-heading-one heading-one up-down-2">Web Developer</h1>
         <div className="ra-all-mens all-mens">
           <div className="ra-left-blue left-blue">
-            <img src="assets/images/header/bottom-td.png" alt="bottom-td" />
+            <img src="assets/images/header/bottom-td.png" alt="" />
           </div>
           <div className="ra-left-black left-black">
-            <img src="assets/images/header/top-left.png" alt="top-left" />
+            <img src="assets/images/header/top-left.png" alt="" />
           </div>
           <div className="ra-data-men-boy data-men-boy">
-            <img src="assets/images/header/mens.png" alt="mens" />
+            <img src="assets/images/header/mens.png" alt="Rehan Ayaz" />
           </div>
           <div className="ra-right-black right-black">
-            <img src="assets/images/header/top-right.png" alt="top-right" />
+            <img src="assets/images/header/top-right.png" alt="" />
           </div>
           <div className="ra-right-blue right-blue">
-            <img src="assets/images/header/bottom-dt.png" alt="bottom-dt" />
+            <img src="assets/images/header/bottom-dt.png" alt="" />
           </div>
           <a
             href="https://wa.me/923260735090"

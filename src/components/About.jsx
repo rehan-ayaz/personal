@@ -8,7 +8,7 @@ export default function About() {
   return (
     <section className="ra-about about ra-data-padding data-padding" id="about">
       <div className="ra-botter-left botter-left">
-        <img src="assets/images/about/bottom-left.png" alt="bottom-left" />
+        <img src="assets/images/about/bottom-left.png" alt="" />
       </div>
       <div className="container">
         <div className="row ra-design-about design-about">
@@ -18,11 +18,11 @@ export default function About() {
               <p className="ra-description-heading description-heading ra-fade-down fade_down">
                 Professional Web Developer &amp; WordPress Specialist creating responsive, SEO-friendly, and high-performance websites for businesses worldwide.
               </p>
-              <img src="assets/images/about/round-shape.png" alt="round-shape" />
+              <img src="assets/images/about/round-shape.png" alt="" />
             </div>
             <div className="ra-img img">
               <div className="ra-img-container img-container">
-                <img src="assets/images/about/about-left-image.jpg" alt="about-left-image" />
+                <img src="assets/images/about/about-left-image.jpg" alt="Laptop and notebook on a desk beside flowers" />
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ra-round-image-about round-image-about">
-                  <img src="assets/images/about/right-round.png" alt="right-round" />
+                  <img src="assets/images/about/right-round.png" alt="" />
                 </div>
               </div>
               <a

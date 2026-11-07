@@ -1,0 +1,8 @@
+# robots.txt for Rehan Ayaz Portfolio
+User-agent: *
+Allow: /
+Disallow: /*.bak$
+Disallow: /*.sql$
+Disallow: /SEO_GUIDELINES.md
+
+Sitemap: https://rehanayaz.com/sitemap.xml

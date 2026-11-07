@@ -269,7 +269,7 @@ export default function Experience(props) {
             <div className="col-xl-6 col-lg-12 col-md-12" ref={leftColRef}>
               <div className="ra-education-detail education-detail">
                 <div className="ra-image-right image-right">
-                  <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
+                  <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
                 </div>
                 <div className="ra-tilte-education tilte-education">
                   <h2 className="ra-second-heading second-heading text-start">Experience</h2>
@@ -360,7 +360,7 @@ export default function Experience(props) {
             <div className="col-xl-6 col-lg-12 col-md-12" ref={rightColRef}>
               <div className="ra-education-detail education-detail">
                 <div className="ra-image-right image-right">
-                  <img src="assets/images/award/top-right.png" alt="top-right" loading="lazy" decoding="async" />
+                  <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
                 </div>
                 <div className="ra-tilte-education tilte-education">
                   <h2 className="ra-second-heading second-heading text-start">Certifications</h2>

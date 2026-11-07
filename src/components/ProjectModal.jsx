@@ -21,7 +21,7 @@ export default function ProjectModal(props) {
             <div className="ra-container-popup container-popup">
                 <div className="ra-index-design index-design">
                     <a href="index.html" className="ra-home-deta home-deta">Home</a>
-                    <img src="assets/images/services/arrow.png" alt="arrow" loading="lazy" decoding="async" />
+                    <img src="assets/images/services/arrow.png" alt="" loading="lazy" decoding="async" />
                     <p className="ra-name-service name-service">WordPress &amp; Web Development</p>
                 </div>
                 <div className="ra-text-title text-title zoom_in">
@@ -100,7 +100,7 @@ export default function ProjectModal(props) {
                 <div className="ra-data-mail-all data-mail-all">
                     <div className="ra-peralax-data-seted peralax-data-seted fade_down">
                         <div className="ra-image-tick image-tick">
-                            <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                            <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                         </div>
                         <div className="ra-text-tick text-tick">
                             <p className="ra-data-font data-font">Tailored Designs:</p>
@@ -110,7 +110,7 @@ export default function ProjectModal(props) {
                     </div>
                     <div className="ra-peralax-data-seted peralax-data-seted fade_down">
                         <div className="ra-image-tick image-tick">
-                            <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                            <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                         </div>
                         <div className="ra-text-tick text-tick">
                             <p className="ra-data-font data-font">Delivering smooth:</p>
@@ -120,7 +120,7 @@ export default function ProjectModal(props) {
                     </div>
                     <div className="ra-peralax-data-seted peralax-data-seted fade_down">
                         <div className="ra-image-tick image-tick">
-                            <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                            <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                         </div>
                         <div className="ra-text-tick text-tick">
                             <p className="ra-data-font data-font">Mobile-First Design:</p>
@@ -153,7 +153,7 @@ export default function ProjectModal(props) {
             <div className="ra-container-popup container-popup">
                 <div className="ra-index-design index-design">
                     <a href="index.html" className="ra-home-deta home-deta">Home</a>
-                    <img src="assets/images/services/arrow.png" alt="arrow" loading="lazy" decoding="async" />
+                    <img src="assets/images/services/arrow.png" alt="" loading="lazy" decoding="async" />
                     <p className="ra-name-service name-service">Food Delivery App 4U</p>
                 </div>
                 <div className="image-design-under">
@@ -239,7 +239,7 @@ export default function ProjectModal(props) {
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage border-design">
                             <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
                                 <p>120%</p>
@@ -250,7 +250,7 @@ export default function ProjectModal(props) {
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage border-design">
                             <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
                                 <p>80%</p>
@@ -261,7 +261,7 @@ export default function ProjectModal(props) {
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage design-over-border">
                             <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
                                 <p>140%</p>
@@ -272,7 +272,7 @@ export default function ProjectModal(props) {
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="box-project-avrage">
                             <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="arrow-tic" loading="lazy" decoding="async" />
+                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
                             </div>
                             <div className="average-code">
                                 <p>130%</p>

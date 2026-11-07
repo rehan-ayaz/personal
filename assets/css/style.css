@@ -2228,80 +2228,112 @@ body:not(.dark-theme) .ra-cert-thumb-link, body:not(.dark-theme) .cert-thumb-lin
 
 /* --------------------  Logo Scrool slider Section -------------------- */
 .ra-slider-logo, .slider-logo {
-    padding: 80px 0;
+    padding: 100px 0;
     overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 .ra-logos-data, .logos-data {
     overflow: hidden;
     white-space: nowrap;
     position: relative;
     display: flex;
+    width: 120vw;
+    left: 50%;
 }
 .ra-logos1, .logos1 {
     background: var(--menu-color);
-    transform: rotate(3deg);
-    width: 100%;
-    left: 0;
+    transform: translate(-50%, 0) rotate(3deg);
+    transform-origin: center center;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 .ra-logos2, .logos2 {
-    background: #F5F6F7;
-    transform: rotate(-5deg);
+    background: #00000003;
+    transform: translate(-50%, 0) rotate(-4deg);
+    transform-origin: center center;
     overflow: hidden;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    margin-top: -50px;
+    z-index: 1;
+    margin-top: -55px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 .ra-logos-data .ra-logos-slide, .logos-data .logos-slide {
-    animation: 80s slide infinite linear;
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: 220s slide infinite linear;
+}
+.ra-logos-data .ra-logos-slide:hover, .logos-data .logos-slide:hover {
+    animation-play-state: paused;
+}
+.ra-logos-data .ra-logos-slide.ra-logos-slide2,
+.logos-data .logos-slide.logos-slide2 {
+    animation: 200s slide2 infinite linear;
 }
 @keyframes slide {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translate3d(-50%, 0, 0);
     }
-}
-.ra-logos-slide2, .logos-slide2 {
-    animation: 70s slide2 infinite linear;
 }
 @keyframes slide2 {
     0% {
-        transform: translateX(-100%);
+        transform: translate3d(-50%, 0, 0);
     }
     100% {
-        transform: translateX(0%);
+        transform: translate3d(0, 0, 0);
     }
 }
-.ra-marquee-content, .marquee__content {
+.ra-marquee-content, .marquee__content,
+.ra-marquee__content {
     display: flex;
-    justify-content: space-around;
-    min-width: 100%;
     align-items: center;
-    padding: 10px 0;
+    flex-shrink: 0;
+    padding: 14px 0;
 }
 .ra-marquee-img-main, .marquee-img-main {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    flex-shrink: 0;
+    gap: 0;
+    margin: 0;
+    padding: 0;
 }
 .ra-marquee-img-main h3, .marquee-img-main h3 {
     color: #FFF;
     text-align: center;
-    font-size: 48px;
+    font-size: clamp(26px, 3vw, 42px);
     font-weight: 500;
     font-family: "Marcellus", serif;
-    line-height: 60px;
+    line-height: 1;
     text-transform: uppercase;
-    margin-left: 90px;
+    letter-spacing: 0.04em;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
 }
-.ra-marquee-img-main img, .marquee-img-main img {
-    width: 100%;
-    max-width: 60px !important;
-    object-fit: cover;
+.ra-marquee-separator, .marquee-separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 42px;
+    flex-shrink: 0;
+}
+.ra-marquee-separator img, .marquee-separator img,
+.ra-marquue-flower, .marquue-flower {
+    width: 32px;
+    height: 32px;
+    max-width: 32px !important;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
     filter: none;
+    transform: translateY(-2px);
 }
 .ra-image-logos, .image-logos {
     color: #000000 !important;
@@ -2795,7 +2827,7 @@ button:focus-visible,
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     z-index: 100;
     overflow: hidden;
-    padding: 6px 0;
+    padding: 0;
     margin: 0;
     list-style: none;
     animation: customSelectFade 0.18s ease-out;
@@ -2825,6 +2857,14 @@ body.dark-theme .ra-custom-select-dropdown, body.dark-theme .custom-select-dropd
     color: var(--text-color);
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
+}
+.ra-custom-select-option:first-child, .custom-select-option:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.ra-custom-select-option:last-child, .custom-select-option:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .ra-custom-select-option:hover, .custom-select-option:hover {
     background-color: rgba(0, 194, 255, 0.08);
@@ -2943,6 +2983,8 @@ textarea {
 footer.ra-footer-data, footer.footer-data {
     position: relative;
     display: flow-root;
+    background-color: var(--body-color, #FFFFFF);
+    z-index: 20;
 }
 .ra-footer-descr, .footer-descr {
     font-size: 24px;
@@ -2960,16 +3002,24 @@ footer.ra-footer-data, footer.footer-data {
     align-items: center;
     justify-content: center;
     border: 2px solid var(--princing-box-border);
-    padding: 70px;
+    padding: 70px 30px;
+    width: 100%;
+    transition: all .4s ease;
+}
+.ra-box-social-media:hover, .box-social-media:hover {
+    border-color: var(--theme-data);
 }
 .ra-box-social-media img, .box-social-media img {
     width: 100%;
-    object-fit: cover;
-    max-width: 48px;
+    object-fit: contain;
+    max-width: 62px;
+    height: 62px;
     filter: var(--img-filter);
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 .ra-box-social-media:hover img, .box-social-media:hover img {
     filter: brightness(0) saturate(100%) invert(70%) sepia(59%) saturate(4703%) hue-rotate(157deg) brightness(100%) contrast(105%);
+    transform: scale(1.08);
 }
 .ra-created-data, .created-data {
     display: flex;

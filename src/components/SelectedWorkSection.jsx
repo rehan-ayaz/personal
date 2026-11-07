@@ -112,7 +112,7 @@ export default function SelectedWorkSection() {
 
     const isMobileView = () => window.innerWidth < 768;
 
-    // Initial setup matching authentic Trionn parameters
+    // Initial setup matching smooth responsive parameters
     const resetInitialCardStates = () => {
       const mobile = isMobileView();
       cards.forEach((card, t) => {
@@ -197,7 +197,7 @@ export default function SelectedWorkSection() {
         g.set(plusIcon, { rotation: 360 * progress, force3D: true });
       }
 
-      // Authentic Trionn Card Entrance Animation:
+      // Smooth Card Entrance Animation:
       // Uses the exact cubic formula: y = 550 * (1 - (1 - Math.pow(1 - (1.2 - r) / 0.7, 3)))
       const screenW = window.innerWidth;
       const A = 0.5 * screenW; // 50vw title block
@@ -294,7 +294,7 @@ export default function SelectedWorkSection() {
                   </div>
                 </div>
 
-                {/* Real Project Cards - Authentic Trionn Animated Entrance */}
+                {/* Real Project Cards - Animated Entrance */}
                 {realProjects.map((proj) => (
                   <div key={proj.id} className="js-work-card">
                     <div className="js-card-line" />
@@ -337,16 +337,19 @@ export default function SelectedWorkSection() {
                       <h3 className="cta-final-heading">
                         Discover our complete collection of digital experiences, brands, and platforms.
                       </h3>
-                      <a
-                        href="#contact"
-                        className="cta-final-btn"
-                      >
-                        VIEW ALL PROJECTS &rarr;
-                      </a>
+                      <div className="button_wrapper">
+                        <a
+                          href="#contact"
+                          className="btn button-text btn-main cta-final-btn"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <span>View All Projects &rarr;</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Authentic Trionn Decorative End Divider & Rotating Plus Icon */}
+                  {/* Decorative End Divider & Rotating Plus Icon */}
                   <div className="absolute right-0 top-0 bottom-0 h-dvh w-px pointer-events-none z-20 hidden md:block">
                     <div className="absolute top-0 left-0 h-full w-full bg-black/10 dark:bg-white/10" />
                     <svg
