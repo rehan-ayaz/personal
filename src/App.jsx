@@ -8,24 +8,40 @@ import React, { useEffect, useState } from 'react';
 import Preloader from './components/Preloader';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ToolsMarquee from './components/ToolsMarquee';
 import About from './components/About';
 import ServicesShowcaseSection from './components/ServicesShowcaseSection';
+import ToolsMarquee from './components/ToolsMarquee';
 import SelectedWorkSection from './components/SelectedWorkSection';
 import Experience from './components/Experience';
+import WhyWorkWithMe from './components/WhyWorkWithMe';
+import WorkProcess from './components/WorkProcess';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
-// import Contact from './components/Contact';
+import FAQSection from './components/FAQSection';
 import GallerySection from './components/GallerySection';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectModal from './components/ProjectModal';
 import TermsModal from './components/TermsModal';
 import PrivacyModal from './components/PrivacyModal';
+import Error404 from './components/Error404';
 
 export default function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+
+  const is404 = typeof window !== 'undefined' && (() => {
+    const p = (window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/');
+    return p !== '/' && p !== '/index.html';
+  })();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window.location.pathname.endsWith('/index.html') || window.location.pathname === '/index.html')) {
+      const cleanPath = window.location.pathname.replace(/\/index\.html$/, '') || '/';
+      window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    }
+  }, []);
 
   useEffect(() => {
     const handleOpenTerms = () => setIsTermsOpen(true);
@@ -62,12 +78,26 @@ export default function App() {
       if (window.ScrollTrigger) {
         window.ScrollTrigger.refresh();
       }
-    }, 1000);
+    }, 200);
 
     return () => {
       clearTimeout(timer);
     };
   }, []);
+
+  if (is404) {
+    return (
+      <>
+        <Preloader />
+        <Error404
+          onOpenTerms={() => setIsTermsOpen(true)}
+          onOpenPrivacy={() => setIsPrivacyOpen(true)}
+        />
+        <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
+        <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -80,32 +110,44 @@ export default function App() {
       {/* GSAP ScrollSmoother Content Wrapper */}
       <div id="smooth-wrapper">
         <div id="smooth-content" role="main" aria-label="Portfolio">
-          {/* Hero Section */}
+          {/* 1. Hero Section: First Impression & Value Prop */}
           <Hero />
 
-          {/* Tools & Skills Infinite Marquee */}
-          <ToolsMarquee />
-
-          {/* About Section */}
+          {/* 2. Short Introduction: Professional Authority */}
           <About />
 
-          {/* 3D Services Showcase */}
+          {/* 3. Services Overview: Intent Routing */}
           <ServicesShowcaseSection />
 
-          {/* Selected Work & Explorations (Pinned Horizontal Showcase) */}
+          {/* 4. Skills & Tech Stack: Technical Competence */}
+          <ToolsMarquee />
+
+          {/* 5. Featured Projects: Proof of Work & ROI */}
           <SelectedWorkSection />
 
-          {/* Experience & Certifications (0-radius cards + top-right accents) */}
+          {/* 6. Professional Experience: Career Credibility */}
           <Experience />
 
-          {/* Testimonials Slider */}
+          {/* 7. Why Work With Me?: Competitive Differentiator & Trust Signals */}
+          <WhyWorkWithMe />
+
+          {/* 8. Work Process: De-risking & Transparency / Workflow Overview */}
+          <WorkProcess />
+
+          {/* 9. Client Testimonials: Social Proof & Trust */}
           <Testimonials />
 
-          {/* Pricing Section */}
+          {/* Pricing Section: Clear Packages */}
           <Pricing />
 
-          {/* Interactive Gallery ("Life Outside the Screen") */}
+          {/* 10. FAQs: Objection Handling & SEO Accordion */}
+          <FAQSection />
+
+          {/* Real Gallery: Life Outside the Screen */}
           <GallerySection />
+
+          {/* 11. Contact / Inquiry: Lead Generation & Direct Channels */}
+          <Contact />
 
           {/* Footer Branding & Legal */}
           <Footer

@@ -6,6 +6,14 @@
     <title>Rehan Ayaz - Professional Web Developer &amp; WordPress Specialist</title>
     <meta name="description" content="Rehan Ayaz is a professional web developer and WordPress specialist creating responsive, SEO-friendly websites for businesses, bloggers, and eCommerce brands.">
     <meta name="robots" content="index, follow">
+    <script>
+      (function() {
+        if (window.location.pathname.endsWith('/index.html') || window.location.pathname === '/index.html') {
+          var clean = window.location.pathname.replace(/\/index\.html$/, '') || '/';
+          window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
     <link rel="canonical" href="https://rehanayaz.com/">
     <meta property="og:url" content="https://rehanayaz.com/">
     <meta property="og:type" content="website">
@@ -30,7 +38,12 @@
           "name": "Rehan Ayaz",
           "url": "https://rehanayaz.com/",
           "jobTitle": "Web Developer & WordPress Specialist",
-          "image": "https://rehanayaz.com/assets/images/header/mens.png"
+          "image": "https://rehanayaz.com/assets/images/header/mens.png",
+          "sameAs": [
+            "https://www.facebook.com/rehan.ayaz.399",
+            "https://www.linkedin.com/in/rehan-ayaz/",
+            "https://share.google/utjvSBhLUilRx9qRa"
+          ]
         },
         {
           "@type": "WebSite",
@@ -51,14 +64,18 @@
       ]
     }
     </script>
+    <!-- Preload Critical LCP Hero Image -->
+    <link rel="preload" as="image" href="/assets/images/header/mens.webp" type="image/webp" fetchpriority="high">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Marcellus&display=swap" rel="stylesheet">
-    <!-- Remix Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Marcellus&display=swap" rel="stylesheet">
+    <!-- Remix Icons (Asynchronous Non-blocking Load) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"></noscript>
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- Slick Slider & Magnific Popup -->
@@ -71,23 +88,24 @@
     <link rel="stylesheet" href="/assets/css/services-showcase.css">
     <link rel="stylesheet" href="/assets/css/terms-modal.css">
     <link rel="stylesheet" href="/assets/css/gallery-showcase.css">
+    <link rel="stylesheet" href="/assets/css/sections-addon.css">
 </head>
 <body>
     <div id="root"></div>
 
     <!-- Core Vendor Scripts -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/slick.min.js"></script>
-    <script src="/assets/js/magnific-popup.js"></script>
+    <script src="/assets/js/jquery.min.js" defer></script>
+    <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/assets/js/slick.min.js" defer></script>
+    <script src="/assets/js/magnific-popup.js" defer></script>
 
     <!-- GSAP Plugins -->
-    <script src="/assets/gsap-public/minified/gsap.min.js"></script>
-    <script src="/assets/gsap-public/minified/ScrollTrigger.min.js"></script>
-    <script src="/assets/gsap-public/minified/ScrollSmoother.min.js"></script>
-    <script src="/assets/gsap-public/minified/SplitText.min.js"></script>
-    <script src="/assets/gsap-public/minified/TextPlugin.min.js"></script>
-    <script src="/assets/gsap-public/minified/ScrollToPlugin.min.js"></script>
+    <script src="/assets/gsap-public/minified/gsap.min.js" defer></script>
+    <script src="/assets/gsap-public/minified/ScrollTrigger.min.js" defer></script>
+    <script src="/assets/gsap-public/minified/ScrollSmoother.min.js" defer></script>
+    <script src="/assets/gsap-public/minified/SplitText.min.js" defer></script>
+    <script src="/assets/gsap-public/minified/TextPlugin.min.js" defer></script>
+    <script src="/assets/gsap-public/minified/ScrollToPlugin.min.js" defer></script>
 
     <!-- React Application Entry -->
     <script type="module" src="/src/main.jsx"></script>

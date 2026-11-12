@@ -51,7 +51,7 @@ export default function About() {
                 <span>Let's Connect</span>
               </a>
               <p className="ra-self-intro self-intro ra-zoom-in zoom_in ra-show show">
-                Hello! I'm Rehan Ayaz, a Professional Web Developer &amp; WordPress Specialist with 2+ years of experience delivering reliable, fast-loading sites for businesses, bloggers, and eCommerce brands.
+                Hello! <img src="/assets/images/resume/smilly.png" alt="smiley" className="ra-smily smily" style={{ display: 'inline-block', verticalAlign: 'middle', width: '38px', height: '38px', margin: '0 6px 4px 6px' }} /> I'm Rehan Ayaz, a Professional Web Developer &amp; WordPress Specialist with 2+ years of experience delivering reliable, fast-loading sites for businesses, bloggers, and eCommerce brands.
               </p>
             </div>
           </div>

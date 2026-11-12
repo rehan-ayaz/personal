@@ -7,40 +7,40 @@ const realProjects = [
     id: "food-delivery",
     title: "Food Delivery App 4U",
     desc: "White-label food delivery ecosystem featuring real-time order tracking, multi-vendor customer app, restaurant dashboard, and seamless checkout flows.",
-    desktopImg: "/assets/images/projects/food-delivery/Food Delivery App 4U.png",
-    mobileImg: "/assets/images/projects/food-delivery/food-delivery_m.png",
+    desktopImg: "/assets/images/projects/food-delivery/Food Delivery App 4U.webp",
+    mobileImg: "/assets/images/projects/food-delivery/food-delivery_m.webp",
     link: "#contact"
   },
   {
     id: "erp-system",
     title: "ERP System 4U",
     desc: "Complete enterprise ERP solution uniting multi-business management, real-time inventory, CRM, accounting, and AI-powered business intelligence.",
-    desktopImg: "/assets/images/projects/erp-system/ERP System 4U.png",
-    mobileImg: "/assets/images/projects/erp-system/erp-system_m.png",
+    desktopImg: "/assets/images/projects/erp-system/ERP System 4U.webp",
+    mobileImg: "/assets/images/projects/erp-system/erp-system_m.webp",
     link: "#contact"
   },
   {
     id: "ar-gadgets",
     title: "AR Gadgets",
     desc: "High-converting electronics and audio peripherals store with dynamic product showcases, secure checkout, customer portals, and fast nationwide delivery.",
-    desktopImg: "/assets/images/projects/ar-gadgets/AR Gadgets.png",
-    mobileImg: "/assets/images/projects/ar-gadgets/ar-gadgets_m.png",
+    desktopImg: "/assets/images/projects/ar-gadgets/AR Gadgets.webp",
+    mobileImg: "/assets/images/projects/ar-gadgets/ar-gadgets_m.webp",
     link: "#contact"
   },
   {
     id: "it-pro",
     title: "IT Pro Services",
     desc: "Enterprise custom software and IT consulting platform with 15 custom pages, Kohost cloud dashboard integration, and responsive data analytics.",
-    desktopImg: "/assets/images/projects/it-pro/IT Pro Services.png",
-    mobileImg: "/assets/images/projects/it-pro/it-pro_m.png",
+    desktopImg: "/assets/images/projects/it-pro/IT Pro Services.webp",
+    mobileImg: "/assets/images/projects/it-pro/it-pro_m.webp",
     link: "#contact"
   },
   {
     id: "hassan-tech",
     title: "Hassan Tech",
     desc: "Pakistan's trusted mechanical keyboard eCommerce store featuring custom builds, advanced keyboard filtering, live chat, and smooth WooCommerce checkout.",
-    desktopImg: "/assets/images/projects/hassan-tech/Hassan Tech.png",
-    mobileImg: "/assets/images/projects/hassan-tech/hassan-tech_m.png",
+    desktopImg: "/assets/images/projects/hassan-tech/Hassan Tech.webp",
+    mobileImg: "/assets/images/projects/hassan-tech/hassan-tech_m.webp",
     link: "#contact"
   },
   {

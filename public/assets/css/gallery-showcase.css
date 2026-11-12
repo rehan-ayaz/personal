@@ -134,36 +134,3 @@ body.dark-theme .ra-gallery-card-inner {
     border-radius: 12px;
     background-color: #121317;
 }
-
-/* 5 Venetian Blind Curtain Slats matching Footer Background */
-.ra-gallery-slats-wrap {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-    z-index: 98;
-}
-
-.ra-gallery-slat {
-    flex: 1 1 0%;
-    width: 100%;
-    padding-bottom: 1px;
-    background-color: var(--body-color, #FFFFFF);
-    transform: scaleY(0);
-    transform-origin: center bottom;
-    will-change: transform;
-    transition: background-color 0.35s ease;
-}
-
-.ra-gallery-slat:not(:first-child) {
-    margin-top: -1px;
-}
-
-body.dark-theme .ra-gallery-slat,
-html.dark-theme .ra-gallery-slat,
-[data-theme="dark"] .ra-gallery-slat {
-    background-color: var(--body-color, #000000) !important;
-}

@@ -20,7 +20,13 @@ export default function Hero() {
             <img src="assets/images/header/top-left.png" alt="" />
           </div>
           <div className="ra-data-men-boy data-men-boy">
-            <img src="assets/images/header/mens.png" alt="Rehan Ayaz" />
+            <img
+              src="/assets/images/header/mens.webp"
+              alt="Rehan Ayaz"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
           </div>
           <div className="ra-right-black right-black">
             <img src="assets/images/header/top-right.png" alt="" />
@@ -65,6 +71,9 @@ export default function Hero() {
         </a>
         <a href="https://wa.me/923260735090" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <i className="ri-whatsapp-line" />
+        </a>
+        <a href="https://share.google/utjvSBhLUilRx9qRa" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+          <i className="ri-google-fill" />
         </a>
       </div>
     </section>

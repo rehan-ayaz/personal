@@ -10,7 +10,6 @@ export default function Footer(props) {
     <>
         {/* ==================== [ Footer section start ] ==================== */}
         <footer className="ra-footer-data footer-data" id="footer">
-            <div id="contact" style={{ position: 'absolute', top: 0, left: 0, width: '1px', height: '1px', pointerEvents: 'none' }} />
             <div className="container">
                 <div className="ra-footer-text footer-text">
                     <h2 className="ra-second-heading second-heading">Helping Start-Ups Scale &amp; Grow.</h2>

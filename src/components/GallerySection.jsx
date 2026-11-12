@@ -16,11 +16,11 @@ export const galleryItems = [
     alt: 'Rehan Ayaz with colleagues at WordCamp Conference',
     title: 'WordCamp Community',
     category: 'Conference',
-    width: { desktop: 'clamp(14rem, 21vw, 21rem)', mobile: '46vw' },
+    width: { desktop: 'clamp(12.5rem, 17vw, 17rem)', mobile: '38vw' },
     aspectRatio: '1.5 / 1',
     bgTone: '#E2E8F0',
     darkBgTone: '#1E293B',
-    position: { desktop: [0.17, 0.25], mobile: [0.26, 0.14] }
+    position: { desktop: [0.15, 0.22], mobile: [0.26, 0.16] }
   },
   {
     id: '02',
@@ -28,11 +28,11 @@ export const galleryItems = [
     alt: 'Rehan Ayaz at a formal celebration gathering',
     title: 'Celebration & Milestones',
     category: 'Gathering',
-    width: { desktop: 'clamp(8.5rem, 12vw, 12rem)', mobile: '32vw' },
+    width: { desktop: 'clamp(7.5rem, 9.5vw, 9.5rem)', mobile: '28vw' },
     aspectRatio: '0.56 / 1',
     bgTone: '#F5EBE6',
     darkBgTone: '#3B231A',
-    position: { desktop: [0.50, 0.24], mobile: [0.76, 0.15] }
+    position: { desktop: [0.92, 0.51], mobile: [0.74, 0.23] }
   },
   {
     id: '03',
@@ -40,11 +40,11 @@ export const galleryItems = [
     alt: 'WordPress Community Meetup celebration with badge',
     title: 'Code Is Poetry',
     category: 'WordPress Meetup',
-    width: { desktop: 'clamp(13.5rem, 20vw, 20rem)', mobile: '45vw' },
+    width: { desktop: 'clamp(12rem, 16vw, 16rem)', mobile: '38vw' },
     aspectRatio: '1.33 / 1',
     bgTone: '#E0F2FE',
     darkBgTone: '#0C4A6E',
-    position: { desktop: [0.82, 0.25], mobile: [0.22, 0.29] }
+    position: { desktop: [0.83, 0.20], mobile: [0.26, 0.33] }
   },
   {
     id: '04',
@@ -52,59 +52,47 @@ export const galleryItems = [
     alt: 'Rehan Ayaz at WordCamp keynote stage backdrop',
     title: 'A Future For Everyone',
     category: 'WordCamp Stage',
-    width: { desktop: 'clamp(14rem, 21vw, 21rem)', mobile: '46vw' },
+    width: { desktop: 'clamp(12rem, 16vw, 16rem)', mobile: '38vw' },
     aspectRatio: '1.5 / 1',
     bgTone: '#EDE9FE',
     darkBgTone: '#2E1065',
-    position: { desktop: [0.11, 0.50], mobile: [0.78, 0.31] }
+    position: { desktop: [0.08, 0.50], mobile: [0.26, 0.69] }
   },
   {
     id: '05',
-    src: '/gallery/gallery-05.jpg',
-    alt: 'Rehan Ayaz with fellow developer at WordPress event',
-    title: 'Developer Connections',
-    category: 'Community',
-    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
-    aspectRatio: '0.67 / 1',
-    bgTone: '#E0E7FF',
-    darkBgTone: '#1E1B4B',
-    position: { desktop: [0.89, 0.50], mobile: [0.22, 0.71] }
-  },
-  {
-    id: '06',
     src: '/gallery/gallery-06.jpg',
     alt: 'Casual office celebration and cake with colleagues',
     title: 'Team Bonding',
     category: 'Office Culture',
-    width: { desktop: 'clamp(14.5rem, 22vw, 22rem)', mobile: '48vw' },
+    width: { desktop: 'clamp(13rem, 18vw, 18rem)', mobile: '40vw' },
     aspectRatio: '1.78 / 1',
     bgTone: '#FEF3C7',
     darkBgTone: '#451A03',
-    position: { desktop: [0.20, 0.77], mobile: [0.78, 0.70] }
+    position: { desktop: [0.17, 0.79], mobile: [0.74, 0.86] }
   },
   {
-    id: '07',
+    id: '06',
     src: '/gallery/gallery-07.jpg',
     alt: 'Addiz Tech milestone celebration with team cake',
     title: 'Addiz Tech Milestones',
     category: 'Celebration',
-    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
+    width: { desktop: 'clamp(8.5rem, 11vw, 11rem)', mobile: '30vw' },
     aspectRatio: '0.75 / 1',
     bgTone: '#ECFDF5',
     darkBgTone: '#064E3B',
-    position: { desktop: [0.50, 0.78], mobile: [0.26, 0.85] }
+    position: { desktop: [0.50, 0.81], mobile: [0.74, 0.69] }
   },
   {
-    id: '08',
+    id: '07',
     src: '/gallery/gallery-08.jpg',
     alt: 'Birthday and team milestone celebration moment',
     title: 'Milestone Memories',
     category: 'Memories',
-    width: { desktop: 'clamp(9.5rem, 13vw, 13rem)', mobile: '34vw' },
+    width: { desktop: 'clamp(8.5rem, 11vw, 11rem)', mobile: '30vw' },
     aspectRatio: '0.75 / 1',
     bgTone: '#F0FDF4',
     darkBgTone: '#14532D',
-    position: { desktop: [0.80, 0.77], mobile: [0.74, 0.86] }
+    position: { desktop: [0.83, 0.80], mobile: [0.26, 0.87] }
   }
 ];
 
@@ -113,8 +101,7 @@ export default function GallerySection() {
   const sectionRef = useRef(null);
   const viewportRef = useRef(null);
   const cardsRef = useRef([]);
-  const slatsRef = useRef([]);
-  const [pinDistance, setPinDistance] = useState(4500);
+  const [pinDistance, setPinDistance] = useState(1200);
 
   const isDarkMode = () =>
     typeof document !== 'undefined' && document.body.classList.contains('dark-theme');
@@ -139,10 +126,10 @@ export default function GallerySection() {
 
     const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-    // Dynamic runway calculation
+    // Tight, natural runway calculation so it moves directly into the footer without empty space
     const calcPinDist = () => {
       const h = window.innerHeight;
-      const dist = Math.round(h * (isMobile() ? 3.5 : 4.5));
+      const dist = Math.round(h * (isMobile() ? 0.9 : 1.2));
       setPinDistance(dist);
       return dist;
     };
@@ -172,16 +159,18 @@ export default function GallerySection() {
       const w = screenW();
       const h = screenH();
       const mobile = isMobile();
-      const edgePad = mobile ? 14 : 28;
+      const edgePad = mobile ? 10 : 28;
+      const xMargin = mobile ? 50 : 100;
+      const yMargin = mobile ? 55 : 90;
 
       return galleryItems.map((item, idx) => {
         const coords = mobile ? item.position.mobile : item.position.desktop;
         // Deterministic organic rotations based on index
-        const rots = [-1.0, -3.8, -3.4, -5.5, -1.0, -5.5, -3.0, -1.0, -4.0, 2.4, -3.7];
+        const rots = [-2.0, 2.2, -2.4, 2.0, -1.8, 0.8, -2.0];
         const rot = rots[idx % rots.length];
 
-        const targetX = clamp(coords[0] * w - w / 2, -w / 2 + 100 + edgePad, w / 2 - 100 - edgePad);
-        const targetY = clamp(coords[1] * h - h / 2, -h / 2 + 90, h / 2 - 90);
+        const targetX = clamp(coords[0] * w - w / 2, -w / 2 + xMargin + edgePad, w / 2 - xMargin - edgePad);
+        const targetY = clamp(coords[1] * h - h / 2, -h / 2 + yMargin, h / 2 - yMargin);
 
         return { x: targetX, y: targetY, r: rot };
       });
@@ -190,7 +179,6 @@ export default function GallerySection() {
     let settled = computeSettledPositions();
     let scatter = getScatterFrom(screenW(), screenH());
     const cards = cardsRef.current.filter(Boolean);
-    const slats = slatsRef.current.filter(Boolean);
 
     // Initial card setup
     cards.forEach((card, idx) => {
@@ -229,8 +217,8 @@ export default function GallerySection() {
         }
       }
 
-      // Phase 1: Card entrance flight (0 to 0.58 progress)
-      const flightDuration = 0.58;
+      // Card entrance flight (0 to 0.70 progress) - seamless settling with zero dead space
+      const flightDuration = 0.70;
       const cardProgMaster = Math.min(1, progress / flightDuration);
       const stagger = 0.045;
       const flySpan = 0.45;
@@ -251,27 +239,8 @@ export default function GallerySection() {
         const curScale = 0.92 + (1.0 - 0.92) * easeP;
 
         card.style.transform = `translate(-50%, -50%) translate3d(${curX}px, ${curY}px, 0) rotate(${curR}deg) scale(${curScale})`;
-      }
-
-      // Phase 2: Venetian Blind Slat Curtain Wipe into Footer (progress > 0.65)
-      const slatStart = 0.65;
-      const slatP = Math.max(0, Math.min(1, (progress - slatStart) / (1 - slatStart)));
-      const count = slats.length;
-
-      for (let i = 0; i < count; i++) {
-        const startD = (0.28 * (count - 1 - i)) / (count - 1 || 1);
-        const endD = startD + 0.35;
-        const p = Math.max(0, Math.min(1, (slatP - startD) / (endD - startD)));
-        slats[i].style.transform = `scaleY(${p})`;
-      }
-
-      // Smoothly fade out cards behind the wiping curtain so no card edges bleed into the footer
-      const cardFade = progress < slatStart ? 1 : Math.max(0, Math.min(1, 1 - slatP * 2));
-      for (let i = 0; i < cards.length; i++) {
-        if (cards[i]) {
-          cards[i].style.opacity = `${cardFade}`;
-          cards[i].style.visibility = cardFade <= 0.01 ? 'hidden' : 'visible';
-        }
+        card.style.opacity = '1';
+        card.style.visibility = 'visible';
       }
     };
 
@@ -383,7 +352,7 @@ export default function GallerySection() {
             </div>
           </div>
 
-          {/* 8 Interactive Gallery Cards with Real Photos */}
+          {/* 7 Interactive Gallery Cards with Real Photos */}
           {galleryItems.map((item, idx) => (
             <figure
               key={item.id}
@@ -412,22 +381,6 @@ export default function GallerySection() {
                 />
               </div>
             </figure>
-          ))}
-        </div>
-
-        {/* 5 Venetian Blind Curtain Slats for Smooth Wipe into Footer */}
-        <div
-          className="ra-gallery-slats-wrap absolute inset-0 pointer-events-none flex flex-col w-full h-full"
-          style={{ zIndex: 98 }}
-        >
-          {Array.from({ length: 5 }).map((_, idx) => (
-            <div
-              key={`stripe-${idx}`}
-              ref={(el) => {
-                if (el) slatsRef.current[idx] = el;
-              }}
-              className="ra-gallery-slat will-change-transform"
-            />
           ))}
         </div>
       </section>

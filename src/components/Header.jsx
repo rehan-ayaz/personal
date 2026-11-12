@@ -61,7 +61,7 @@ export default function Header() {
       <header className="ra-header header" data-header>
         <div className="container">
           <div className="ra-data-spaces data-spaces">
-            <a href="index.html" className="ra-logo logo">
+            <a href="#hero" className="ra-logo logo" aria-label="Rehan Ayaz Homepage">
               <span className="ra-logo-black logo-black">Rehan </span>
               <span className="ra-logo-blue logo-blue">Ayaz</span>
             </a>
@@ -92,7 +92,7 @@ export default function Header() {
       <div className="ra-menu menu" id="menu">
         <div className="ra-left-data left-data">
           <div className="ra-logo-design logo-design">
-            <a href="index.html" className="ra-logo logo">
+            <a href="#hero" className="ra-logo logo" aria-label="Rehan Ayaz Homepage">
               <span className="ra-logo-black logo-black">Rehan </span>
               <span className="ra-logo-blue logo-blue">Ayaz</span>
             </a>
@@ -100,7 +100,7 @@ export default function Header() {
           <div className="ra-navbar-data navbar-data" role="navigation" aria-label="Primary navigation">
             <ul>
               <li>
-                <a href="index.html" className="ra-data-name data-name">HOME</a>
+                <a href="#hero" className="ra-data-name data-name">HOME</a>
                 <span className="ra-menu-number menu-number">01</span>
               </li>
               <li>
@@ -175,6 +175,9 @@ export default function Header() {
                 </a>
                 <a href="https://wa.me/923260735090" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                   <i className="ri-whatsapp-line" />
+                </a>
+                <a href="https://share.google/utjvSBhLUilRx9qRa" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+                  <i className="ri-google-fill" />
                 </a>
               </div>
             </div>

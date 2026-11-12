@@ -180,7 +180,7 @@ function initButtonHoverAnimations() {
 function finishLoader() {
   initButtonHoverAnimations();
   setTimeout(function () {
-    $(".ra-preloader, .preloader").addClass("loaded").fadeOut(600, function () {
+    $(".ra-preloader, .preloader").addClass("loaded").fadeOut(250, function () {
       initHeadingAnimations();
       initSelfIntroScrollAnimation();
       initButtonHoverAnimations();
@@ -188,7 +188,7 @@ function finishLoader() {
         ScrollTrigger.refresh();
       }
     });
-  }, 1000);
+  }, 100);
 }
 
 if (document.readyState === "complete") {
@@ -204,7 +204,7 @@ $(document).ready(function () {
     initSelfIntroScrollAnimation();
     initButtonHoverAnimations();
     ScrollTrigger.refresh();
-  }, 1200);
+  }, 300);
 
   // Load More Projects Handler
   $("#loadMoreProjects").on("click", function (e) {
@@ -287,6 +287,34 @@ $(document).on("click", "a[href^='#']", function (e) {
     $(`.ra-navbar-data a[href='${target}'], .navbar-data a[href='${target}']`).addClass("active");
 
     $("#menu").removeClass("active");
+  }
+});
+
+// Intercept and prevent index.html from appearing in URL upon any link click
+$(document).on("click", "a[href*='index.html']", function (e) {
+  const href = $(this).attr("href");
+  if (!href) return;
+  if (href === "index.html" || href === "/index.html" || href.includes("index.html#")) {
+    e.preventDefault();
+    const hashIndex = href.indexOf("#");
+    const target = hashIndex !== -1 ? href.substring(hashIndex) : "#hero";
+    const $target = $(target);
+    if ($target.length) {
+      if (smoother) {
+        smoother.scrollTo(target, true, "top 40px");
+      } else {
+        $("html, body").animate({ scrollTop: $target.offset().top - 40 }, 800);
+      }
+      $(".ra-navbar-data a, .navbar-data a").removeClass("active");
+      $(`.ra-navbar-data a[href='${target}'], .navbar-data a[href='${target}']`).addClass("active");
+      $("#menu").removeClass("active");
+      $(".ra-popup-box-dash, .popup-box-dash, .ra-popup-box-dash-project, .popup-box-dash-project, .ra-popup-box-dash-blog, .popup-box-dash-blog").fadeOut(200);
+      $(".ra-popup-overlay, .popup-overlay").fadeOut(200);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    const cleanPath = window.location.pathname.replace(/\/index\.html$/, "") || "/";
+    window.history.replaceState(null, "", cleanPath + (target !== "#hero" ? target : ""));
   }
 });
 

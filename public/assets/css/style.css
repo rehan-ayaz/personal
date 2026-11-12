@@ -2249,13 +2249,19 @@ body:not(.dark-theme) .ra-cert-thumb-link, body:not(.dark-theme) .cert-thumb-lin
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 .ra-logos2, .logos2 {
-    background: #00000003;
+    background: #FFFFFF;
     transform: translate(-50%, 0) rotate(-4deg);
     transform-origin: center center;
     overflow: hidden;
     z-index: 1;
     margin-top: -55px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-theme .ra-logos2,
+body.dark-theme .logos2 {
+    background: #FFFFFF;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
 }
 .ra-logos-data .ra-logos-slide, .logos-data .logos-slide {
     display: flex;
@@ -2335,7 +2341,9 @@ body:not(.dark-theme) .ra-cert-thumb-link, body:not(.dark-theme) .cert-thumb-lin
     filter: none;
     transform: translateY(-2px);
 }
-.ra-image-logos, .image-logos {
+.ra-image-logos, .image-logos,
+body.dark-theme .ra-image-logos,
+body.dark-theme .image-logos {
     color: #000000 !important;
 }
 /* --------------------  Pricing Section -------------------- */

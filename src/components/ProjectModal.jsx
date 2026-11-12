@@ -20,7 +20,7 @@ export default function ProjectModal(props) {
         <div className="ra-popup-content popup-content">
             <div className="ra-container-popup container-popup">
                 <div className="ra-index-design index-design">
-                    <a href="index.html" className="ra-home-deta home-deta">Home</a>
+                    <a href="#hero" className="ra-home-deta home-deta ra-close-popup close-popup">Home</a>
                     <img src="assets/images/services/arrow.png" alt="" loading="lazy" decoding="async" />
                     <p className="ra-name-service name-service">WordPress &amp; Web Development</p>
                 </div>
@@ -152,7 +152,7 @@ export default function ProjectModal(props) {
         <div className="ra-popup-content popup-content">
             <div className="ra-container-popup container-popup">
                 <div className="ra-index-design index-design">
-                    <a href="index.html" className="ra-home-deta home-deta">Home</a>
+                    <a href="#hero" className="ra-home-deta home-deta ra-close-popup close-popup">Home</a>
                     <img src="assets/images/services/arrow.png" alt="" loading="lazy" decoding="async" />
                     <p className="ra-name-service name-service">Food Delivery App 4U</p>
                 </div>
