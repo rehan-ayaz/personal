@@ -6,6 +6,12 @@ dist/
 
 # Scratch & debug scripts
 scratch/
+scripts/
+
+# Backup and comparison templates
+backup*/
+.template-review-temp/
+Layout-2/
 
 # Logs
 *.log
@@ -20,3 +26,4 @@ Thumbs.db
 .env.local
 .vscode/
 .idea/
+vireo-local/

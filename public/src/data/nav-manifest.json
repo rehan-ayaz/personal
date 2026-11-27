@@ -1,0 +1,865 @@
+{
+  "$schema": "vireo-nav-manifest/v1",
+  "meta": {
+    "spec": "specs/02-INFORMATION-ARCHITECTURE.md",
+    "registryRoutes": 50,
+    "deliverableHtmlFiles": 50,
+    "aliasNodes": 0,
+    "comment": "10 Approved Sections and 36 Sub-Tabs for Rehan Ayaz CMS",
+    "sections": [
+      "MAIN"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "grp.dashboards",
+      "title": "Dashboard",
+      "slug": "dashboards/sales",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "dashboard",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.dashboards.dashboards.sales",
+      "title": "Overview",
+      "slug": "dashboards/sales",
+      "icon": "chevron-right",
+      "parent": "grp.dashboards",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "overview",
+        "dashboard",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.dashboards.dashboards.analytics",
+      "title": "Analytics",
+      "slug": "dashboards/analytics",
+      "icon": "chevron-right",
+      "parent": "grp.dashboards",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "analytics",
+        "dashboard",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content",
+      "title": "Content Management",
+      "slug": "content/pages",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "content management",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.pages",
+      "title": "Pages",
+      "slug": "content/pages",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "pages",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.blog-posts",
+      "title": "Blog Posts",
+      "slug": "content/blog-posts",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "blog posts",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.categories",
+      "title": "Categories",
+      "slug": "content/categories",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "categories",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.tags",
+      "title": "Tags",
+      "slug": "content/tags",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "tags",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.projects",
+      "title": "Projects",
+      "slug": "content/projects",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "projects",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.services",
+      "title": "Services",
+      "slug": "content/services",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "services",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.testimonials",
+      "title": "Testimonials",
+      "slug": "content/testimonials",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "testimonials",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.team",
+      "title": "Team Members",
+      "slug": "content/team",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "team members",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.content.content.faqs",
+      "title": "FAQs",
+      "slug": "content/faqs",
+      "icon": "chevron-right",
+      "parent": "grp.content",
+      "section": null,
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "faqs",
+        "content management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.media",
+      "title": "Media Library",
+      "slug": "media/all-media",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "media library",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.media.media.all-media",
+      "title": "All Media",
+      "slug": "media/all-media",
+      "icon": "chevron-right",
+      "parent": "grp.media",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "all media",
+        "media library",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.media.media.folders",
+      "title": "Folders",
+      "slug": "media/folders",
+      "icon": "chevron-right",
+      "parent": "grp.media",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "folders",
+        "media library",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo",
+      "title": "SEO Management",
+      "slug": "seo/overview",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "seo management",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.overview",
+      "title": "SEO Overview",
+      "slug": "seo/overview",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "seo overview",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.page-seo",
+      "title": "Page SEO",
+      "slug": "seo/page-seo",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "page seo",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.schema",
+      "title": "Schema",
+      "slug": "seo/schema",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "schema",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.redirects",
+      "title": "Redirects",
+      "slug": "seo/redirects",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "redirects",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.audit",
+      "title": "SEO Audit",
+      "slug": "seo/audit",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "seo audit",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.seo.seo.sitemap",
+      "title": "Sitemap",
+      "slug": "seo/sitemap",
+      "icon": "chevron-right",
+      "parent": "grp.seo",
+      "section": null,
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "sitemap",
+        "seo management",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.forms",
+      "title": "Forms & Leads",
+      "slug": "forms-leads/all-forms",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "forms & leads",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.forms.forms-leads.all-forms",
+      "title": "All Forms",
+      "slug": "forms-leads/all-forms",
+      "icon": "chevron-right",
+      "parent": "grp.forms",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "all forms",
+        "forms & leads",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.forms.forms-leads.submissions",
+      "title": "Submissions",
+      "slug": "forms-leads/submissions",
+      "icon": "chevron-right",
+      "parent": "grp.forms",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "submissions",
+        "forms & leads",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.forms.forms-leads.subscribers",
+      "title": "Subscribers",
+      "slug": "forms-leads/subscribers",
+      "icon": "chevron-right",
+      "parent": "grp.forms",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "subscribers",
+        "forms & leads",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.forms.forms-leads.leads",
+      "title": "Leads",
+      "slug": "forms-leads/leads",
+      "icon": "chevron-right",
+      "parent": "grp.forms",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "leads",
+        "forms & leads",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.appearance",
+      "title": "Appearance",
+      "slug": "appearance/menus",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "appearance",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.appearance.appearance.menus",
+      "title": "Menus",
+      "slug": "appearance/menus",
+      "icon": "chevron-right",
+      "parent": "grp.appearance",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "menus",
+        "appearance",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.appearance.appearance.header",
+      "title": "Header",
+      "slug": "appearance/header",
+      "icon": "chevron-right",
+      "parent": "grp.appearance",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "header",
+        "appearance",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.appearance.appearance.footer",
+      "title": "Footer",
+      "slug": "appearance/footer",
+      "icon": "chevron-right",
+      "parent": "grp.appearance",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "footer",
+        "appearance",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.appearance.appearance.theme-settings",
+      "title": "Theme Settings",
+      "slug": "appearance/theme-settings",
+      "icon": "chevron-right",
+      "parent": "grp.appearance",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "theme settings",
+        "appearance",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.marketing",
+      "title": "Marketing",
+      "slug": "marketing/integrations",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "marketing",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.marketing.marketing.integrations",
+      "title": "Integrations",
+      "slug": "marketing/integrations",
+      "icon": "chevron-right",
+      "parent": "grp.marketing",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "integrations",
+        "marketing",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.marketing.marketing.tracking",
+      "title": "Tracking",
+      "slug": "marketing/tracking",
+      "icon": "chevron-right",
+      "parent": "grp.marketing",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "tracking",
+        "marketing",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.marketing.marketing.campaigns",
+      "title": "Campaigns",
+      "slug": "marketing/campaigns",
+      "icon": "chevron-right",
+      "parent": "grp.marketing",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "campaigns",
+        "marketing",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.users",
+      "title": "Users & Roles",
+      "slug": "users-roles/all-users",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "users & roles",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.users.users-roles.all-users",
+      "title": "All Users",
+      "slug": "users-roles/all-users",
+      "icon": "chevron-right",
+      "parent": "grp.users",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "all users",
+        "users & roles",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.users.users-roles.roles-permissions",
+      "title": "Roles & Permissions",
+      "slug": "users-roles/roles-permissions",
+      "icon": "chevron-right",
+      "parent": "grp.users",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "roles & permissions",
+        "users & roles",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.security",
+      "title": "Security & System",
+      "slug": "security-system/activity-logs",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "security & system",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.security.security-system.activity-logs",
+      "title": "Activity Logs",
+      "slug": "security-system/activity-logs",
+      "icon": "chevron-right",
+      "parent": "grp.security",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "activity logs",
+        "security & system",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.security.security-system.backups",
+      "title": "Backups",
+      "slug": "security-system/backups",
+      "icon": "chevron-right",
+      "parent": "grp.security",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "backups",
+        "security & system",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.security.security-system.performance",
+      "title": "Performance",
+      "slug": "security-system/performance",
+      "icon": "chevron-right",
+      "parent": "grp.security",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "performance",
+        "security & system",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.security.security-system.error-logs",
+      "title": "Error Logs",
+      "slug": "security-system/error-logs",
+      "icon": "chevron-right",
+      "parent": "grp.security",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "error logs",
+        "security & system",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.settings",
+      "title": "Settings",
+      "slug": "settings/general",
+      "icon": "layout-dashboard",
+      "parent": null,
+      "section": "MAIN",
+      "order": 10,
+      "badge": null,
+      "keywords": [
+        "settings",
+        "cms",
+        "manage"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.settings.settings.general",
+      "title": "General",
+      "slug": "settings/general",
+      "icon": "chevron-right",
+      "parent": "grp.settings",
+      "section": null,
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "general",
+        "settings",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.settings.settings.email",
+      "title": "Email",
+      "slug": "settings/email",
+      "icon": "chevron-right",
+      "parent": "grp.settings",
+      "section": null,
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "email",
+        "settings",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.settings.settings.notifications",
+      "title": "Notifications",
+      "slug": "settings/notifications",
+      "icon": "chevron-right",
+      "parent": "grp.settings",
+      "section": null,
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "notifications",
+        "settings",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    },
+    {
+      "id": "grp.settings.settings.api-settings",
+      "title": "API Settings",
+      "slug": "settings/api-settings",
+      "icon": "chevron-right",
+      "parent": "grp.settings",
+      "section": null,
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "api settings",
+        "settings",
+        "page"
+      ],
+      "inMenu": true,
+      "alias": null
+    }
+  ]
+}

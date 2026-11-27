@@ -1,0 +1,1 @@
+import{q as o,r as a}from"../vireo-BKePweWV.js";window.__axQuickToggleTheme=o;const e=document.getElementById("landing-hero-chart");e&&a(e,"area",[{name:"This year",data:[28,34,30,42,38,52,48,60,56,68,64,74]}],{height:200,legend:"none",apex:{colors:[(t=>getComputedStyle(document.documentElement).getPropertyValue(t).trim())("--ax-chart-1")],stroke:{width:2.5}}});

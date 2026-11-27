@@ -4,6 +4,11 @@
  * and standardized dual-class naming convention (ra-*).
  */
 import React from 'react';
+import ButtonLabel from "./ButtonLabel";
+import ProjectHighlights from './ProjectHighlights';
+import { projects } from '../data/portfolioData';
+
+const foodDelivery = projects.find((project) => project.id === 'food-delivery');
 
 export default function ProjectModal(props) {
   return (
@@ -133,9 +138,9 @@ export default function ProjectModal(props) {
                     fresh or revamping, we're here to bring your vision to life—beautifully and strategically.
                 </p>
                 <div className="main-btn-stcoked">
-                    <button type="button" className="circle-wrap">
+                    <button type="button" className="circle-wrap" data-button-motion>
                         <span className="border-animate"></span>
-                        <span className="close-btn">Close</span>
+                        <ButtonLabel><span className="close-btn">Close</span></ButtonLabel>
                     </button>
                 </div>
             </div>
@@ -154,158 +159,77 @@ export default function ProjectModal(props) {
                 <div className="ra-index-design index-design">
                     <a href="#hero" className="ra-home-deta home-deta ra-close-popup close-popup">Home</a>
                     <img src="assets/images/services/arrow.png" alt="" loading="lazy" decoding="async" />
-                    <p className="ra-name-service name-service">Food Delivery App 4U</p>
+                    <p className="ra-name-service name-service">{foodDelivery.title}</p>
                 </div>
                 <div className="image-design-under">
-                    <img src="assets/images/project/image-under.png" alt="Food Delivery Platform" loading="lazy" decoding="async" />
+                    <img src={foodDelivery.desktopImg} alt={foodDelivery.title} loading="lazy" decoding="async" />
                 </div>
                 <div className="detail-project-under row">
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="data-detail-project-socde">
-                            <h2 className="second-heading mb-0">Food Delivery Platform</h2>
-                            <div className="desing-project-mag">
-                                <span className="name-contru">
-                                    WordPress
-                                </span>
-                                <span className="name-contru">
-                                    Elementor Pro
-                                </span>
-                                <span className="name-contru">
-                                    7 Pages
-                                </span>
+                            <h2 className="second-heading mb-0">{foodDelivery.title}</h2>
+                            <div className="desing-project-mag flex-wrap">
+                                <span className="name-contru">{foodDelivery.category}</span>
+                                <span className="name-contru">{foodDelivery.tag}</span>
+                                <span className="name-contru">{foodDelivery.focus}</span>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-12">
                         <div className="data-detail-project-socde made-project">
-                            <p className="project-desc">A modern Food Delivery Platform website converted from Figma design into a fully responsive WordPress website with custom-designed pages and responsive layout.</p>
+                            <p className="project-desc">{foodDelivery.desc}</p>
                             <div className="detail-over">
                                 <div className="project-name-detail">
-                                    <p>CLIENT:</p>
-                                    <span>Food Delivery App 4U</span>
+                                    <p>PROJECT:</p>
+                                    <span>{foodDelivery.title}</span>
                                 </div>
                                 <div className="project-name-detail">
                                     <p>PLATFORM:</p>
-                                    <span>WORDPRESS</span>
+                                    <span>{foodDelivery.tag}</span>
                                 </div>
                                 <div className="project-name-detail">
-                                    <p>ROLE:</p>
-                                    <span>DEVELOPER</span>
-                                </div>
-                                <div className="project-name-detail">
-                                    <p>LIVE LINK:</p>
-                                    <span><a href="https://fooddeliveryapp4u.com/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary-color)" }}>fooddeliveryapp4u.com</a></span>
+                                    <p>SCOPE:</p>
+                                    <span>{foodDelivery.focus}</span>
                                 </div>
                                 <div className="project-name-detail border-0 pb-0">
-                                    <p>SOFTWARE:</p>
-                                    <span>ELEMENTOR PRO, FIGMA</span>
+                                    <p>TOOLS:</p>
+                                    <span>{foodDelivery.techStack.join(', ')}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h3 className="ra-deta-heading-sec deta-heading-sec">Research & User Insights</h3>
-                <p className="text-data-desc">At iFood, we believe food is more than just a meal—it's an experience. Whether
-                    you're craving comfort food or gourmet dishes, we serve up quality and flavor. With a commitment to
-                    fresh ingredients and exceptional service, we aim to provide you with an unforgettable dining
-                    experience, both at our restaurant and from the comfort of your home.</p>
+                <h3 className="ra-deta-heading-sec deta-heading-sec">Project Goals</h3>
+                <p className="text-data-desc">{foodDelivery.objective}</p>
                 <div className="box-image-design data-wincd row">
-                    <div className="col-12">
-                        <div className="detail-image-main">
-                            <img src="assets/images/project/main-image.png" alt="main-image" loading="lazy" decoding="async" />
+                    <div className="col-xl-6 col-lg-6 col-md-6">
+                        <div className="detail-image">
+                            <img src={foodDelivery.desktopImg} alt={`${foodDelivery.title} desktop preview`} loading="lazy" decoding="async" />
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-6 col-md-6">
                         <div className="detail-image">
-                            <img src="assets/images/services/image-under-1.png" alt="image-under-1" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6">
-                        <div className="detail-image">
-                            <img src="assets/images/services/image-under-2.png" alt="image-under-2" loading="lazy" decoding="async" />
+                            <img src={foodDelivery.mobileImg} alt={`${foodDelivery.title} mobile preview`} loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </div>
-                <h3 className="ra-deta-heading-sec deta-heading-sec">Work Overview</h3>
-                <p className="text-data-desc">We believe food is more than just a meal—it's an experience. Whether you're
-                    craving comfort food or gourmet dishes, we serve up quality and flavor. With a commitment to fresh
-                    ingredients and exceptional service, we aim to provide. Our journey has been marked by countless
-                    successful projects that not only achieved but surpassed our clients' goals, reinforcing their trust
-                    in us as a leading innovator in the digital.</p>
-                <p className="text-data-desc mt-3">We craft custom, user-focused websites that are fast, mobile-friendly,
-                    and SEO-optimized—designed to deliver an exceptional user experience and drive real online success.
-                </p>
-                <div className="avrage-data row">
-                    <div className="col-xl-6 col-lg-6 col-md-12">
-                        <div className="box-project-avrage border-design">
-                            <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
-                            </div>
-                            <div className="average-code">
-                                <p>120%</p>
-                                <span>Conversion Growth</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-12">
-                        <div className="box-project-avrage border-design">
-                            <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
-                            </div>
-                            <div className="average-code">
-                                <p>80%</p>
-                                <span>Daily Signups Increase</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-12">
-                        <div className="box-project-avrage design-over-border">
-                            <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
-                            </div>
-                            <div className="average-code">
-                                <p>140%</p>
-                                <span>Traffic Growth</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-12">
-                        <div className="box-project-avrage">
-                            <div className="ra-image-tick image-tick">
-                                <img src="assets/images/services/arrow-tic.png" alt="" loading="lazy" decoding="async" />
-                            </div>
-                            <div className="average-code">
-                                <p>130%</p>
-                                <span>Increase in conversions</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p className="text-data-desc">We craft custom, user-focused websites that are fast, mobile-friendly, and
-                    SEO-optimized—designed to deliver an exceptional user experience and drive real online success.</p>
+                <h3 className="ra-deta-heading-sec deta-heading-sec">What I Did</h3>
+                <p className="text-data-desc">{foodDelivery.solution}</p>
+                <ProjectHighlights highlights={foodDelivery.highlights} stackedOnTablet />
                 <div className="line-design"></div>
-                <a href="#next-project" onClick={(e) => e.preventDefault()} className="main-sec-design-hover">
-                    <p>NEXT</p>
-                    <h2 className="second-heading mb-1">Lifestyle Blog Website</h2>
+                <a href={`/projects/${foodDelivery.slug}`} className="main-sec-design-hover">
+                    <p>VIEW CASE STUDY</p>
+                    <h2 className="second-heading mb-1">{foodDelivery.title}</h2>
                     <div className="desing-project-mag flex-wrap">
-                        <div className="name-contru">
-                            Clean Layout
-                        </div>
-                        <div className="name-contru">
-                            Blog
-                        </div>
-                        <div className="name-contru">
-                            WordPress
-                        </div>
-                    </div>
-                    <div className="hover-reveal image01">
-                        <img className="hidden-img" src="assets/images/project/hover-img.png" alt="hover-img" loading="lazy" decoding="async" />
+                        <span className="name-contru">{foodDelivery.category}</span>
+                        <span className="name-contru">{foodDelivery.focus}</span>
                     </div>
                 </a>
+
                 <div className="main-btn-stcoked">
-                    <button type="button" className="circle-wrap">
+                    <button type="button" className="circle-wrap" data-button-motion>
                         <span className="border-animate"></span>
-                        <span className="close-btn">Close</span>
+                        <ButtonLabel><span className="close-btn">Close</span></ButtonLabel>
                     </button>
                 </div>
             </div>

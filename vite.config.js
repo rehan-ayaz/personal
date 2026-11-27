@@ -1,8 +1,33 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+function cmsMiddleware() {
+  return {
+    name: 'cms-rewrite-middleware',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = req.url ? req.url.split('?')[0] : '';
+        if (
+          url === '/admin' ||
+          url === '/admin/' ||
+          url === '/admin.html' ||
+          url === '/vireo' ||
+          url === '/vireo/' ||
+          url === '/dashboard' ||
+          url === '/dashboard/' ||
+          url === '/src/html/dashboards' ||
+          url === '/src/html/dashboards/'
+        ) {
+          req.url = '/src/html/dashboards/sales.html';
+        }
+        next();
+      });
+    }
+  };
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cmsMiddleware()],
   server: {
     port: 3000,
     open: false,

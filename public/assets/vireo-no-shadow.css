@@ -1,0 +1,50 @@
+/**
+ * @file vireo-no-shadow.css
+ * @description Strict zero-shadow policy for the entire Vireo Admin CMS panel.
+ * Completely eliminates box-shadow, text-shadow, button shadows, card shadows,
+ * dropdown shadows, and modal shadows throughout all admin routes.
+ */
+
+[data-ax-route],
+[data-ax-route] *,
+[data-ax-route] *::before,
+[data-ax-route] *::after,
+.ax-layout,
+.ax-layout *,
+.ax-sidebar,
+.ax-sidebar *,
+.ax-card,
+.ax-card *,
+.ax-card--interactive,
+.ax-dropdown,
+.ax-dropdown *,
+.ax-modal,
+.ax-modal *,
+.ax-btn,
+.ax-btn *,
+.ax-header,
+.ax-header *,
+.ax-input,
+.ax-select,
+.ax-textarea,
+.ax-segment,
+.ax-badge,
+.vireo-react-wrapper,
+.vireo-react-wrapper * {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+/* Ensure clean border visual separation without relying on shadows */
+.ax-card {
+  border: 1px solid var(--ax-border, rgba(255, 255, 255, 0.08));
+}
+
+.ax-dropdown {
+  border: 1px solid var(--ax-border, rgba(255, 255, 255, 0.12));
+}
+
+.ax-modal {
+  border: 1px solid var(--ax-border, rgba(255, 255, 255, 0.15));
+}

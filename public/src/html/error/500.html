@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" data-ax-route="error/500" data-error-code="500">
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!-- ============================================================ -->
+<!-- REHAN AYAZ CMS ANTI-FLASH THEME RESTORE — MUST be first executable    -->
+<!-- in <head>, before any stylesheet. Runs synchronously (~1ms), -->
+<!-- reads ax: localStorage, resolves system theme via matchMedia,-->
+<!-- and writes all data-ax-* + dir + lang on <html> before paint.-->
+<!-- Framework-agnostic IIFE; try/catch so storage never blocks.  -->
+<!-- ============================================================ -->
+<script>
+/* Vireo anti-flash — must be FIRST in <head>, before stylesheets. */
+(function () {
+  var D = document.documentElement, LS;
+  try { LS = window.localStorage; } catch (e) { LS = null; }
+  function get(k){ try { return LS && LS.getItem(k); } catch(e){ return null; } }
+
+  /* schema guard: wipe unknown shape, never throw */
+  try { if (LS && get('ax:schema') && get('ax:schema') !== '1') {
+    Object.keys(LS).forEach(function(k){ if (k.indexOf('ax:')===0) LS.removeItem(k); });
+  } if (LS) LS.setItem('ax:schema','1'); } catch(e){}
+
+  /* ---- THEME (light | dark | system) ---- */
+  var theme = get('ax:theme') || 'system';
+  var sysDark = false;
+  try { sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch(e){}
+  var resolved = (theme === 'system') ? (sysDark ? 'dark' : 'light') : theme;
+  D.setAttribute('data-ax-theme', resolved);  /* always written so CSS [data-ax-theme] selectors match */
+
+  /* ---- ACCENT ---- */
+  var accent = get('ax:accent') || 'verdigris';
+  if (accent === 'verdigris') D.removeAttribute('data-ax-accent');
+  else D.setAttribute('data-ax-accent', accent);
+
+  /* ---- FONT (any Google family; the default, Inter, needs no attr + no link) ----
+     Mirrors js/core/fonts.js. Injected here rather than after boot so the face
+     is already in flight when the first paint happens — otherwise every page
+     load would flash Inter before swapping. A family chosen in the customizer
+     rides an INLINE --ax-font-sans, exactly as the custom accent colour does;
+     its weight ramp was resolved from the Google Fonts catalog at pick time and
+     persisted, because this script must rebuild the same URL without being able
+     to load that catalog. */
+  var fontFamily = (get('ax:font') === 'custom') ? get('ax:font-custom') : null;
+  if (fontFamily) {
+    D.setAttribute('data-ax-font', 'custom');
+    D.style.setProperty('--ax-font-sans', '"' + fontFamily + '", ui-sans-serif, system-ui, sans-serif');
+    var fl = document.createElement('link');
+    fl.id = 'ax-font-link'; fl.rel = 'stylesheet';
+    fl.href = 'https://fonts.googleapis.com/css2?family=' + fontFamily.replace(/ /g, '+') +
+              (get('ax:font-weights') || ':wght@400;500;600;700') + '&display=swap';
+    document.head.appendChild(fl);
+  } else { D.removeAttribute('data-ax-font'); }
+
+  /* ---- LANG + DIR ---- */
+  var lang = (get('ax:lang') || 'EN').toUpperCase();
+  D.setAttribute('lang', lang.toLowerCase());                 /* EN -> en */
+  var dirStored = get('ax:dir');                              /* explicit wins */
+  var dir = dirStored ? dirStored : (lang === 'AR' ? 'rtl' : 'ltr');
+  D.setAttribute('dir', dir);
+
+  /* ---- LAYOUT / SCHEME attributes (write only non-defaults; keep DOM clean) ---- */
+  function setAttr(attr, key, def){
+    var v = get(key);
+    if (v && v !== def) D.setAttribute(attr, v); else D.removeAttribute(attr);
+  }
+  setAttr('data-ax-nav',              'ax:nav',              'vertical');
+  setAttr('data-ax-shell-style',      'ax:shell-style',      'default');
+  setAttr('data-ax-sidebar-behavior', 'ax:sidebar-behavior', 'collapsible');
+  setAttr('data-ax-menu',             'ax:menu',             'click');
+  setAttr('data-ax-page',             'ax:page',             'regular');
+  setAttr('data-ax-width',            'ax:width',            'fluid');
+  setAttr('data-ax-header-position',  'ax:header-position',  'fixed');
+  setAttr('data-ax-sidebar-position', 'ax:sidebar-position', 'fixed');
+  setAttr('data-ax-sidebar',          'ax:sidebar-scheme',   'light');
+  setAttr('data-ax-header',           'ax:header-scheme',    'light');
+  setAttr('data-ax-sidebar-image',    'ax:sidebar-image',    'none');
+  setAttr('data-ax-loader',           'ax:loader',           'on');
+
+  /* ---- COLLAPSED RAIL (header toggle; boolean presence, default expanded) ----
+     Only honoured in the 'collapsible' behavior. 'expanded'/'compact' lock the
+     rail (compact renders the icon rail via [data-ax-sidebar-behavior]), so the
+     persisted toggle must not re-collapse over them. */
+  var behavior = get('ax:sidebar-behavior') || 'collapsible';
+  if (behavior === 'collapsible' && get('ax:collapsed') === '1') D.setAttribute('data-ax-collapsed', '');
+  else D.removeAttribute('data-ax-collapsed');
+
+  /* ---- CUSTOM COLOR PICKERS (inline style; re-derive ramp deterministically) ---- */
+  var customAccent = get('ax:accent-custom');
+  if (accent === 'custom' && customAccent) {
+    /* full ramp derivation lives in customizer module; head script sets at least
+       --ax-accent + --ax-on-accent so first paint is correct. */
+    D.style.setProperty('--ax-accent', customAccent);
+    /* on-accent by luminance (sRGB approx) */
+    var h = customAccent.replace('#','');
+    var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);
+    var L = (0.2126*r + 0.7152*g + 0.0722*b)/255;
+    D.style.setProperty('--ax-on-accent', L > 0.62 ? '#1F1602' : '#FFFFFF');
+    D.setAttribute('data-ax-accent','custom');
+  }
+  var bg = get(resolved === 'dark' ? 'ax:bg-custom-dark' : 'ax:bg-custom');
+  if (bg) D.style.setProperty('--ax-canvas', bg);
+})();
+</script>
+
+<title>500 Server Error · Rehan Ayaz CMS</title>
+<meta name="description" content="Rehan Ayaz Portfolio Website CMS — Manage Pages, Blog, Projects, SEO, and Inquiries" />
+<meta name="theme-color" content="#0A0C11" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FCFBF9" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-BNwXwd9x.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Google Fonts — Inter (sans) · Space Grotesk (display) · JetBrains Mono (mono) · token brief §7.1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Compiled application stylesheet (token chain + Tailwind v4 @theme bridge + shell/components) -->
+  <script type="module" crossorigin src="/assets/vireo-BKePweWV.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/vireo-D45lZWjH.css">
+</head>
+<body class="ax-standalone" data-ax-layout="status">
+  <!-- Page preloader — full-screen overlay removed on boot by vireo.js hideLoader().
+       The customizer "Page loader" toggle writes data-ax-loader="off" to suppress it
+       ([data-ax-loader='off'] .ax-loader { display:none }). Reuses the existing
+       .ax-spinner component; no bespoke loader CSS. -->
+  <div class="ax-loader" data-ax-loader-el role="status" aria-live="polite" aria-label="Loading">
+    <span class="ax-spinner ax-spinner--lg" aria-hidden="true"><span class="ax-spinner__glyph"></span></span>
+  </div>
+  <div class="ax-ambient" aria-hidden="true"><i></i></div>
+
+  <div style="position:fixed;top:var(--ax-space-5);right:var(--ax-space-6);z-index:5;display:flex;gap:var(--ax-space-2);align-items:center;" x-data="{}">
+    <button type="button" class="ax-btn ax-btn--ghost ax-btn--icon" aria-label="Toggle color theme"
+            @click="document.documentElement.setAttribute('data-ax-theme', document.documentElement.getAttribute('data-ax-theme')==='dark' ? 'light' : 'dark')">
+      <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008"/></svg>
+    </button>
+    <a class="ax-btn ax-btn--ghost ax-btn--sm" href="/src/html/index.html">
+      <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l14 0"/><path d="M5 12l6 6"/><path d="M5 12l6 -6"/></svg>
+      <span class="ax-btn__label">Back to dashboard</span>
+    </a>
+  </div>
+
+  <main class="ax-center" id="ax-main" style="position:relative;z-index:1;width:100%;padding:var(--ax-space-6);">
+    <div style="width:100%;max-width:520px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--ax-space-6);">
+
+      <a href="/src/html/index.html" aria-label="Rehan Ayaz CMS home" style="display:inline-flex;align-items:center;gap:var(--ax-space-3);text-decoration:none;">
+        <span aria-hidden="true" style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:var(--ax-radius-md);background:var(--ax-gradient-accent);color:var(--ax-on-accent);box-shadow:0 8px 22px -8px rgba(var(--ax-accent-rgb),.7);">
+          <svg viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="axmk0" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2BC4B0"/><stop offset="0.55" stop-color="#1E9E96"/><stop offset="1" stop-color="#6D5CF0"/></linearGradient></defs><path d="M4 4 H16 A12 12 0 0 1 28 16 V28 A0 0 0 0 1 28 28 H16 A12 12 0 0 1 4 16 V4 Z" fill="url(#axmk0)" stroke="none"/><circle cx="20.5" cy="11.5" r="2.6" fill="#0A0C11" fill-opacity="0.92" stroke="none"/></svg>
+        </span>
+        <span style="font-family:var(--ax-font-display);font-weight:600;font-size:var(--ax-text-lg);color:var(--ax-text-strong);letter-spacing:.01em;">Vireo</span>
+      </a>
+
+      <!-- thin-line illustration: tools / wrench (highlight tinted danger per single-highlight rule) -->
+      <div aria-hidden="true" style="position:relative;display:grid;place-items:center;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--ax-danger-500) 14%, transparent), transparent 70%);">
+        <span style="position:absolute;inset:0;border-radius:50%;border:1px dashed var(--ax-border-strong);"></span>
+        <svg viewBox="0 0 24 24" width="70" height="70" fill="none" stroke="var(--ax-text-muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4"/><path d="M14.5 5.5l4 4"/><path d="M12 8l-5 -5l-4 4l5 5" stroke="var(--ax-danger-500)"/><path d="M7 8l-1.5 1.5"/><path d="M16 12l5 5l-4 4l-5 -5"/><path d="M16 17l-1.5 1.5"/>
+        </svg>
+      </div>
+
+      <div>
+        <h1 style="margin:0;display:flex;flex-direction:column;align-items:center;gap:var(--ax-space-2);">
+          <span class="ax-num" style="font-family:var(--ax-font-mono);font-weight:600;font-size:var(--ax-text-4xl);line-height:1;color:var(--ax-text-strong);letter-spacing:.04em;">500</span>
+          <span style="font-family:var(--ax-font-display);font-weight:600;font-size:var(--ax-text-2xl);color:var(--ax-text-strong);">Something went wrong</span>
+        </h1>
+        <p style="margin:var(--ax-space-4) auto 0;max-width:44ch;font-size:var(--ax-text-md);color:var(--ax-text-muted);line-height:1.55;">
+          An unexpected error occurred on our side — not yours. Our team has been notified. Try again in a moment, or head back home.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:var(--ax-space-3);justify-content:center;">
+        <button type="button" class="ax-btn ax-btn--primary" onclick="window.location.reload()">
+          <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>
+          <span class="ax-btn__label">Retry</span>
+        </button>
+        <a class="ax-btn ax-btn--secondary" href="/src/html/index.html">
+          <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg>
+          <span class="ax-btn__label">Go home</span>
+        </a>
+      </div>
+
+      <!-- error reference id (copy-on-click) -->
+      <div x-data="{ ref:'ERR-5XX-9F3A21C', copied:false, copy(){ navigator.clipboard?.writeText(this.ref).then(()=>{this.copied=true; setTimeout(()=>this.copied=false,1600)}) } }"
+           style="display:flex;align-items:center;gap:var(--ax-space-2);font-size:var(--ax-text-sm);color:var(--ax-text-subtle);">
+        <span>Reference ID</span>
+        <button type="button" @click="copy()" class="ax-num"
+                style="display:inline-flex;align-items:center;gap:var(--ax-space-2);font-family:var(--ax-font-mono);font-size:var(--ax-text-sm);color:var(--ax-text);background:var(--ax-surface-subtle);border:1px solid var(--ax-border);border-radius:var(--ax-radius-sm);padding:4px var(--ax-space-3);cursor:pointer;"
+                :aria-label="copied ? 'Reference ID copied' : 'Copy reference ID ERR-5XX-9F3A21C'">
+          <span x-text="ref">ERR-5XX-9F3A21C</span>
+          <svg x-show="!copied" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666"/><path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"/></svg>
+          <svg x-show="copied" x-cloak viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--ax-success-500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5l10 -10"/></svg>
+        </button>
+        <span x-show="copied" x-cloak aria-live="polite" style="color:var(--ax-success-500);">Copied</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- CMS RUNTIME — single ES module entry.                      -->
+  <!-- Boots Alpine + plugins, registers shell components           -->
+  <!-- (axShell, axSidebar, axHeader, axDropdown, axCommand,        -->
+  <!-- axCustomizer), fetches /src/data/nav-manifest.json, and      -->
+  <!-- wires active-trail, breadcrumb, command palette, theme.      -->
+  <!-- ============================================================ -->
+  
+  <!-- Per-page hook (optional):
+       Pages that need extra behavior (charts, datatables, editors) add a
+       deferred module AFTER this line, e.g.:
+       <script type="module" src="/src/js/pages/dashboards-sales.js"></script>
+       Keep page scripts deferred/module so they run after vireo.js boots. -->
+</body>
+</html>

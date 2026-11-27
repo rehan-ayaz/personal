@@ -1,89 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import ButtonLabel from "./ButtonLabel";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const realProjects = [
-  {
-    id: "food-delivery",
-    title: "Food Delivery App 4U",
-    desc: "White-label food delivery ecosystem featuring real-time order tracking, multi-vendor customer app, restaurant dashboard, and seamless checkout flows.",
-    desktopImg: "/assets/images/projects/food-delivery/Food Delivery App 4U.webp",
-    mobileImg: "/assets/images/projects/food-delivery/food-delivery_m.webp",
-    link: "#contact"
-  },
-  {
-    id: "erp-system",
-    title: "ERP System 4U",
-    desc: "Complete enterprise ERP solution uniting multi-business management, real-time inventory, CRM, accounting, and AI-powered business intelligence.",
-    desktopImg: "/assets/images/projects/erp-system/ERP System 4U.webp",
-    mobileImg: "/assets/images/projects/erp-system/erp-system_m.webp",
-    link: "#contact"
-  },
-  {
-    id: "ar-gadgets",
-    title: "AR Gadgets",
-    desc: "High-converting electronics and audio peripherals store with dynamic product showcases, secure checkout, customer portals, and fast nationwide delivery.",
-    desktopImg: "/assets/images/projects/ar-gadgets/AR Gadgets.webp",
-    mobileImg: "/assets/images/projects/ar-gadgets/ar-gadgets_m.webp",
-    link: "#contact"
-  },
-  {
-    id: "it-pro",
-    title: "IT Pro Services",
-    desc: "Enterprise custom software and IT consulting platform with 15 custom pages, Kohost cloud dashboard integration, and responsive data analytics.",
-    desktopImg: "/assets/images/projects/it-pro/IT Pro Services.webp",
-    mobileImg: "/assets/images/projects/it-pro/it-pro_m.webp",
-    link: "#contact"
-  },
-  {
-    id: "hassan-tech",
-    title: "Hassan Tech",
-    desc: "Pakistan's trusted mechanical keyboard eCommerce store featuring custom builds, advanced keyboard filtering, live chat, and smooth WooCommerce checkout.",
-    desktopImg: "/assets/images/projects/hassan-tech/Hassan Tech.webp",
-    mobileImg: "/assets/images/projects/hassan-tech/hassan-tech_m.webp",
-    link: "#contact"
-  },
-  {
-    id: "anwan-llc",
-    title: "Anwan LLC",
-    desc: "Modern multi-category eCommerce platform engineered for high conversion with product filtering, customer accounts, and secure payment gateways.",
-    desktopImg: "/assets/images/projects/anwan-llc/anwan-llc.jpg",
-    mobileImg: "/assets/images/projects/anwan-llc/anwan-llc_m.jpg",
-    link: "#contact"
-  },
-  {
-    id: "sa-market",
-    title: "SA Market",
-    desc: "Full-scale agriculture eCommerce platform featuring product comparison, wishlist, advanced crop protection filters, and live weather telemetry.",
-    desktopImg: "/assets/images/projects/sa-market/sa-market.jpg",
-    mobileImg: "/assets/images/projects/sa-market/sa-market_m.jpg",
-    link: "#contact"
-  },
-  {
-    id: "legacy-building",
-    title: "Legacy Building Group",
-    desc: "Corporate construction company website built on Elementor Pro with bespoke inquiry systems, portfolio showcases, and search filtering.",
-    desktopImg: "/assets/images/projects/legacy-building/legacy-laptop-mobile-mockup.png",
-    mobileImg: "/assets/images/projects/legacy-building/legacy-building_m.png",
-    link: "#contact"
-  },
-  {
-    id: "mycustomcode",
-    title: "MyCustomCode",
-    desc: "Modern digital academy and custom software portal built with Tutor LMS & WooCommerce, featuring student dashboards, interactive course enrollment, and agency services.",
-    desktopImg: "/assets/images/projects/mycustomcode/my-custom-code.jpg",
-    mobileImg: "/assets/images/projects/mycustomcode/my-custom-code_m.jpg",
-    link: "#contact"
-  },
-  {
-    id: "shabelle",
-    title: "Shabelle Bank",
-    desc: "Institutional Islamic commercial bank portal featuring branch networks, secure investment consultation tools, speed optimization, and responsive executive design.",
-    desktopImg: "/assets/images/projects/shabelle/shabelle-bank.jpg",
-    mobileImg: "/assets/images/projects/shabelle/shabelle-bank_m.jpg",
-    link: "#contact"
-  }
-];
+import { projects } from "../data/portfolioData";
 
 export default function SelectedWorkSection() {
   const spacerRef = useRef(null);
@@ -284,18 +203,18 @@ export default function SelectedWorkSection() {
                     </h2>
                     <div className="button_wrapper">
                       <a
-                        className="btn button-text btn-main"
-                        href="#contact"
+                        className="btn button-text btn-main" data-button-motion
+                        href="/projects"
                         style={{ textDecoration: "none" }}
                       >
-                        <span>Explore All Work</span>
+                        <ButtonLabel>Explore All Work</ButtonLabel>
                       </a>
                     </div>
                   </div>
                 </div>
 
                 {/* Real Project Cards - Animated Entrance */}
-                {realProjects.map((proj) => (
+                {projects.map((proj) => (
                   <div key={proj.id} className="js-work-card">
                     <div className="js-card-line" />
                     <div className="js-card-line-horizontal" />
@@ -303,7 +222,7 @@ export default function SelectedWorkSection() {
                       <div className="card-content-box">
                         <a
                           className="project-image-link"
-                          href={proj.link}
+                          href={`/projects/${proj.slug}`}
                           title={proj.title}
                         >
                           <img
@@ -329,21 +248,21 @@ export default function SelectedWorkSection() {
                 ))}
 
                 {/* Final CTA Card with Rotating Plus Icon */}
-                <div className="js-work-card">
+                <div className="js-work-card d-flex align-items-center justify-content-center">
                   <div className="js-card-line" />
                   <div className="js-card-line-horizontal" />
-                  <div className="js-work-card-inner">
+                  <div className="js-work-card-inner w-100 h-100 d-flex align-items-center justify-content-center">
                     <div className="cta-final-card">
-                      <h3 className="cta-final-heading">
-                        Discover our complete collection of digital experiences, brands, and platforms.
+                      <h3 className="cta-final-heading text-center mx-auto">
+                        Discover our complete digital experiences.
                       </h3>
-                      <div className="button_wrapper">
+                      <div className="button_wrapper text-center mx-auto">
                         <a
-                          href="#contact"
-                          className="btn button-text btn-main cta-final-btn"
+                          href="/projects"
+                          className="btn button-text btn-main cta-final-btn" data-button-motion
                           style={{ textDecoration: "none" }}
                         >
-                          <span>View All Projects &rarr;</span>
+                          <ButtonLabel>View All Projects &rarr;</ButtonLabel>
                         </a>
                       </div>
                     </div>

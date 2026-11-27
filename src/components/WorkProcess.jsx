@@ -3,15 +3,16 @@ import gsap from 'gsap';
 
 /**
  * @file WorkProcess.jsx
- * @description Work Process ("Engineering Process") interactive section featuring
- * 1-by-1 card stacking into the center and unfolding into 4 columns upon scrolling.
- * Styled with authentic pricing-box borders, backgrounds, and hover transitions.
- * Corresponds to Section 8 in Google's recommended architecture.
+ * @description Work Process ("Our Process") interactive section featuring:
+ * 1. 2-column responsive header: Left-aligned "Our Process" heading, Right-aligned description.
+ * 2. 1-by-1 card stacking into the exact same center position with dynamic offset calculations.
+ * 3. Cards 1, 2, 3, 4 stack cleanly in 1 spot, followed by a smooth unfold into 4 grid columns.
+ * 4. Ticker-synchronized pinning in 100% lockstep with GSAP ScrollSmoother.
  */
 export default function WorkProcess() {
   const spacerRef = useRef(null);
   const pinnedBoxRef = useRef(null);
-  const [pinDistance, setPinDistance] = useState(2400);
+  const [pinDistance, setPinDistance] = useState(2600);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -21,64 +22,85 @@ export default function WorkProcess() {
     const pinnedBox = pinnedBoxRef.current;
     if (!spacer || !pinnedBox) return;
 
+    const grid = pinnedBox.querySelector('.process-grid');
     const block1 = pinnedBox.querySelector('.process-block._1');
     const block2 = pinnedBox.querySelector('.process-block._2');
     const block3 = pinnedBox.querySelector('.process-block._3');
     const block4 = pinnedBox.querySelector('.process-block._4');
 
-    if (!block1 || !block2 || !block3 || !block4) return;
+    if (!grid || !block1 || !block2 || !block3 || !block4) return;
 
     const isDesktop = () => window.innerWidth > 991;
 
-    // Build timeline mapped across 0 to 1 progress
-    // Exact timing preserved: 1-by-1 card stacking and unfolding
-    const tl = g.timeline({ paused: true });
-
-    const initBlocks = () => {
-      g.set(block1, { xPercent: 160, yPercent: 400, force3D: true });
-      g.set(block2, { xPercent: 52, yPercent: 400, force3D: true });
-      g.set(block3, { xPercent: -54.5, yPercent: 400, force3D: true });
-      g.set(block4, { xPercent: -160, yPercent: 400, force3D: true });
-    };
-
-    if (isDesktop()) {
-      initBlocks();
-    } else {
-      g.set([block1, block2, block3, block4], { clearProps: 'all' });
-      return;
-    }
-
-    // Step 1: 0% -> 28% Progress: Card 1 rises into center view
-    tl.to(block1, { yPercent: 0, duration: 2.8, ease: 'power1.out' }, 0);
-
-    // Step 2: 28% -> 42% Progress: Card 2 rises into center view and stacks over Card 1
-    tl.to(block2, { yPercent: 0, duration: 1.4, ease: 'power1.out' }, 2.8);
-
-    // Step 3: 42% -> 56% Progress: Card 3 rises into center view and stacks over Card 2
-    tl.to(block3, { yPercent: 0, duration: 1.4, ease: 'power1.out' }, 4.2);
-
-    // Step 4: 56% -> 70% Progress: Card 4 rises into center view and stacks over Card 3
-    tl.to(block4, { yPercent: 0, duration: 1.4, ease: 'power1.out' }, 5.6);
-
-    // Step 5: 70% -> 88% Progress: All 4 cards smoothly glide and spread out into 4 grid columns
-    tl.to(
-      [block1, block2, block3, block4],
-      {
-        xPercent: 0,
-        yPercent: 0,
-        duration: 1.8,
-        ease: 'power2.inOut',
-      },
-      7.0
-    );
-
-    // Hold / dwell state: 88% -> 100% Progress (view all 4 unfolded cards before unpinning)
-    tl.set({}, {}, 10.0);
-
-    const dist = 2400;
+    const dist = 2600;
     setPinDistance(dist);
 
-    // Ticker-synchronized pinning loop: executes in perfect lockstep with ScrollSmoother
+    const tl = g.timeline({ paused: true });
+
+    // Function to calculate exact pixel offsets to center every card in the container
+    const computeOffsets = () => {
+      const gridW = grid.offsetWidth;
+      const cardW = block1.offsetWidth;
+      const centerTarget = (gridW - cardW) / 2;
+      return [
+        centerTarget - block1.offsetLeft,
+        centerTarget - block2.offsetLeft,
+        centerTarget - block3.offsetLeft,
+        centerTarget - block4.offsetLeft,
+      ];
+    };
+
+    const setupTimeline = () => {
+      tl.clear();
+      if (!isDesktop()) {
+        g.set([block1, block2, block3, block4], { clearProps: 'all' });
+        return;
+      }
+
+      const offsets = computeOffsets();
+
+      // Initial positions: all 4 cards horizontally centered
+      // Card 1 starts at center, Cards 2, 3, 4 start submerged at y: 380 with opacity: 0
+      g.set(block1, { x: offsets[0], y: 0, opacity: 1, scale: 1, force3D: true });
+      g.set(block2, { x: offsets[1], y: 380, opacity: 0, scale: 1, force3D: true });
+      g.set(block3, { x: offsets[2], y: 380, opacity: 0, scale: 1, force3D: true });
+      g.set(block4, { x: offsets[3], y: 380, opacity: 0, scale: 1, force3D: true });
+
+      // Step 1: 0.0 -> 1.4: Card 1 dwells in center
+      tl.to(block1, { y: 0, opacity: 1, duration: 1.4, ease: 'power1.out' }, 0);
+
+      // Step 2: 1.4 -> 3.0: Card 2 rises into center view and stacks over Card 1
+      tl.to(block2, { y: 0, opacity: 1, duration: 1.6, ease: 'power2.out' }, 1.4);
+
+      // Step 3: 3.0 -> 4.6: Card 3 rises into center view and stacks over Card 2
+      tl.to(block3, { y: 0, opacity: 1, duration: 1.6, ease: 'power2.out' }, 3.0);
+
+      // Step 4: 4.6 -> 6.2: Card 4 rises into center view and stacks over Card 3
+      tl.to(block4, { y: 0, opacity: 1, duration: 1.6, ease: 'power2.out' }, 4.6);
+
+      // Step 5: 6.2 -> 7.6: Dwell / Hold state where all 4 cards are stacked together in 1 single place!
+      tl.set({}, {}, 7.6);
+
+      // Step 6: 7.6 -> 9.2: All 4 cards smoothly glide and spread out into 4 grid columns
+      tl.to(
+        [block1, block2, block3, block4],
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 1.6,
+          ease: 'power2.inOut',
+        },
+        7.6
+      );
+
+      // Step 7: 9.2 -> 10.5: Hold state so user can view all 4 unfolded cards before unpinning
+      tl.set({}, {}, 10.5);
+    };
+
+    setupTimeline();
+
+    // Ticker-synchronized pinning loop: executes in lockstep with ScrollSmoother
     const updatePin = () => {
       if (!isDesktop()) {
         pinnedBox.style.transform = '';
@@ -103,6 +125,25 @@ export default function WorkProcess() {
 
       // Scrub timeline
       tl.progress(progress);
+
+      // Active card highlight indicator based on progress
+      const blocks = [block1, block2, block3, block4];
+      let activeIdx = -1;
+      if (progress < 0.14) activeIdx = 0;
+      else if (progress < 0.30) activeIdx = 1;
+      else if (progress < 0.46) activeIdx = 2;
+      else if (progress < 0.76) activeIdx = 3;
+      else activeIdx = -1; // all unfolded
+
+      blocks.forEach((b, i) => {
+        if (activeIdx === -1) {
+          b.classList.remove('is-active');
+        } else if (i === activeIdx) {
+          b.classList.add('is-active');
+        } else {
+          b.classList.remove('is-active');
+        }
+      });
     };
 
     g.ticker.add(updatePin);
@@ -114,7 +155,7 @@ export default function WorkProcess() {
         g.set([block1, block2, block3, block4], { clearProps: 'all' });
       } else {
         setPinDistance(dist);
-        initBlocks();
+        setupTimeline();
       }
     };
 
@@ -142,20 +183,21 @@ export default function WorkProcess() {
         style={{ willChange: 'transform' }}
       >
         <div className="w-layout-blockcontainer container w-container">
-          {/* Section Header (ra-section-subtitle-box removed per instruction) */}
-          <div
-            data-animate="section-title"
-            className="ra-section-title-box section-title-box center-two text-center"
-          >
-            <h2 className="ra-second-heading second-heading text-center">
-              My Work Process: <span className="ra-colored colored">From Concept to Launch</span>
-            </h2>
-            <p
-              className="ra-heading-descr heading-descr text-center"
-              style={{ maxWidth: '720px', margin: '14px auto 0' }}
-            >
-              A structured, results-driven engineering roadmap focused on technical precision, performance, and scalable digital solutions.
-            </p>
+          {/* Section Header: Left Heading, Right Description */}
+          <div className="ra-process-header section-header-split d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end gap-4 mb-5">
+            <div className="ra-process-header-left">
+              <h2 className="ra-second-heading second-heading m-0 text-start">
+                Our <span className="ra-colored colored">Process</span>
+              </h2>
+            </div>
+            <div className="ra-process-header-right">
+              <p
+                className="ra-heading-descr heading-descr m-0 text-start text-md-end"
+                style={{ maxWidth: '480px', fontSize: '16px', lineHeight: '26px' }}
+              >
+                A structured, results-driven engineering roadmap focused on technical precision, performance, and scalable digital solutions.
+              </p>
+            </div>
           </div>
 
           {/* 4 Process Blocks Grid */}
@@ -164,12 +206,12 @@ export default function WorkProcess() {
             <div
               className="ra-process-block process-block _1"
               style={{
-                willChange: 'transform',
+                willChange: 'transform, opacity',
                 transformStyle: 'preserve-3d',
               }}
             >
               <div className="ra-image-right image-right">
-                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
+                <img src="/assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
               </div>
               <p className="ra-process-count process-count">01</p>
               <div className="ra-process-content process-content">
@@ -184,12 +226,12 @@ export default function WorkProcess() {
             <div
               className="ra-process-block process-block _2"
               style={{
-                willChange: 'transform',
+                willChange: 'transform, opacity',
                 transformStyle: 'preserve-3d',
               }}
             >
               <div className="ra-image-right image-right">
-                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
+                <img src="/assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
               </div>
               <p className="ra-process-count process-count">02</p>
               <div className="ra-process-content process-content">
@@ -204,12 +246,12 @@ export default function WorkProcess() {
             <div
               className="ra-process-block process-block _3"
               style={{
-                willChange: 'transform',
+                willChange: 'transform, opacity',
                 transformStyle: 'preserve-3d',
               }}
             >
               <div className="ra-image-right image-right">
-                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
+                <img src="/assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
               </div>
               <p className="ra-process-count process-count">03</p>
               <div className="ra-process-content process-content">
@@ -224,12 +266,12 @@ export default function WorkProcess() {
             <div
               className="ra-process-block process-block _4"
               style={{
-                willChange: 'transform',
+                willChange: 'transform, opacity',
                 transformStyle: 'preserve-3d',
               }}
             >
               <div className="ra-image-right image-right">
-                <img src="assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
+                <img src="/assets/images/award/top-right.png" alt="" loading="lazy" decoding="async" />
               </div>
               <p className="ra-process-count process-count">04</p>
               <div className="ra-process-content process-content">

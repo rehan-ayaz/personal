@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en" data-ax-route="security-system/performance">
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>
+/* Vireo anti-flash — must be FIRST in <head>, before stylesheets. */
+(function () {
+  var D = document.documentElement, LS;
+  try { LS = window.localStorage; } catch (e) { LS = null; }
+  function get(k){ try { return LS && LS.getItem(k); } catch(e){ return null; } }
+  try { if (LS && get('ax:schema') && get('ax:schema') !== '1') {
+    Object.keys(LS).forEach(function(k){ if (k.indexOf('ax:')===0) LS.removeItem(k); });
+  } if (LS) LS.setItem('ax:schema','1'); } catch(e){}
+  var theme = get('ax:theme') || 'system';
+  var sysDark = false;
+  try { sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch(e){}
+  var resolved = (theme === 'system') ? (sysDark ? 'dark' : 'light') : theme;
+  D.setAttribute('data-ax-theme', resolved);
+  var accent = get('ax:accent') || 'verdigris';
+  if (accent === 'verdigris') D.removeAttribute('data-ax-accent');
+  else D.setAttribute('data-ax-accent', accent);
+  var lang = (get('ax:lang') || 'EN').toUpperCase();
+  D.setAttribute('lang', lang.toLowerCase());
+  var dir = get('ax:dir') || (lang === 'AR' ? 'rtl' : 'ltr');
+  D.setAttribute('dir', dir);
+  function setAttr(attr, key, def){
+    var v = get(key);
+    if (v && v !== def) D.setAttribute(attr, v); else D.removeAttribute(attr);
+  }
+  setAttr('data-ax-nav',              'ax:nav',              'vertical');
+  setAttr('data-ax-shell-style',      'ax:shell-style',      'default');
+  setAttr('data-ax-sidebar-behavior', 'ax:sidebar-behavior', 'collapsible');
+  setAttr('data-ax-menu',             'ax:menu',             'click');
+  setAttr('data-ax-page',             'ax:page',             'regular');
+  setAttr('data-ax-width',            'ax:width',            'fluid');
+  setAttr('data-ax-header-position',  'ax:header-position',  'fixed');
+  setAttr('data-ax-sidebar-position', 'ax:sidebar-position', 'fixed');
+  setAttr('data-ax-sidebar',          'ax:sidebar-scheme',   'light');
+  setAttr('data-ax-header',           'ax:header-scheme',    'light');
+  setAttr('data-ax-loader',           'ax:loader',           'on');
+  var behavior = get('ax:sidebar-behavior') || 'collapsible';
+  if (behavior === 'collapsible' && get('ax:collapsed') === '1') D.setAttribute('data-ax-collapsed', '');
+  else D.removeAttribute('data-ax-collapsed');
+})();
+</script>
+<title>System Performance · Rehan Ayaz CMS</title>
+<meta name="description" content="Rehan Ayaz Portfolio Website CMS — System Performance" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-BNwXwd9x.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<script type="module" crossorigin src="/assets/vireo-BKePweWV.js"></script>
+<link rel="stylesheet" crossorigin href="/assets/vireo-D45lZWjH.css">
+<link rel="stylesheet" crossorigin href="/assets/vireo-no-shadow.css">
+<script src="/src/js/cms-core.js"></script>
+</head>
+<body>
+  <div class="ax-loader" data-ax-loader-el role="status" aria-live="polite" aria-label="Loading">
+    <span class="ax-spinner ax-spinner--lg" aria-hidden="true"><span class="ax-spinner__glyph"></span></span>
+  </div>
+  <div class="ax-ambient" aria-hidden="true"><i></i></div>
+  <div class="ax-layout">
+        <aside class="ax-sidebar" role="navigation" aria-label="Primary" x-data="axSidebar()" :data-collapsed="collapsed">
+      <!-- ===== BRAND (aligns to header height) ===== -->
+      <div class="ax-sidebar__brand">
+        <a class="ax-sidebar__logo" href="/src/html/dashboards/sales.html" aria-label="Rehan Ayaz CMS home">
+          <span class="ax-sidebar__mark" aria-hidden="true">
+            <svg class="ax-icon" viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="axmk0" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2BC4B0"/><stop offset="0.55" stop-color="#1E9E96"/><stop offset="1" stop-color="#6D5CF0"/></linearGradient></defs><path d="M4 4 H16 A12 12 0 0 1 28 16 V28 A0 0 0 0 1 28 28 H16 A12 12 0 0 1 4 16 V4 Z" fill="url(#axmk0)" stroke="none"/><circle cx="20.5" cy="11.5" r="2.6" fill="#0A0C11" fill-opacity="0.92" stroke="none"/></svg>
+          </span>
+          <span class="ax-sidebar__wordmark" style="letter-spacing:0.04em;">REHAN AYAZ<span style="display:block;font-size:9px;color:var(--ax-accent);letter-spacing:0.12em;font-weight:700;">WEBSITE CMS</span></span>
+        </a>
+      </div>
+
+      <!-- ===== QUICK RETURN TO LIVE WEBSITE ===== -->
+      <div style="padding:10px 14px 6px;">
+        <a href="/" class="ax-btn ax-btn--secondary ax-btn--sm ax-btn--block" style="display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;border-color:var(--ax-accent);color:var(--ax-accent);font-weight:600;border-radius:8px;padding:7px 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10 19l-7 -7l7 -7"/><path d="M3 12l18 0"/></svg>
+          <span>← Back to Website</span>
+        </a>
+      </div>
+
+      <!-- ===== MENU FILTER (distinct from ⌘K) ===== -->
+      <div class="ax-sidebar__search">
+        <svg class="ax-icon ax-sidebar__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+          <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" />
+        </svg>
+        <input type="search" class="ax-sidebar__filter" placeholder="Search CMS menu…" aria-label="Search CMS menu"
+               @input.debounce.120ms="filter($event.target.value)" @keydown.escape="clearFilter()" x-ref="filter" />
+        <button type="button" class="ax-sidebar__filter-clear" x-show="q" @click="clearFilter()" aria-label="Clear filter">
+          <svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <!-- ===== NAV TREE (only scrolling zone) ===== -->
+      <nav class="ax-sidebar__nav" role="tree" aria-label="Main menu" @keydown="onTreeKey($event)" x-ref="tree">
+
+        <!-- ====================== DASHBOARD ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Dashboard</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.dashboards" @click="toggle('grp.dashboards')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
+            </svg>
+            <span class="ax-nav__label">Dashboard</span>
+            <span class="ax-nav__badge ax-nav__badge--count">2</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/dashboards/sales.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Overview</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/dashboards/analytics.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Analytics</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== CONTENT MANAGEMENT ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Content Management</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.content" @click="toggle('grp.content')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"/><path d="M13.5 6.5l4 4"/>
+            </svg>
+            <span class="ax-nav__label">Content Management</span>
+            <span class="ax-nav__badge ax-nav__badge--count">9</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/pages.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Pages</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/blog-posts.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Blog Posts</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/categories.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Categories</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/tags.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Tags</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/projects.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Projects</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/services.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Services</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/testimonials.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Testimonials</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/team.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Team Members</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/content/faqs.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">FAQs</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== MEDIA LIBRARY ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Media Library</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.media" @click="toggle('grp.media')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/>
+            </svg>
+            <span class="ax-nav__label">Media Library</span>
+            <span class="ax-nav__badge ax-nav__badge--count">2</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/media/all-media.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">All Media</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/media/folders.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Folders</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== SEO MANAGEMENT ====================== -->
+        <p class="ax-sidebar__section" role="presentation">SEO Management</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.seo" @click="toggle('grp.seo')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /><path d="M10 7v6l4 -2" />
+            </svg>
+            <span class="ax-nav__label">SEO Management</span>
+            <span class="ax-nav__badge ax-nav__badge--count">6</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/overview.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">SEO Overview</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/page-seo.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Page SEO</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/schema.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Schema</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/redirects.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Redirects</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/audit.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">SEO Audit</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/seo/sitemap.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Sitemap</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== FORMS & LEADS ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Forms & Leads</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.forms" @click="toggle('grp.forms')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/>
+            </svg>
+            <span class="ax-nav__label">Forms & Leads</span>
+            <span class="ax-nav__badge ax-nav__badge--count">4</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/forms-leads/all-forms.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">All Forms</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/forms-leads/submissions.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Submissions</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/forms-leads/subscribers.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Subscribers</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/forms-leads/leads.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Leads</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== APPEARANCE ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Appearance</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.appearance" @click="toggle('grp.appearance')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/>
+            </svg>
+            <span class="ax-nav__label">Appearance</span>
+            <span class="ax-nav__badge ax-nav__badge--count">4</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/appearance/menus.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Menus</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/appearance/header.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Header</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/appearance/footer.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Footer</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/appearance/theme-settings.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Theme Settings</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== MARKETING ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Marketing</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.marketing" @click="toggle('grp.marketing')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M11 5l8 2v10l-8 2l-6 -3v-8l6 -3z"/><path d="M11 5v14"/><path d="M8 8l-5 4v1l5 4"/>
+            </svg>
+            <span class="ax-nav__label">Marketing</span>
+            <span class="ax-nav__badge ax-nav__badge--count">3</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/marketing/integrations.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Integrations</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/marketing/tracking.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Tracking</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/marketing/campaigns.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Campaigns</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== USERS & ROLES ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Users & Roles</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.users" @click="toggle('grp.users')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/>
+            </svg>
+            <span class="ax-nav__label">Users & Roles</span>
+            <span class="ax-nav__badge ax-nav__badge--count">2</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/users-roles/all-users.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">All Users</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/users-roles/roles-permissions.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Roles & Permissions</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== SECURITY & SYSTEM ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Security & System</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="true" data-ax-group="grp.security" @click="toggle('grp.security')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"/><path d="M9 12l2 2l4 -4"/>
+            </svg>
+            <span class="ax-nav__label">Security & System</span>
+            <span class="ax-nav__badge ax-nav__badge--count">4</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel >
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/security-system/activity-logs.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Activity Logs</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/security-system/backups.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Backups</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child is-active is-current" role="treeitem" aria-level="2" href="/src/html/security-system/performance.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Performance</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/security-system/error-logs.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Error Logs</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ====================== SETTINGS ====================== -->
+        <p class="ax-sidebar__section" role="presentation">Settings</p>
+        <div class="ax-nav__group" data-ax-collapse>
+          <button type="button" class="ax-nav__item ax-nav__item--parent" role="treeitem" aria-level="1" aria-expanded="false" data-ax-group="grp.settings" @click="toggle('grp.settings')" tabindex="0">
+            <svg class="ax-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+              <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+            </svg>
+            <span class="ax-nav__label">Settings</span>
+            <span class="ax-nav__badge ax-nav__badge--count">4</span>
+            <svg class="ax-nav__caret ax-icon--directional" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M9 6l6 6l-6 6" /></svg>
+          </button>
+          <div class="ax-nav__children" role="group" data-ax-collapse-panel hidden>
+            
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/settings/general.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">General</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/settings/email.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Email</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/settings/notifications.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">Notifications</span>
+            </a>
+            <a class="ax-nav__item ax-nav__item--child" role="treeitem" aria-level="2" href="/src/html/settings/api-settings.html" tabindex="-1">
+              <span class="ax-nav__bar" aria-hidden="true"></span><span class="ax-nav__label">API Settings</span>
+            </a>
+          </div>
+        </div>
+
+        <p class="ax-sidebar__nav-empty" role="presentation" hidden>No menu items match your filter.</p>
+      </nav>
+
+      <!-- ===== MINI USER FOOTER ===== -->
+      <div class="ax-sidebar__foot">
+        <div class="ax-sidebar__user">
+          <img class="ax-avatar ax-sidebar__user-avatar" src="/assets/images/header/mens.png" alt="Rehan Ayaz" width="36" height="36" />
+          <span class="ax-sidebar__user-meta">
+            <b class="ax-sidebar__user-name">Rehan Ayaz</b>
+            <small class="ax-sidebar__user-mail">Administrator</small>
+          </span>
+          <a class="ax-sidebar__logout" href="/" aria-label="Exit CMS to Website">
+            <svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <div class="ax-shell">
+      <header class="ax-header" role="banner" x-data="axHeader()">
+        <!-- 1 · SIDEBAR TOGGLE -->
+        <button type="button" class="ax-nav-toggle ax-icon-btn" @click="toggleSidebar()" aria-label="Toggle menu" :aria-expanded="!collapsed">
+          <svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+        </button>
+      
+        <!-- 2 · COMMAND SEARCH (⌘K trigger) -->
+        <button type="button" class="ax-search" @click="$dispatch('ax-command-open')" aria-haspopup="dialog" aria-controls="ax-command" aria-label="Search or jump to">
+          <svg class="ax-icon ax-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+          <span class="ax-search__placeholder">Search or jump to…</span>
+          <kbd class="ax-search__keycap">⌘K</kbd>
+        </button>
+      
+        <span class="ax-header__spacer"></span>
+
+        <!-- RETURN TO LIVE WEBSITE BUTTON -->
+        <a href="/" class="ax-btn ax-btn--primary ax-btn--sm" style="display:inline-flex;align-items:center;gap:6px;border-radius:9999px;padding:5px 14px;text-decoration:none;font-weight:600;font-size:12px;margin-right:8px;" title="Return to Live Website">
+          <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10 19l-7 -7l7 -7"/><path d="M3 12l18 0"/></svg>
+          <span>Live Website</span>
+        </a>
+
+        <!-- LIGHT/DARK QUICK-TOGGLE -->
+        <button type="button" class="ax-theme-toggle ax-icon-btn" data-ax-toggle="theme" @click="toggleTheme()" :aria-pressed="theme==='dark'" aria-label="Toggle dark mode">
+          <svg class="ax-icon" x-show="theme==='dark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+          <svg class="ax-icon" x-show="theme!=='dark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /></svg>
+        </button>
+
+        <!-- NOTIFICATIONS -->
+        <div class="ax-notif" x-data="axDropdown()" @keydown.escape="close()" @click.outside="close()">
+          <button type="button" class="ax-icon-btn ax-notif__trigger" @click="toggle()" aria-haspopup="dialog" :aria-expanded="open" aria-controls="ax-notif-menu" aria-label="Notifications, 2 unread">
+            <svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
+            <span class="ax-badge-count ax-badge-count--dot" aria-hidden="true">2</span>
+          </button>
+          <div id="ax-notif-menu" class="ax-dropdown ax-notif__menu" role="dialog" aria-label="Notifications" x-show="open" x-transition.opacity.duration.150ms x-cloak>
+            <div class="ax-dropdown__head ax-notif__head">
+              <span>Notifications</span>
+            </div>
+            <ul class="ax-notif__list" role="presentation">
+              <li class="ax-notif__row is-unread">
+                <span class="ax-notif__chip ax-notif__chip--success"><svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M5 12l5 5l10 -10" /></svg></span>
+                <span class="ax-notif__body"><b class="ax-notif__title">New Client Inquiry</b><span class="ax-notif__text">Marcus Vance submitted a discovery form.</span><time class="ax-notif__time ax-mono">10m ago</time></span>
+              </li>
+              <li class="ax-notif__row">
+                <span class="ax-notif__chip"><svg class="ax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"/></svg></span>
+                <span class="ax-notif__body"><b class="ax-notif__title">Backup Verified</b><span class="ax-notif__text">Daily database snapshot completed cleanly.</span><time class="ax-notif__time ax-mono">4h ago</time></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PROFILE -->
+        <div class="ax-profile" x-data="axDropdown()" @keydown.escape="close()" @click.outside="close()">
+          <button type="button" class="ax-profile__trigger" @click="toggle()" aria-haspopup="menu" :aria-expanded="open" aria-controls="ax-profile-menu" aria-label="Account menu">
+            <img class="ax-avatar ax-profile__avatar" src="/assets/images/header/mens.png" alt="Rehan Ayaz" width="32" height="32" />
+          </button>
+          <div id="ax-profile-menu" class="ax-dropdown ax-profile__menu" role="menu" x-show="open" x-transition.opacity.duration.150ms x-cloak>
+            <div class="ax-profile__card">
+              <img class="ax-avatar" src="/assets/images/header/mens.png" alt="" width="40" height="40" />
+              <span class="ax-profile__card-meta"><b>Rehan Ayaz</b><small>Administrator</small></span>
+            </div>
+            <a class="ax-dropdown__item" role="menuitem" href="/src/html/settings/general.html"><svg class="ax-icon ax-dropdown__lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg>General Settings</a>
+            <a class="ax-dropdown__item" role="menuitem" href="/src/html/security-system/activity-logs.html"><svg class="ax-icon ax-dropdown__lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" /></svg>Activity Log</a>
+            <div class="ax-dropdown__divider" role="separator"></div>
+            <a class="ax-dropdown__item ax-dropdown__item--danger" role="menuitem" href="/"><svg class="ax-icon ax-dropdown__lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg>Back to Live Site</a>
+          </div>
+        </div>
+      </header>
+      <main class="ax-main" id="ax-main">
+
+        <!-- ════════════════ PAGE HEAD ════════════════ -->
+        <div class="ax-page-head">
+          <div class="ax-page-head__row">
+            <div>
+              <nav class="ax-breadcrumb" data-ax-breadcrumb aria-label="Breadcrumb"></nav>
+              <h1 class="ax-page-head__title">System Performance</h1>
+              <p class="ax-page-head__subtitle">Inspect server response times, PageSpeed benchmarks, memory utilization, and cache layers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════ CONTENT ════════════════ -->
+        <div class="ax-dash-grid">
+          
+    <div class="ax-card ax-col--3">
+      <div class="ax-card__body">
+        <span class="ax-spotlight__label">Mobile PageSpeed</span>
+        <div style="font-size:28px;font-weight:700;color:#10b981;margin-top:4px;">98 / 100</div>
+        <p style="font-size:12px;color:var(--ax-text-muted);margin-top:6px;">Tested on simulated 4G</p>
+      </div>
+    </div>
+    <div class="ax-card ax-col--3">
+      <div class="ax-card__body">
+        <span class="ax-spotlight__label">Desktop PageSpeed</span>
+        <div style="font-size:28px;font-weight:700;color:#10b981;margin-top:4px;">100 / 100</div>
+        <p style="font-size:12px;color:var(--ax-text-muted);margin-top:6px;">Zero performance regressions</p>
+      </div>
+    </div>
+    <div class="ax-card ax-col--3">
+      <div class="ax-card__body">
+        <span class="ax-spotlight__label">Time to First Byte (TTFB)</span>
+        <div style="font-size:28px;font-weight:700;color:#10b981;margin-top:4px;">38 ms</div>
+        <p style="font-size:12px;color:var(--ax-text-muted);margin-top:6px;">Edge CDN acceleration</p>
+      </div>
+    </div>
+    <div class="ax-card ax-col--3">
+      <div class="ax-card__body">
+        <span class="ax-spotlight__label">Gzip / Brotli Compression</span>
+        <div style="font-size:28px;font-weight:700;color:#10b981;margin-top:4px;">Active</div>
+        <p style="font-size:12px;color:var(--ax-text-muted);margin-top:6px;">78% asset bandwidth saved</p>
+      </div>
+    </div>
+
+    <div class="ax-card ax-col--12">
+      <div class="ax-card__header" style="padding:14px 18px;border-bottom:1px solid var(--ax-border);display:flex;justify-content:space-between;align-items:center;">
+        <h3 class="ax-card__title" style="margin:0;font-size:16px;font-weight:600;color:var(--ax-text-strong);">Cache Management</h3>
+        <button type="button" class="ax-btn ax-btn--primary ax-btn--sm" id="btnPurgeCache">Purge Entire Cache</button>
+      </div>
+      <div class="ax-card__body" style="padding:18px;">
+        <p style="font-size:13px;color:var(--ax-text-muted);margin:0 0 14px;">Clears Vite bundles, pre-rendered HTML fragments, and static image asset caches.</p>
+        <div style="display:flex;gap:12px;">
+          <div style="padding:12px 18px;border:1px solid var(--ax-border);border-radius:6px;background:var(--ax-surface-subtle);flex:1;">
+            <div style="font-size:12px;color:var(--ax-text-subtle);">Browser Cache TTL</div>
+            <div style="font-size:16px;font-weight:600;color:var(--ax-text-strong);margin-top:4px;">31536000s (1 Year)</div>
+          </div>
+          <div style="padding:12px 18px;border:1px solid var(--ax-border);border-radius:6px;background:var(--ax-surface-subtle);flex:1;">
+            <div style="font-size:12px;color:var(--ax-text-subtle);">CDN Hit Ratio</div>
+            <div style="font-size:16px;font-weight:600;color:var(--ax-text-strong);margin-top:4px;">99.4%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+        </div>
+  
+      </main>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('btnPurgeCache').onclick = () => {
+      window.CmsStore.logActivity('Purged Website Cache', 'Rehan Ayaz', 'Purge', 'Security & System', 'Success');
+      window.CmsUI.toast('All caches purged successfully', 'success');
+    };
+  </script>
+  
+</body>
+</html>

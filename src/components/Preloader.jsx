@@ -4,9 +4,14 @@ import React from 'react';
  * Preloader component displayed during initial asset hydration.
  * Animates initial kinetic brand lettering and reveals underlying viewport.
  */
-export default function Preloader() {
+export default function Preloader({ isLoaded = false }) {
   return (
-    <div id="preloader" className="ra-preloader preloader" aria-hidden="true">
+    <div
+      id="preloader"
+      className={`ra-preloader preloader ${isLoaded ? 'loaded' : ''}`}
+      style={isLoaded ? { display: 'none', pointerEvents: 'none', opacity: 0, visibility: 'hidden', zIndex: -1 } : {}}
+      aria-hidden="true"
+    >
       <div className="ra-animation-preloader animation-preloader">
         <div className="ra-spinner spinner"></div>
         <div className="ra-txt-loading txt-loading">

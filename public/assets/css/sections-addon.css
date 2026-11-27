@@ -8,6 +8,24 @@
 /* -------------------------------------------------------------
    1. Why Work With Me / Trust Signals Section (.data-counder)
    ------------------------------------------------------------- */
+#why-me .ra-main-second-heading-data .ra-second-heading {
+    text-align: left;
+}
+
+#why-me .ra-expe-skill-data {
+    justify-content: flex-start;
+}
+
+#why-me .ra-expe-skill-data-mock {
+    width: var(--why-me-image-width, 100%);
+    max-width: 100%;
+}
+
+#why-me .ra-expe-skill-data-mock .ra-img-container {
+    width: 100%;
+    max-width: none;
+}
+
 .ra-data-counder, .data-counder {
     position: relative;
     overflow: hidden;
@@ -126,6 +144,36 @@
     width: 100%;
 }
 
+.ra-process-header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 48px;
+    z-index: 3;
+}
+
+.ra-process-header .ra-second-heading,
+.ra-process-header .second-heading {
+    font-size: 54px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+@media screen and (max-width: 991px) {
+    .ra-process-header .ra-second-heading,
+    .ra-process-header .second-heading {
+        font-size: 38px;
+        line-height: 1.2;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ra-process-header .ra-second-heading,
+    .ra-process-header .second-heading {
+        font-size: 30px;
+        line-height: 1.25;
+    }
+}
+
 .ra-section-title-box, .section-title-box {
     position: relative;
     width: 100%;
@@ -198,7 +246,7 @@
     overflow: hidden;
     min-height: 380px;
     padding: 34px 28px;
-    border: 2px solid var(--princing-box-border);
+    border: 2px solid var(--princing-box-border) !important;
     border-radius: 0px;
     background-color: #ffffff;
     flex-flow: column;
@@ -206,19 +254,27 @@
     align-items: start;
     display: flex;
     box-shadow: none !important;
-    transition: all 0.5s ease-in-out;
+    outline: none !important;
+    transition: background-color 0.35s ease;
 }
 
 body.dark-theme .ra-process-block,
 body.dark-theme .process-block {
-    background-color: #000000;
-    border: 2px solid var(--princing-box-border);
+    background-color: #0d0d0d;
+    border: 2px solid var(--princing-box-border) !important;
     box-shadow: none !important;
+    outline: none !important;
 }
 
-.ra-process-block:hover, .process-block:hover {
+.ra-process-block.is-active,
+.process-block.is-active,
+.ra-process-block:hover,
+.process-block:hover {
     background-color: var(--princing-box-border) !important;
-    transition: all 0.5s ease-in-out;
+    border: 2px solid var(--princing-box-border) !important;
+    border-color: var(--princing-box-border) !important;
+    box-shadow: none !important;
+    outline: none !important;
     z-index: 10 !important;
 }
 
@@ -233,9 +289,11 @@ body.dark-theme .process-block {
     object-fit: cover;
     max-width: 60px;
     filter: var(--princing-image);
-    transition: all 0.5s ease-in-out;
+    transition: filter 0.35s ease;
 }
 
+.ra-process-block.is-active .ra-image-right img,
+.process-block.is-active .image-right img,
 .ra-process-block:hover .ra-image-right img,
 .process-block:hover .image-right img {
     filter: var(--prince-hove-img);
@@ -265,11 +323,13 @@ body.dark-theme .process-block {
     transition: all 0.5s ease-in-out;
 }
 
+.ra-process-block.is-active .ra-process-count,
+.process-block.is-active .process-count,
 .ra-process-block:hover .ra-process-count,
 .process-block:hover .process-count {
-    background-color: var(--theme-data);
-    color: #ffffff;
-    border-color: var(--theme-data);
+    background-color: var(--theme-data) !important;
+    color: #ffffff !important;
+    border-color: var(--theme-data) !important;
 }
 
 .ra-process-content, .process-content {
@@ -288,12 +348,14 @@ body.dark-theme .process-block {
     font-weight: 500;
     color: var(--main-text);
     margin: 0;
-    transition: all 0.5s ease-in-out;
+    transition: color 0.35s ease;
 }
 
+.ra-process-block.is-active .ra-process-title,
+.process-block.is-active .process-title,
 .ra-process-block:hover .ra-process-title,
 .process-block:hover .process-title {
-    color: var(--theme-data);
+    color: var(--theme-data) !important;
 }
 
 .ra-process-text, .process-text {

@@ -1,0 +1,188 @@
+:root {
+    --ra-button-accent-ink: #006780;
+    --ra-button-focus: #006780;
+}
+
+body.dark-theme {
+    --ra-button-accent-ink: var(--theme-data);
+    --ra-button-focus: var(--theme-data);
+}
+
+[data-ax-theme="dark"] {
+    --ra-button-focus: #63b8a3;
+}
+
+.ra-button-label {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    vertical-align: top;
+    pointer-events: none;
+}
+
+.ra-button-label > [data-button-label] {
+    display: block;
+    line-height: inherit;
+}
+
+.circle-wrap .ra-button-label {
+    z-index: 2;
+}
+
+/* Keep the focus ring separate from borders so tabbing does not resize controls. */
+:is(button, a[data-button-motion]):focus-visible {
+    outline: 2px solid var(--ra-button-focus) !important;
+    outline-offset: 3px;
+}
+
+[data-ax-route] :is(button, a[href]).ax-btn:focus-visible {
+    outline-color: var(--ax-text-strong, currentColor) !important;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 3px;
+}
+
+[data-ax-route] .ax-btn:is(.ax-btn--primary, .ax-btn--solid, .ax-btn--accent):is(.ax-btn--success, .ax-btn--warning),
+[data-ax-route][data-ax-theme="dark"] .ax-btn:is(.ax-btn--primary, .ax-btn--solid, .ax-btn--accent):is(.ax-btn--danger, .ax-btn--info),
+[data-ax-route][data-ax-accent="amber"] .ax-btn:is(.ax-btn--primary, .ax-btn--solid, .ax-btn--accent):not(.ax-btn--danger, .ax-btn--info, .ax-btn--neutral) {
+    color: #000;
+}
+
+[data-ax-route]:not([data-ax-theme="dark"]) .ax-btn.ax-btn--ghost-danger {
+    color: #ab3022;
+}
+
+/* Switch light/dark contrast pairs together where both colors change. */
+[data-button-motion][data-button-motion] {
+    transition: background-color .5s ease, border-color .5s ease, transform .5s ease;
+}
+
+[data-button-motion]:is(.btn-design, .rehan-cms-pill-btn, .rehan-cms-quick-item),
+body:not(.dark-theme) [data-button-motion]:is(.btn-main, .btn-mark, .resume-btn, .btn-learn, .get-touch-btn),
+body.dark-theme [data-button-motion]:is(.btn-princ, .ra-filter-button) {
+    transition: border-color .5s ease, transform .5s ease;
+}
+
+[data-button-motion]:is(.btn-main, .btn-mark, .download, .resume-btn, .btn-learn, .get-touch-btn) {
+    color: #000;
+}
+
+[data-button-motion].btn-main:not(.button-text) {
+    background-color: var(--theme-data);
+}
+
+[data-button-motion]:is(.btn-design, .btn-main, .btn-mark, .resume-btn, .btn-learn, .get-touch-btn):is(:hover, :focus-visible, :active):not(:disabled) {
+    background-color: var(--main-text);
+    color: var(--body-color);
+}
+
+[data-button-motion].btn-mark:disabled {
+    background-color: var(--theme-data);
+    color: #000;
+    cursor: not-allowed;
+}
+
+[data-button-motion].download:is(:hover, :focus-visible, :active) {
+    background-color: #fff;
+    color: #000;
+}
+
+body #work-section .btn.button-text[data-button-motion] {
+    color: #000;
+    transition: background-color .5s ease, border-color .5s ease;
+}
+
+body:not(.dark-theme) #work-section .btn.button-text[data-button-motion] {
+    transition: border-color .5s ease;
+}
+
+body #work-section .btn.button-text[data-button-motion]:is(:hover, :focus-visible, :active) {
+    background-color: var(--main-text);
+    color: var(--body-color);
+}
+
+:is(.ra-pricing-box:hover .btn-princ, .btn-princ:is(:hover, :focus-visible, :active))[data-button-motion] {
+    background-color: var(--theme-data);
+    border-color: var(--theme-data);
+    color: #000;
+}
+
+.ra-filter-button {
+    background-color: transparent;
+    color: var(--main-text);
+    border: 1px solid var(--princing-box-border);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.ra-filter-button:is(:hover, :focus-visible, :active, [aria-pressed="true"]) {
+    background-color: var(--theme-data);
+    border-color: var(--theme-data);
+    color: #000;
+}
+
+[data-button-motion].ra-btn-primary:is(:hover, :focus-visible, :active) {
+    background-color: #0090c2;
+    color: #000 !important;
+}
+
+body [data-button-motion]:is(.ra-btn-secondary, .ra-quicklink-pill):is(:hover, :focus-visible, :active) {
+    background-color: rgba(0, 194, 255, .08);
+    border-color: var(--theme-data);
+    color: var(--ra-button-accent-ink) !important;
+}
+
+[data-button-motion].circle-wrap .close-btn {
+    color: var(--ra-button-accent-ink);
+}
+
+/* Disclosure and select labels stay still while their current state is shown. */
+:is(button.ra-faq-question, button.font-faq, button.ra-terms-link-btn):is(:hover, :focus-visible, :active),
+.faq-item.active :is(button.ra-faq-question, button.font-faq),
+button.data-faq-join:is(:hover, :focus-visible, :active) .data-name-faq-num h2 {
+    color: var(--ra-button-accent-ink);
+}
+
+button.data-faq-join:is(:focus-visible, :active) .data-arrow {
+    display: none;
+}
+
+button.data-faq-join:is(:focus-visible, :active) .data-hider {
+    display: inline-block;
+}
+
+body:not(.dark-theme) button.data-faq-join .data-hider {
+    filter: brightness(.65);
+}
+
+button.question-data-faq {
+    text-align: left;
+}
+
+.faq-services-question.active .question-data-faq .rount-services-arrow i {
+    color: #000;
+}
+
+button.question-data-faq:is(:hover, :focus-visible, :active) .question-services,
+.ra-custom-select-trigger:is(:hover, :focus-visible, :active, [aria-expanded="true"]) .ra-chevron-icon {
+    color: var(--ra-button-accent-ink);
+}
+
+.rehan-cms-wrapper :is(.rehan-cms-pill-btn, .rehan-cms-quick-item, .rehan-cms-close-btn):focus-visible {
+    outline-color: #2bc4b0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :is([data-button-motion], [data-ax-route] .ax-btn, button.ra-faq-question, button.font-faq, button.question-data-faq, button.data-faq-join, .ra-custom-select-trigger) {
+        transition: none !important;
+    }
+
+    :is(.ra-arroew-faq-data img, .rount-services-arrow, .rount-services-arrow i, .ra-chevron-icon, .circle-wrap .border-animate) {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    [data-button-motion]:is(.ra-btn-primary, .ra-btn-secondary, .ra-quicklink-pill) {
+        transform: none;
+    }
+}

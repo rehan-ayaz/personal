@@ -4,6 +4,7 @@
  * and standardized dual-class naming convention (ra-*).
  */
 import React, { useState, useRef, useEffect } from 'react';
+import ButtonLabel from "./ButtonLabel";
 
 function CustomSelect({ name, id, placeholder, options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -244,7 +245,7 @@ export default function Contact(props) {
                         </div>
                       </div>
                     </div>
-                    <button className="ra-btn-mark btn-mark" type="submit"><span>Submit</span></button>
+                    <button className="ra-btn-mark btn-mark" data-button-motion type="submit"><ButtonLabel>Submit</ButtonLabel></button>
                   </form>
                 </div>
               </div>

@@ -21,7 +21,7 @@ if (!window.smoother && document.querySelector("#smooth-wrapper") && document.qu
     smooth: 1.4, // Buttery smooth mouse wheel scrolling (seconds to catch up)
     effects: true,
     smoothTouch: 0.1,
-    normalizeScroll: true
+    normalizeScroll: false
   });
   window.smoother = smoother;
   window.dispatchEvent(new CustomEvent("smootherReady", { detail: smoother }));
@@ -148,42 +148,17 @@ function initSelfIntroScrollAnimation() {
 }
 
 //  ------------------------------------- [ Loader Design Data ]
-/*------------------------------------- Kinetic Rolling Button Hover Animation -------------------------------------*/
-function initButtonHoverAnimations() {
-  if (typeof gsap === "undefined") return;
-
-  const buttonSelectors = ".button-text, .ra-button-text, .ra-btn-design, .btn-design, .ra-btn-main, .btn-main, .ra-btn-princ, .btn-princ, .ra-mexix-btn, .mexix-btn, .ra-btn-mark, .btn-mark, .btn-animated, .button";
-  const buttons = gsap.utils.toArray(buttonSelectors);
-
-  buttons.forEach((item) => {
-    if (item.dataset.hoverAnimInitialized === "true") return;
-    item.dataset.hoverAnimInitialized = "true";
-
-    let span = item.querySelector("span:not(.border-animate):not(.link-nav)");
-    if (!span) {
-      const text = item.innerHTML.trim();
-      item.innerHTML = `<span>${text}</span>`;
-      span = item.querySelector("span");
-    }
-
-    let tl = gsap.timeline({ paused: true });
-
-    tl.to(span, { duration: 0.2, yPercent: -150, ease: "power2.in" });
-    tl.set(span, { yPercent: 150 });
-    tl.to(span, { duration: 0.2, yPercent: 0 });
-
-    item.addEventListener("mouseenter", () => tl.play(0));
+function finishLoader() {  $(".ra-preloader, .preloader").addClass("loaded").css({
+    "pointer-events": "none",
+    "display": "none",
+    "visibility": "hidden"
   });
-}
-
-//  ------------------------------------- [ Loader Design Data ]
-function finishLoader() {
-  initButtonHoverAnimations();
   setTimeout(function () {
-    $(".ra-preloader, .preloader").addClass("loaded").fadeOut(250, function () {
+    $(".ra-preloader, .preloader").fadeOut(200, function () {
       initHeadingAnimations();
-      initSelfIntroScrollAnimation();
-      initButtonHoverAnimations();
+      initSelfIntroScrollAnimation();      if (typeof ScrollSmoother !== "undefined" && window.smoother) {
+        window.smoother.refresh();
+      }
       if (typeof ScrollTrigger !== "undefined") {
         ScrollTrigger.refresh();
       }
@@ -191,19 +166,15 @@ function finishLoader() {
   }, 100);
 }
 
-if (document.readyState === "complete") {
+if (document.readyState === "complete" || document.readyState === "interactive") {
   finishLoader();
 } else {
   $(window).on("load", finishLoader);
 }
 
-$(document).ready(function () {
-  initButtonHoverAnimations();
-  setTimeout(function () {
+$(document).ready(function () {  setTimeout(function () {
     initHeadingAnimations();
-    initSelfIntroScrollAnimation();
-    initButtonHoverAnimations();
-    ScrollTrigger.refresh();
+    initSelfIntroScrollAnimation();    ScrollTrigger.refresh();
   }, 300);
 
   // Load More Projects Handler

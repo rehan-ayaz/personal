@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import ButtonLabel from "./ButtonLabel";
 import Header from './Header';
 import Footer from './Footer';
 
@@ -53,13 +54,13 @@ export default function Error404({ onOpenTerms, onOpenPrivacy }) {
 
               {/* Action Buttons */}
               <div className="ra-error-actions">
-                <a href="/" className="ra-btn-primary">
+                <a href="/" className="ra-btn-primary" data-button-motion>
                   <i className="ri-arrow-left-line"></i>
-                  <span>Back to Homepage</span>
+                  <ButtonLabel>Back to Homepage</ButtonLabel>
                 </a>
-                <a href="/#contact" className="ra-btn-secondary">
+                <a href="/#contact" className="ra-btn-secondary" data-button-motion>
                   <i className="ri-mail-send-line"></i>
-                  <span>Get In Touch</span>
+                  <ButtonLabel>Get In Touch</ButtonLabel>
                 </a>
               </div>
 
@@ -67,14 +68,14 @@ export default function Error404({ onOpenTerms, onOpenPrivacy }) {
               <div className="ra-error-quicklinks-box">
                 <p className="ra-error-quicklinks-title">Or explore popular sections:</p>
                 <div className="ra-error-quicklinks">
-                  <a href="/" className="ra-quicklink-pill">Home</a>
-                  <a href="/#services" className="ra-quicklink-pill">Services</a>
-                  <a href="/#projects" className="ra-quicklink-pill">Featured Projects</a>
-                  <a href="/#experience" className="ra-quicklink-pill">Experience</a>
-                  <a href="/#process" className="ra-quicklink-pill">Work Process</a>
-                  <a href="/#testimonials" className="ra-quicklink-pill">Testimonials</a>
-                  <a href="/#faq" className="ra-quicklink-pill">FAQs</a>
-                  <a href="/#contact" className="ra-quicklink-pill">Contact</a>
+                  <a href="/" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Home</ButtonLabel></a>
+                  <a href="/#services" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Services</ButtonLabel></a>
+                  <a href="/#projects" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Featured Projects</ButtonLabel></a>
+                  <a href="/#experience" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Experience</ButtonLabel></a>
+                  <a href="/#process" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Work Process</ButtonLabel></a>
+                  <a href="/#testimonials" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Testimonials</ButtonLabel></a>
+                  <a href="/#faq" className="ra-quicklink-pill" data-button-motion><ButtonLabel>FAQs</ButtonLabel></a>
+                  <a href="/#contact" className="ra-quicklink-pill" data-button-motion><ButtonLabel>Contact</ButtonLabel></a>
                 </div>
               </div>
             </div>

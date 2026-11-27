@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" data-ax-route="auth/maintenance">
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!-- ============================================================ -->
+<!-- REHAN AYAZ CMS ANTI-FLASH THEME RESTORE — MUST be first executable    -->
+<!-- in <head>, before any stylesheet. Runs synchronously (~1ms), -->
+<!-- reads ax: localStorage, resolves system theme via matchMedia,-->
+<!-- and writes all data-ax-* + dir + lang on <html> before paint.-->
+<!-- Framework-agnostic IIFE; try/catch so storage never blocks.  -->
+<!-- ============================================================ -->
+<script>
+/* Vireo anti-flash — must be FIRST in <head>, before stylesheets. */
+(function () {
+  var D = document.documentElement, LS;
+  try { LS = window.localStorage; } catch (e) { LS = null; }
+  function get(k){ try { return LS && LS.getItem(k); } catch(e){ return null; } }
+
+  /* schema guard: wipe unknown shape, never throw */
+  try { if (LS && get('ax:schema') && get('ax:schema') !== '1') {
+    Object.keys(LS).forEach(function(k){ if (k.indexOf('ax:')===0) LS.removeItem(k); });
+  } if (LS) LS.setItem('ax:schema','1'); } catch(e){}
+
+  /* ---- THEME (light | dark | system) ---- */
+  var theme = get('ax:theme') || 'system';
+  var sysDark = false;
+  try { sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch(e){}
+  var resolved = (theme === 'system') ? (sysDark ? 'dark' : 'light') : theme;
+  D.setAttribute('data-ax-theme', resolved);  /* always written so CSS [data-ax-theme] selectors match */
+
+  /* ---- ACCENT ---- */
+  var accent = get('ax:accent') || 'verdigris';
+  if (accent === 'verdigris') D.removeAttribute('data-ax-accent');
+  else D.setAttribute('data-ax-accent', accent);
+
+  /* ---- FONT (any Google family; the default, Inter, needs no attr + no link) ----
+     Mirrors js/core/fonts.js. Injected here rather than after boot so the face
+     is already in flight when the first paint happens — otherwise every page
+     load would flash Inter before swapping. A family chosen in the customizer
+     rides an INLINE --ax-font-sans, exactly as the custom accent colour does;
+     its weight ramp was resolved from the Google Fonts catalog at pick time and
+     persisted, because this script must rebuild the same URL without being able
+     to load that catalog. */
+  var fontFamily = (get('ax:font') === 'custom') ? get('ax:font-custom') : null;
+  if (fontFamily) {
+    D.setAttribute('data-ax-font', 'custom');
+    D.style.setProperty('--ax-font-sans', '"' + fontFamily + '", ui-sans-serif, system-ui, sans-serif');
+    var fl = document.createElement('link');
+    fl.id = 'ax-font-link'; fl.rel = 'stylesheet';
+    fl.href = 'https://fonts.googleapis.com/css2?family=' + fontFamily.replace(/ /g, '+') +
+              (get('ax:font-weights') || ':wght@400;500;600;700') + '&display=swap';
+    document.head.appendChild(fl);
+  } else { D.removeAttribute('data-ax-font'); }
+
+  /* ---- LANG + DIR ---- */
+  var lang = (get('ax:lang') || 'EN').toUpperCase();
+  D.setAttribute('lang', lang.toLowerCase());                 /* EN -> en */
+  var dirStored = get('ax:dir');                              /* explicit wins */
+  var dir = dirStored ? dirStored : (lang === 'AR' ? 'rtl' : 'ltr');
+  D.setAttribute('dir', dir);
+
+  /* ---- LAYOUT / SCHEME attributes (write only non-defaults; keep DOM clean) ---- */
+  function setAttr(attr, key, def){
+    var v = get(key);
+    if (v && v !== def) D.setAttribute(attr, v); else D.removeAttribute(attr);
+  }
+  setAttr('data-ax-nav',              'ax:nav',              'vertical');
+  setAttr('data-ax-shell-style',      'ax:shell-style',      'default');
+  setAttr('data-ax-sidebar-behavior', 'ax:sidebar-behavior', 'collapsible');
+  setAttr('data-ax-menu',             'ax:menu',             'click');
+  setAttr('data-ax-page',             'ax:page',             'regular');
+  setAttr('data-ax-width',            'ax:width',            'fluid');
+  setAttr('data-ax-header-position',  'ax:header-position',  'fixed');
+  setAttr('data-ax-sidebar-position', 'ax:sidebar-position', 'fixed');
+  setAttr('data-ax-sidebar',          'ax:sidebar-scheme',   'light');
+  setAttr('data-ax-header',           'ax:header-scheme',    'light');
+  setAttr('data-ax-sidebar-image',    'ax:sidebar-image',    'none');
+  setAttr('data-ax-loader',           'ax:loader',           'on');
+
+  /* ---- COLLAPSED RAIL (header toggle; boolean presence, default expanded) ----
+     Only honoured in the 'collapsible' behavior. 'expanded'/'compact' lock the
+     rail (compact renders the icon rail via [data-ax-sidebar-behavior]), so the
+     persisted toggle must not re-collapse over them. */
+  var behavior = get('ax:sidebar-behavior') || 'collapsible';
+  if (behavior === 'collapsible' && get('ax:collapsed') === '1') D.setAttribute('data-ax-collapsed', '');
+  else D.removeAttribute('data-ax-collapsed');
+
+  /* ---- CUSTOM COLOR PICKERS (inline style; re-derive ramp deterministically) ---- */
+  var customAccent = get('ax:accent-custom');
+  if (accent === 'custom' && customAccent) {
+    /* full ramp derivation lives in customizer module; head script sets at least
+       --ax-accent + --ax-on-accent so first paint is correct. */
+    D.style.setProperty('--ax-accent', customAccent);
+    /* on-accent by luminance (sRGB approx) */
+    var h = customAccent.replace('#','');
+    var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);
+    var L = (0.2126*r + 0.7152*g + 0.0722*b)/255;
+    D.style.setProperty('--ax-on-accent', L > 0.62 ? '#1F1602' : '#FFFFFF');
+    D.setAttribute('data-ax-accent','custom');
+  }
+  var bg = get(resolved === 'dark' ? 'ax:bg-custom-dark' : 'ax:bg-custom');
+  if (bg) D.style.setProperty('--ax-canvas', bg);
+})();
+</script>
+
+<title>Under Maintenance · Rehan Ayaz CMS</title>
+<meta name="description" content="Rehan Ayaz Portfolio Website CMS — Manage Pages, Blog, Projects, SEO, and Inquiries" />
+<meta name="theme-color" content="#0A0C11" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FCFBF9" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-BNwXwd9x.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Google Fonts — Inter (sans) · Space Grotesk (display) · JetBrains Mono (mono) · token brief §7.1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Compiled application stylesheet (token chain + Tailwind v4 @theme bridge + shell/components) -->
+  <script type="module" crossorigin src="/assets/vireo-BKePweWV.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/vireo-D45lZWjH.css">
+</head>
+<body class="ax-standalone">
+  <!-- Page preloader — full-screen overlay removed on boot by vireo.js hideLoader().
+       The customizer "Page loader" toggle writes data-ax-loader="off" to suppress it
+       ([data-ax-loader='off'] .ax-loader { display:none }). Reuses the existing
+       .ax-spinner component; no bespoke loader CSS. -->
+  <div class="ax-loader" data-ax-loader-el role="status" aria-live="polite" aria-label="Loading">
+    <span class="ax-spinner ax-spinner--lg" aria-hidden="true"><span class="ax-spinner__glyph"></span></span>
+  </div>
+  <style>
+    @keyframes ax-spin-slow { to { transform: rotate(360deg); } }
+    .ax-gear-spin { transform-origin: center; animation: ax-spin-slow 14s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .ax-gear-spin { animation: none; } .ax-bar-indet::after { animation: none !important; left: 0 !important; width: 100% !important; } }
+    .ax-bar-indet { position: relative; height: 6px; border-radius: var(--ax-radius-pill); background: var(--ax-fill-hover); overflow: hidden; }
+    .ax-bar-indet::after {
+      content: ""; position: absolute; inset-block: 0; inset-inline-start: -40%; width: 40%;
+      border-radius: var(--ax-radius-pill); background: var(--ax-gradient-accent);
+      animation: ax-indet 1.6s var(--ax-ease-standard) infinite;
+    }
+    @keyframes ax-indet { 0% { inset-inline-start: -40%; } 100% { inset-inline-start: 100%; } }
+  </style>
+  <div class="ax-ambient" aria-hidden="true"><i></i></div>
+
+  <div class="ax-cluster" style="position:fixed;inset-block-start:var(--ax-space-5);inset-inline-end:var(--ax-space-6);z-index:5;gap:var(--ax-space-2);">
+    <button type="button" class="ax-btn ax-btn--ghost ax-btn--icon" aria-label="Toggle color theme"
+            x-data @click="$store.theme && $store.theme.toggle()">
+      <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008"/></svg>
+    </button>
+    <button type="button" class="ax-btn ax-btn--ghost ax-btn--sm">
+      <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+      <span class="ax-btn__label">EN</span>
+    </button>
+  </div>
+
+  <main id="ax-main" style="position:relative;z-index:1;width:100%;max-width:560px;text-align:center;">
+
+    <!-- brand -->
+    <div class="ax-center" style="margin-block-end:var(--ax-space-6);">
+      <a href="/src/html/index.html" class="ax-cluster" style="gap:var(--ax-space-3);text-decoration:none;" aria-label="Rehan Ayaz CMS home">
+        <span style="display:inline-grid;place-items:center;width:42px;height:42px;border-radius:var(--ax-radius-md);background:var(--ax-gradient-accent);color:var(--ax-on-accent);box-shadow:0 8px 22px -8px rgba(var(--ax-accent-rgb),.7);">
+          <svg viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="axmk0" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2BC4B0"/><stop offset="0.55" stop-color="#1E9E96"/><stop offset="1" stop-color="#6D5CF0"/></linearGradient></defs><path d="M4 4 H16 A12 12 0 0 1 28 16 V28 A0 0 0 0 1 28 28 H16 A12 12 0 0 1 4 16 V4 Z" fill="url(#axmk0)" stroke="none"/><circle cx="20.5" cy="11.5" r="2.6" fill="#0A0C11" fill-opacity="0.92" stroke="none"/></svg>
+        </span>
+        <b style="font-family:var(--ax-font-display);font-size:var(--ax-text-lg);color:var(--ax-text-strong);">Vireo</b>
+      </a>
+    </div>
+
+    <!-- ── MAINTENANCE ILLUSTRATION (two-tone thin-line, single warning highlight) ── -->
+    <div class="ax-center" style="margin-block-end:var(--ax-space-6);" aria-hidden="true">
+      <span style="display:inline-grid;place-items:center;width:128px;height:128px;border-radius:50%;background:var(--ax-warning-50);position:relative;">
+        <!-- large slow gear (muted) -->
+        <svg viewBox="0 0 24 24" width="78" height="78" fill="none" stroke="var(--ax-text-subtle)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><g class="ax-gear-spin"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></g></svg>
+        <!-- small wrench accent (warning highlight) -->
+        <span style="position:absolute;right:14px;bottom:14px;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ax-surface-solid);box-shadow:var(--ax-shadow-sm);">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--ax-warning-500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+        </span>
+      </span>
+    </div>
+
+    <!-- status badge -->
+    <span class="ax-badge ax-badge--soft ax-badge--warning ax-badge--pill" style="margin-block-end:var(--ax-space-4);">
+      <span class="ax-badge__dot"></span>Scheduled maintenance
+    </span>
+
+    <h1 style="font-family:var(--ax-font-display);font-size:var(--ax-text-3xl);font-weight:600;color:var(--ax-text-strong);margin:0 0 var(--ax-space-3);letter-spacing:-.02em;line-height:1.1;">We'll be back shortly.</h1>
+    <p style="font-size:var(--ax-text-md);color:var(--ax-text-muted);margin:0 auto var(--ax-space-6);max-width:48ch;">
+      Vireo is undergoing planned maintenance to ship database upgrades and faster dashboards. Your data is safe and nothing is lost — this is a routine, scheduled window.
+    </p>
+
+    <!-- ETA card -->
+    <div class="ax-card" style="text-align:start;max-width:460px;margin-inline:auto;margin-block-end:var(--ax-space-6);">
+      <div class="ax-card__body" style="padding:var(--ax-space-6);">
+        <div class="ax-cluster ax-cluster--between" style="margin-block-end:var(--ax-space-3);">
+          <span style="font-size:var(--ax-text-sm);color:var(--ax-text-muted);">Estimated time remaining</span>
+          <b class="ax-num" style="font-family:var(--ax-font-mono);font-size:var(--ax-text-md);color:var(--ax-text-strong);">00:42:00</b>
+        </div>
+        <div class="ax-bar-indet" role="progressbar" aria-label="Maintenance in progress" aria-valuetext="Estimated 42 minutes remaining"></div>
+        <div class="ax-cluster ax-cluster--between" style="margin-block-start:var(--ax-space-4);font-size:var(--ax-text-xs);color:var(--ax-text-subtle);">
+          <span>Started <span class="ax-num">02:00 UTC</span></span>
+          <span>Expected back by <span class="ax-num" style="color:var(--ax-text-muted);">02:45 UTC</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- actions -->
+    <div class="ax-cluster" style="gap:var(--ax-space-3);justify-content:center;">
+      <a class="ax-btn ax-btn--secondary" href="#">
+        <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4.5l1.5 -6l4 12l2 -9l1.5 3h4.5"/></svg>
+        <span class="ax-btn__label">View system status</span>
+      </a>
+      <a class="ax-btn ax-btn--ghost" href="mailto:support@vireo.io">
+        <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"/><path d="M3 7l9 6l9 -6"/></svg>
+        <span class="ax-btn__label">Contact support</span>
+      </a>
+    </div>
+
+    <p style="margin-block-start:var(--ax-space-8);font-size:var(--ax-text-2xs);color:var(--ax-text-subtle);">
+      Need urgent help? Email <a class="ax-link" href="mailto:support@vireo.io">support@vireo.io</a> · Status code <span class="ax-num">503</span>
+    </p>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- CMS RUNTIME — single ES module entry.                      -->
+  <!-- Boots Alpine + plugins, registers shell components           -->
+  <!-- (axShell, axSidebar, axHeader, axDropdown, axCommand,        -->
+  <!-- axCustomizer), fetches /src/data/nav-manifest.json, and      -->
+  <!-- wires active-trail, breadcrumb, command palette, theme.      -->
+  <!-- ============================================================ -->
+  
+  <!-- Per-page hook (optional):
+       Pages that need extra behavior (charts, datatables, editors) add a
+       deferred module AFTER this line, e.g.:
+       <script type="module" src="/src/js/pages/dashboards-sales.js"></script>
+       Keep page scripts deferred/module so they run after vireo.js boots. -->
+</body>
+</html>

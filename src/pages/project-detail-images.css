@@ -1,0 +1,11 @@
+.project-detail-data .ra-project-image > .img-container {
+  height: auto;
+}
+
+.project-detail-data .ra-project-image > .img-container > img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  transform: none;
+  will-change: auto;
+}

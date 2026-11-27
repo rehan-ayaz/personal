@@ -1,0 +1,115 @@
+.ra-about-bio .ra-about-bio-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 420px;
+  isolation: isolate;
+}
+
+.ra-about-bio-visual > div {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ra-about-bio-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ra-about-bio .calling-picked:last-child {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ra-about-stats-photo {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+}
+
+.ra-about-process .process-list,
+.ra-about-services .hovering-data {
+  padding: 0;
+  list-style: none;
+}
+
+.ra-about-process .process-list {
+  margin-bottom: 0;
+}
+
+.ra-inner-main-content .ra-about-services .ra-about-service .hover-reveal {
+  left: clamp(120px, var(--about-preview-x, 76%), calc(100% - 120px));
+  top: var(--about-preview-y, 50%);
+  transform: translate(-50%, -50%) scale(.9);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.ra-inner-main-content .ra-about-services .ra-about-service:is(:hover, :focus-visible) .hover-reveal {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.ra-about-services .ra-about-service:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.ra-about-contact #about-inquiry {
+  scroll-margin-top: 110px;
+}
+
+.ra-about-contact .ra-about-draft:not(:empty) {
+  margin-top: 14px;
+}
+
+.ra-about-contact .ra-about-draft .btn-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+@media (max-width: 991.98px) {
+  .ra-about-bio .ra-about-bio-visual {
+    min-height: 0;
+  }
+
+  .ra-about-bio-photo {
+    position: static;
+    height: auto;
+    aspect-ratio: 860 / 875;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 991.98px) {
+  .ra-inner-main-content .ra-about-services .ra-about-service {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(60px, 15vw, 110px);
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ra-inner-main-content .ra-about-services .ra-about-service .hover-reveal,
+  .ra-inner-main-content .ra-about-services .ra-about-service:is(:hover, :focus-visible) .hover-reveal {
+    display: block;
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ra-inner-main-content .ra-about-services .ra-about-service .hover-reveal {
+    transition: none;
+  }
+}

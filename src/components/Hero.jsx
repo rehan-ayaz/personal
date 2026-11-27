@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonLabel from "./ButtonLabel";
 
 /**
  * Hero component showcasing main introduction, availability status indicator,
@@ -36,11 +37,11 @@ export default function Hero() {
           </div>
           <a
             href="https://wa.me/923260735090"
-            className="ra-btn-design btn-design"
+            className="ra-btn-design btn-design" data-button-motion
             aria-label="Hire me"
             style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
           >
-            <span>hire me!</span>
+            <ButtonLabel>hire me!</ButtonLabel>
           </a>
           <div className="ra-online-free online-free">
             <div className="ra-online-dot online-dot" />

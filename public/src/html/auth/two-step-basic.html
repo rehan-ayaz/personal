@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en" data-ax-route="auth/two-step-basic">
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!-- ============================================================ -->
+<!-- REHAN AYAZ CMS ANTI-FLASH THEME RESTORE — MUST be first executable    -->
+<!-- in <head>, before any stylesheet. Runs synchronously (~1ms), -->
+<!-- reads ax: localStorage, resolves system theme via matchMedia,-->
+<!-- and writes all data-ax-* + dir + lang on <html> before paint.-->
+<!-- Framework-agnostic IIFE; try/catch so storage never blocks.  -->
+<!-- ============================================================ -->
+<script>
+/* Vireo anti-flash — must be FIRST in <head>, before stylesheets. */
+(function () {
+  var D = document.documentElement, LS;
+  try { LS = window.localStorage; } catch (e) { LS = null; }
+  function get(k){ try { return LS && LS.getItem(k); } catch(e){ return null; } }
+
+  /* schema guard: wipe unknown shape, never throw */
+  try { if (LS && get('ax:schema') && get('ax:schema') !== '1') {
+    Object.keys(LS).forEach(function(k){ if (k.indexOf('ax:')===0) LS.removeItem(k); });
+  } if (LS) LS.setItem('ax:schema','1'); } catch(e){}
+
+  /* ---- THEME (light | dark | system) ---- */
+  var theme = get('ax:theme') || 'system';
+  var sysDark = false;
+  try { sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch(e){}
+  var resolved = (theme === 'system') ? (sysDark ? 'dark' : 'light') : theme;
+  D.setAttribute('data-ax-theme', resolved);  /* always written so CSS [data-ax-theme] selectors match */
+
+  /* ---- ACCENT ---- */
+  var accent = get('ax:accent') || 'verdigris';
+  if (accent === 'verdigris') D.removeAttribute('data-ax-accent');
+  else D.setAttribute('data-ax-accent', accent);
+
+  /* ---- FONT (any Google family; the default, Inter, needs no attr + no link) ----
+     Mirrors js/core/fonts.js. Injected here rather than after boot so the face
+     is already in flight when the first paint happens — otherwise every page
+     load would flash Inter before swapping. A family chosen in the customizer
+     rides an INLINE --ax-font-sans, exactly as the custom accent colour does;
+     its weight ramp was resolved from the Google Fonts catalog at pick time and
+     persisted, because this script must rebuild the same URL without being able
+     to load that catalog. */
+  var fontFamily = (get('ax:font') === 'custom') ? get('ax:font-custom') : null;
+  if (fontFamily) {
+    D.setAttribute('data-ax-font', 'custom');
+    D.style.setProperty('--ax-font-sans', '"' + fontFamily + '", ui-sans-serif, system-ui, sans-serif');
+    var fl = document.createElement('link');
+    fl.id = 'ax-font-link'; fl.rel = 'stylesheet';
+    fl.href = 'https://fonts.googleapis.com/css2?family=' + fontFamily.replace(/ /g, '+') +
+              (get('ax:font-weights') || ':wght@400;500;600;700') + '&display=swap';
+    document.head.appendChild(fl);
+  } else { D.removeAttribute('data-ax-font'); }
+
+  /* ---- LANG + DIR ---- */
+  var lang = (get('ax:lang') || 'EN').toUpperCase();
+  D.setAttribute('lang', lang.toLowerCase());                 /* EN -> en */
+  var dirStored = get('ax:dir');                              /* explicit wins */
+  var dir = dirStored ? dirStored : (lang === 'AR' ? 'rtl' : 'ltr');
+  D.setAttribute('dir', dir);
+
+  /* ---- LAYOUT / SCHEME attributes (write only non-defaults; keep DOM clean) ---- */
+  function setAttr(attr, key, def){
+    var v = get(key);
+    if (v && v !== def) D.setAttribute(attr, v); else D.removeAttribute(attr);
+  }
+  setAttr('data-ax-nav',              'ax:nav',              'vertical');
+  setAttr('data-ax-shell-style',      'ax:shell-style',      'default');
+  setAttr('data-ax-sidebar-behavior', 'ax:sidebar-behavior', 'collapsible');
+  setAttr('data-ax-menu',             'ax:menu',             'click');
+  setAttr('data-ax-page',             'ax:page',             'regular');
+  setAttr('data-ax-width',            'ax:width',            'fluid');
+  setAttr('data-ax-header-position',  'ax:header-position',  'fixed');
+  setAttr('data-ax-sidebar-position', 'ax:sidebar-position', 'fixed');
+  setAttr('data-ax-sidebar',          'ax:sidebar-scheme',   'light');
+  setAttr('data-ax-header',           'ax:header-scheme',    'light');
+  setAttr('data-ax-sidebar-image',    'ax:sidebar-image',    'none');
+  setAttr('data-ax-loader',           'ax:loader',           'on');
+
+  /* ---- COLLAPSED RAIL (header toggle; boolean presence, default expanded) ----
+     Only honoured in the 'collapsible' behavior. 'expanded'/'compact' lock the
+     rail (compact renders the icon rail via [data-ax-sidebar-behavior]), so the
+     persisted toggle must not re-collapse over them. */
+  var behavior = get('ax:sidebar-behavior') || 'collapsible';
+  if (behavior === 'collapsible' && get('ax:collapsed') === '1') D.setAttribute('data-ax-collapsed', '');
+  else D.removeAttribute('data-ax-collapsed');
+
+  /* ---- CUSTOM COLOR PICKERS (inline style; re-derive ramp deterministically) ---- */
+  var customAccent = get('ax:accent-custom');
+  if (accent === 'custom' && customAccent) {
+    /* full ramp derivation lives in customizer module; head script sets at least
+       --ax-accent + --ax-on-accent so first paint is correct. */
+    D.style.setProperty('--ax-accent', customAccent);
+    /* on-accent by luminance (sRGB approx) */
+    var h = customAccent.replace('#','');
+    var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);
+    var L = (0.2126*r + 0.7152*g + 0.0722*b)/255;
+    D.style.setProperty('--ax-on-accent', L > 0.62 ? '#1F1602' : '#FFFFFF');
+    D.setAttribute('data-ax-accent','custom');
+  }
+  var bg = get(resolved === 'dark' ? 'ax:bg-custom-dark' : 'ax:bg-custom');
+  if (bg) D.style.setProperty('--ax-canvas', bg);
+})();
+</script>
+
+<title>Two-Step Verification — Basic · Rehan Ayaz CMS</title>
+<meta name="description" content="Rehan Ayaz Portfolio Website CMS — Manage Pages, Blog, Projects, SEO, and Inquiries" />
+<meta name="theme-color" content="#0A0C11" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FCFBF9" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-BNwXwd9x.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Google Fonts — Inter (sans) · Space Grotesk (display) · JetBrains Mono (mono) · token brief §7.1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Compiled application stylesheet (token chain + Tailwind v4 @theme bridge + shell/components) -->
+  <script type="module" crossorigin src="/assets/vireo-BKePweWV.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/vireo-D45lZWjH.css">
+</head>
+<body class="ax-standalone">
+  <!-- Page preloader — full-screen overlay removed on boot by vireo.js hideLoader().
+       The customizer "Page loader" toggle writes data-ax-loader="off" to suppress it
+       ([data-ax-loader='off'] .ax-loader { display:none }). Reuses the existing
+       .ax-spinner component; no bespoke loader CSS. -->
+  <div class="ax-loader" data-ax-loader-el role="status" aria-live="polite" aria-label="Loading">
+    <span class="ax-spinner ax-spinner--lg" aria-hidden="true"><span class="ax-spinner__glyph"></span></span>
+  </div>
+  <div class="ax-ambient" aria-hidden="true"><i></i></div>
+
+  <div class="ax-cluster" x-data="axOffappTools()"
+       style="position:fixed;inset-block-start:var(--ax-space-5);inset-inline-end:var(--ax-space-5);z-index:5;gap:var(--ax-space-2);">
+    <button type="button" class="ax-btn ax-btn--ghost ax-btn--sm" @click="cycleLocale()" aria-label="Change language">
+      <svg class="ax-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+      <span class="ax-btn__label ax-num" x-text="locale"></span>
+    </button>
+    <button type="button" class="ax-icon-btn" @click="toggleTheme()" :aria-pressed="theme==='dark'" aria-label="Toggle dark mode">
+      <svg class="ax-icon" x-show="theme==='dark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>
+      <svg class="ax-icon" x-show="theme!=='dark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008"/></svg>
+    </button>
+  </div>
+
+  <main class="ax-center" id="ax-main" style="inline-size:100%;max-inline-size:400px;position:relative;z-index:1;">
+    <div style="inline-size:100%;display:flex;flex-direction:column;gap:var(--ax-space-5);" x-data="axOtpForm()">
+
+      <a href="/src/html/index.html" class="ax-center" aria-label="Rehan Ayaz CMS home"
+         style="gap:var(--ax-space-3);text-decoration:none;flex-direction:row;justify-content:center;">
+        <span class="ax-center" aria-hidden="true"
+              style="inline-size:42px;block-size:42px;border-radius:var(--ax-radius-md);background:var(--ax-gradient-accent);color:var(--ax-on-accent);box-shadow:0 8px 22px -8px rgba(var(--ax-accent-rgb),.7);">
+          <svg viewBox="0 0 32 32" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="axmk0" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#2BC4B0"/><stop offset="0.55" stop-color="#1E9E96"/><stop offset="1" stop-color="#6D5CF0"/></linearGradient></defs><path d="M4 4 H16 A12 12 0 0 1 28 16 V28 A0 0 0 0 1 28 28 H16 A12 12 0 0 1 4 16 V4 Z" fill="url(#axmk0)" stroke="none"/><circle cx="20.5" cy="11.5" r="2.6" fill="#0A0C11" fill-opacity="0.92" stroke="none"/></svg>
+        </span>
+        <span style="font-family:var(--ax-font-display);font-weight:var(--ax-weight-semibold);font-size:var(--ax-text-xl);color:var(--ax-text-strong);letter-spacing:-.01em;">Vireo</span>
+      </a>
+
+      <section class="ax-card" role="region" aria-label="Two-step verification" style="border-radius:var(--ax-radius-xl);">
+        <div class="ax-card__body" style="padding:var(--ax-space-8);display:flex;flex-direction:column;gap:var(--ax-space-5);">
+
+          <header style="text-align:center;display:flex;flex-direction:column;gap:var(--ax-space-3);align-items:center;">
+            <span class="ax-center" aria-hidden="true"
+                  style="inline-size:56px;block-size:56px;border-radius:var(--ax-radius-pill);background:var(--ax-accent-wash);color:var(--ax-accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"/><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M12 12l0 2.5"/></svg>
+            </span>
+            <div style="display:flex;flex-direction:column;gap:var(--ax-space-1);">
+              <h1 style="margin:0;font-family:var(--ax-font-display);font-size:var(--ax-text-2xl);font-weight:var(--ax-weight-semibold);color:var(--ax-text-strong);letter-spacing:-.015em;">Two-step verification</h1>
+              <p style="margin:0;font-size:var(--ax-text-sm);color:var(--ax-text-muted);">We sent a 6-digit code to <b style="color:var(--ax-text-strong);">+1 ••• ••• 4072</b>.</p>
+            </div>
+          </header>
+
+          <div role="alert" x-show="invalid" x-cloak x-transition class="ax-alert ax-alert--danger" style="padding:var(--ax-space-3) var(--ax-space-4);">
+            <svg class="ax-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            <div class="ax-alert__content"><p class="ax-alert__message" style="color:var(--ax-danger-500);">Incorrect code. Please check the code and try again.</p></div>
+          </div>
+
+          <form @submit.prevent="verify()" style="display:flex;flex-direction:column;gap:var(--ax-space-5);" novalidate>
+            <div>
+              <div class="ax-otp" role="group" aria-label="Enter the 6-digit verification code"
+                   style="display:flex;justify-content:space-between;gap:var(--ax-space-2);" @paste.prevent="onPaste($event)">
+                <!-- :style uses the OBJECT form, not a string: Alpine merges an object
+                     into the element's inline style but replaces it wholesale for a
+                     string — the '' branch was wiping flex:1 1 0, so the cells kept
+                     .ax-otp__cell's fixed 44px and ran off the edge of a 360px screen. -->
+                <template x-for="(d, i) in digits" :key="i">
+                  <input type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1"
+                         class="ax-otp__cell" style="flex:1 1 0;min-inline-size:0;font-weight:600;"
+                         :style="invalid ? { borderColor: 'var(--ax-danger-500)' } : {}"
+                         :aria-label="'Digit ' + (i+1) + ' of 6'"
+                         :data-idx="i" x-model="digits[i]"
+                         @input="onInput(i, $event)" @keydown="onKey(i, $event)" @focus="$event.target.select()">
+                </template>
+              </div>
+            </div>
+
+            <label class="ax-check" style="font-size:var(--ax-text-sm);color:var(--ax-text);">
+              <input type="checkbox" class="ax-checkbox" x-model="trust">
+              <span>Trust this device for 30 days</span>
+            </label>
+
+            <button type="submit" class="ax-btn ax-btn--primary ax-btn--lg ax-btn--block" :class="loading && 'is-loading'" :disabled="!complete" :aria-busy="loading">
+              <span class="ax-btn__spinner" aria-hidden="true"></span>
+              <span class="ax-btn__label">Verify</span>
+            </button>
+          </form>
+
+          <div class="ax-center" style="flex-direction:column;gap:var(--ax-space-2);">
+            <p style="margin:0;font-size:var(--ax-text-sm);color:var(--ax-text-muted);">
+              Didn't get a code?
+              <button type="button" class="ax-btn ax-btn--link" :disabled="cooldown>0" @click="resend()" style="font-size:var(--ax-text-sm);vertical-align:baseline;">
+                <span x-text="cooldown>0 ? ('Resend in ' + cooldown + 's') : 'Resend code'"></span>
+              </button>
+            </p>
+            <a class="ax-link" href="/src/html/auth/sign-in-basic.html" style="font-size:var(--ax-text-sm);">Use a different method</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- CMS RUNTIME — single ES module entry.                      -->
+  <!-- Boots Alpine + plugins, registers shell components           -->
+  <!-- (axShell, axSidebar, axHeader, axDropdown, axCommand,        -->
+  <!-- axCustomizer), fetches /src/data/nav-manifest.json, and      -->
+  <!-- wires active-trail, breadcrumb, command palette, theme.      -->
+  <!-- ============================================================ -->
+  
+  <!-- Per-page hook (optional):
+       Pages that need extra behavior (charts, datatables, editors) add a
+       deferred module AFTER this line, e.g.:
+       <script type="module" src="/src/js/pages/dashboards-sales.js"></script>
+       Keep page scripts deferred/module so they run after vireo.js boots. -->
+  <script>
+    function axOffappTools() {
+      return {
+        theme: document.documentElement.getAttribute('data-ax-theme') || 'light',
+        locale: (localStorage.getItem('ax:lang') || 'EN').toUpperCase(),
+        toggleTheme() { this.theme = this.theme === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-ax-theme', this.theme); try { localStorage.setItem('ax:theme', this.theme); } catch (e) {} },
+        cycleLocale() { const o = ['EN','FR','DE','ES','AR']; this.locale = o[(o.indexOf(this.locale)+1)%o.length]; try { localStorage.setItem('ax:lang', this.locale); } catch (e) {} },
+      };
+    }
+    function axOtpForm() {
+      return {
+        digits: ['', '', '', '', '', ''], trust: false,
+        loading: false, invalid: false, cooldown: 0, _deadline: 0, _raf: 0,
+        get complete() { return this.digits.every((d) => /^\d$/.test(d)); },
+        cells() { return Array.from(this.$root.querySelectorAll('.ax-otp__cell')); },
+        focusCell(i) { const c = this.cells()[i]; if (c) { c.focus(); c.select(); } },
+        onInput(i, e) {
+          this.invalid = false;
+          const v = e.target.value.replace(/\D/g, '');
+          this.digits[i] = v.slice(-1) || '';
+          if (this.digits[i] && i < 5) this.focusCell(i + 1);
+        },
+        onKey(i, e) {
+          if (e.key === 'Backspace' && !this.digits[i] && i > 0) { e.preventDefault(); this.digits[i - 1] = ''; this.focusCell(i - 1); }
+          else if (e.key === 'ArrowLeft' && i > 0) { e.preventDefault(); this.focusCell(i - 1); }
+          else if (e.key === 'ArrowRight' && i < 5) { e.preventDefault(); this.focusCell(i + 1); }
+        },
+        onPaste(e) {
+          const txt = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+          if (!txt) return;
+          this.invalid = false;
+          for (let i = 0; i < 6; i++) this.digits[i] = txt[i] || '';
+          this.focusCell(Math.min(txt.length, 5));
+        },
+        verify() {
+          if (!this.complete) return;
+          this.loading = true;
+          this.invalid = false;
+          // Demo only — never hits the network. "111111" passes; anything else flashes invalid.
+          setTimeout(() => {
+            this.loading = false;
+            if (this.digits.join('') === '111111') {
+              window.location.href = '/src/html/index.html';
+            } else {
+              this.invalid = true;
+              this.digits = ['', '', '', '', '', ''];
+              this.focusCell(0);
+            }
+          }, 900);
+        },
+        resend() { if (this.cooldown > 0) return; this.startCooldown(); },
+        startCooldown() {
+          this._deadline = Date.now() + 30000;
+          const tick = () => {
+            const left = Math.max(0, Math.ceil((this._deadline - Date.now()) / 1000));
+            this.cooldown = left;
+            if (left > 0) this._raf = requestAnimationFrame(tick);
+          };
+          cancelAnimationFrame(this._raf);
+          tick();
+        },
+        init() { this.startCooldown(); this.$nextTick(() => this.focusCell(0)); },
+      };
+    }
+  </script>
+</body>
+</html>
